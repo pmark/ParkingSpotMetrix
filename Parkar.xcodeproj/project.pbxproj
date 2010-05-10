@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* WharCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* WharCarViewController.xib */; };
+		4D169A5A1194CA5700F499D7 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D169A551194CA5700F499D7 /* MainWindow.xib */; };
+		4D169A5B1194CA5700F499D7 /* WharCarAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D169A571194CA5700F499D7 /* WharCarAppDelegate.m */; };
+		4D169A5C1194CA5700F499D7 /* WharCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D169A591194CA5700F499D7 /* WharCarViewController.m */; };
+		4D169BDD1194CADF00F499D7 /* 3dar.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D169B441194CADF00F499D7 /* 3dar.plist */; };
+		4D169C111194CADF00F499D7 /* 3dar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD21194CADF00F499D7 /* 3dar_logo.png */; };
+		4D169C121194CADF00F499D7 /* 3dar_marker_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */; };
+		4D169C131194CADF00F499D7 /* 3dar_marker_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD41194CADF00F499D7 /* 3dar_marker_icon2.png */; };
+		4D169C141194CADF00F499D7 /* 3dar_marker_icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD51194CADF00F499D7 /* 3dar_marker_icon3.png */; };
+		4D169C151194CADF00F499D7 /* 3dar_marker_icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD61194CADF00F499D7 /* 3dar_marker_icon4.png */; };
+		4D169C161194CADF00F499D7 /* 3dar_marker_icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD71194CADF00F499D7 /* 3dar_marker_icon5.png */; };
+		4D169C171194CADF00F499D7 /* 3dar_marker_icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD81194CADF00F499D7 /* 3dar_marker_icon6.png */; };
+		4D169C181194CADF00F499D7 /* bubble1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD91194CADF00F499D7 /* bubble1.png */; };
+		4D169C191194CADF00F499D7 /* compass_rose.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BDA1194CADF00F499D7 /* compass_rose.png */; };
+		4D169C1A1194CADF00F499D7 /* SM3DAR_keys.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BDC1194CADF00F499D7 /* SM3DAR_keys.txt */; };
+		4D169C2C1194CB8800F499D7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D169C2B1194CB8800F499D7 /* CoreLocation.framework */; };
+		4D169C2E1194CB8900F499D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D169C2D1194CB8900F499D7 /* MapKit.framework */; };
+		4D169C301194CB8900F499D7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D169C2F1194CB8900F499D7 /* OpenGLES.framework */; };
+		4D169C321194CB8900F499D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D169C311194CB8900F499D7 /* QuartzCore.framework */; };
+		4D2841C911973AF900DC90A7 /* compass_rose_b_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D2841C811973AF900DC90A7 /* compass_rose_b_300.png */; };
+		4D2841E411973FFA00DC90A7 /* compass_rose300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D2841E211973FFA00DC90A7 /* compass_rose300.png */; };
+		4DDBE1B31197635400565D41 /* compass_rose_e_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B21197635400565D41 /* compass_rose_e_300.png */; };
+		4DDBE1BA1197BB8F00565D41 /* compass_rose_f_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B81197BB8F00565D41 /* compass_rose_f_300.png */; };
+		4DDBE1BB1197BB8F00565D41 /* compass_rose_g_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */; };
+		4DFADD151194F2E200C23B45 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFADD141194F2E200C23B45 /* lib3DAR.a */; };
+		4DFADD771194FE3000C23B45 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD741194FE3000C23B45 /* Default.png */; };
+		4DFADD781194FE3000C23B45 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD751194FE3000C23B45 /* iTunesArtwork */; };
+		4DFADD791194FE3000C23B45 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD761194FE3000C23B45 /* Icon.png */; };
+		4DFADE621195D53700C23B45 /* RoundedLabelMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFADE601195D53700C23B45 /* RoundedLabelMarkerView.m */; };
+		4DFADE6A1195D54C00C23B45 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFADE661195D54C00C23B45 /* Model.m */; };
+		4DFADE7811970D4200C23B45 /* PointerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFADE7711970D4200C23B45 /* PointerView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* parkAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = parkAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* WharCarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WharCarViewController.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Parkar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parkar_Prefix.pch; sourceTree = "<group>"; };
+		4D169A551194CA5700F499D7 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		4D169A561194CA5700F499D7 /* WharCarAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WharCarAppDelegate.h; sourceTree = "<group>"; };
+		4D169A571194CA5700F499D7 /* WharCarAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WharCarAppDelegate.m; sourceTree = "<group>"; };
+		4D169A581194CA5700F499D7 /* WharCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WharCarViewController.h; sourceTree = "<group>"; };
+		4D169A591194CA5700F499D7 /* WharCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WharCarViewController.m; sourceTree = "<group>"; };
+		4D169B441194CADF00F499D7 /* 3dar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3dar.plist; sourceTree = "<group>"; };
+		4D169BD21194CADF00F499D7 /* 3dar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_logo.png; sourceTree = "<group>"; };
+		4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon1.png; sourceTree = "<group>"; };
+		4D169BD41194CADF00F499D7 /* 3dar_marker_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon2.png; sourceTree = "<group>"; };
+		4D169BD51194CADF00F499D7 /* 3dar_marker_icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon3.png; sourceTree = "<group>"; };
+		4D169BD61194CADF00F499D7 /* 3dar_marker_icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon4.png; sourceTree = "<group>"; };
+		4D169BD71194CADF00F499D7 /* 3dar_marker_icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon5.png; sourceTree = "<group>"; };
+		4D169BD81194CADF00F499D7 /* 3dar_marker_icon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon6.png; sourceTree = "<group>"; };
+		4D169BD91194CADF00F499D7 /* bubble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble1.png; sourceTree = "<group>"; };
+		4D169BDA1194CADF00F499D7 /* compass_rose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose.png; sourceTree = "<group>"; };
+		4D169BDB1194CADF00F499D7 /* SM3DAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DAR.h; sourceTree = "<group>"; };
+		4D169BDC1194CADF00F499D7 /* SM3DAR_keys.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SM3DAR_keys.txt; sourceTree = "<group>"; };
+		4D169C2B1194CB8800F499D7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4D169C2D1194CB8900F499D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4D169C2F1194CB8900F499D7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4D169C311194CB8900F499D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4D2841C811973AF900DC90A7 /* compass_rose_b_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_b_300.png; sourceTree = "<group>"; };
+		4D2841E211973FFA00DC90A7 /* compass_rose300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose300.png; sourceTree = "<group>"; };
+		4DDBE1B21197635400565D41 /* compass_rose_e_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_e_300.png; sourceTree = "<group>"; };
+		4DDBE1B81197BB8F00565D41 /* compass_rose_f_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_f_300.png; sourceTree = "<group>"; };
+		4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_g_300.png; sourceTree = "<group>"; };
+		4DFADD141194F2E200C23B45 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib3DAR.a; path = "../../../../../../projects/Spot Metrix/PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos/lib3DAR.a"; sourceTree = SOURCE_ROOT; };
+		4DFADD741194FE3000C23B45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4DFADD751194FE3000C23B45 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		4DFADD761194FE3000C23B45 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		4DFADE5F1195D53700C23B45 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		4DFADE601195D53700C23B45 /* RoundedLabelMarkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedLabelMarkerView.m; sourceTree = "<group>"; };
+		4DFADE611195D53700C23B45 /* RoundedLabelMarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedLabelMarkerView.h; sourceTree = "<group>"; };
+		4DFADE651195D54C00C23B45 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		4DFADE661195D54C00C23B45 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		4DFADE671195D54C00C23B45 /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocols.h; sourceTree = "<group>"; };
+		4DFADE681195D54C00C23B45 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		4DFADE7611970D4200C23B45 /* PointerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointerView.h; sourceTree = "<group>"; };
+		4DFADE7711970D4200C23B45 /* PointerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointerView.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Parkar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Parkar-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				4D169C2C1194CB8800F499D7 /* CoreLocation.framework in Frameworks */,
+				4D169C2E1194CB8900F499D7 /* MapKit.framework in Frameworks */,
+				4D169C301194CB8900F499D7 /* OpenGLES.framework in Frameworks */,
+				4D169C321194CB8900F499D7 /* QuartzCore.framework in Frameworks */,
+				4DFADD151194F2E200C23B45 /* lib3DAR.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* parkAR.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				4D169B431194CADF00F499D7 /* 3DAR */,
+				4D169A541194CA5700F499D7 /* Source */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Parkar_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4DFADD741194FE3000C23B45 /* Default.png */,
+				4DFADD751194FE3000C23B45 /* iTunesArtwork */,
+				4DFADD761194FE3000C23B45 /* Icon.png */,
+				2899E5210DE3E06400AC0155 /* WharCarViewController.xib */,
+				8D1107310486CEB800E47090 /* Parkar-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				4D169C2B1194CB8800F499D7 /* CoreLocation.framework */,
+				4D169C2D1194CB8900F499D7 /* MapKit.framework */,
+				4D169C2F1194CB8900F499D7 /* OpenGLES.framework */,
+				4D169C311194CB8900F499D7 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D169A541194CA5700F499D7 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4DFADE5C1195D51100C23B45 /* Common */,
+				4D169A551194CA5700F499D7 /* MainWindow.xib */,
+				4D169A561194CA5700F499D7 /* WharCarAppDelegate.h */,
+				4D169A571194CA5700F499D7 /* WharCarAppDelegate.m */,
+				4D169A581194CA5700F499D7 /* WharCarViewController.h */,
+				4D169A591194CA5700F499D7 /* WharCarViewController.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		4D169B431194CADF00F499D7 /* 3DAR */ = {
+			isa = PBXGroup;
+			children = (
+				4DDBE1B81197BB8F00565D41 /* compass_rose_f_300.png */,
+				4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */,
+				4DDBE1B21197635400565D41 /* compass_rose_e_300.png */,
+				4D2841E211973FFA00DC90A7 /* compass_rose300.png */,
+				4DFADD141194F2E200C23B45 /* lib3DAR.a */,
+				4D169B441194CADF00F499D7 /* 3dar.plist */,
+				4D169BD21194CADF00F499D7 /* 3dar_logo.png */,
+				4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */,
+				4D169BD41194CADF00F499D7 /* 3dar_marker_icon2.png */,
+				4D169BD51194CADF00F499D7 /* 3dar_marker_icon3.png */,
+				4D169BD61194CADF00F499D7 /* 3dar_marker_icon4.png */,
+				4D169BD71194CADF00F499D7 /* 3dar_marker_icon5.png */,
+				4D169BD81194CADF00F499D7 /* 3dar_marker_icon6.png */,
+				4D169BD91194CADF00F499D7 /* bubble1.png */,
+				4D169BDA1194CADF00F499D7 /* compass_rose.png */,
+				4D2841C811973AF900DC90A7 /* compass_rose_b_300.png */,
+				4D169BDB1194CADF00F499D7 /* SM3DAR.h */,
+				4D169BDC1194CADF00F499D7 /* SM3DAR_keys.txt */,
+			);
+			path = 3DAR;
+			sourceTree = "<group>";
+		};
+		4DFADE5C1195D51100C23B45 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4DFADE651195D54C00C23B45 /* Model.h */,
+				4DFADE661195D54C00C23B45 /* Model.m */,
+				4DFADE671195D54C00C23B45 /* Protocols.h */,
+				4DFADE681195D54C00C23B45 /* SynthesizeSingleton.h */,
+				4DFADE5F1195D53700C23B45 /* Constants.h */,
+				4DFADE601195D53700C23B45 /* RoundedLabelMarkerView.m */,
+				4DFADE611195D53700C23B45 /* RoundedLabelMarkerView.h */,
+				4DFADE7611970D4200C23B45 /* PointerView.h */,
+				4DFADE7711970D4200C23B45 /* PointerView.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Parkar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Parkar" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Parkar;
+			productName = WharCar;
+			productReference = 1D6058910D05DD3D006BFB54 /* parkAR.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Parkar" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Parkar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2899E5220DE3E06400AC0155 /* WharCarViewController.xib in Resources */,
+				4D169A5A1194CA5700F499D7 /* MainWindow.xib in Resources */,
+				4D169BDD1194CADF00F499D7 /* 3dar.plist in Resources */,
+				4D169C111194CADF00F499D7 /* 3dar_logo.png in Resources */,
+				4D169C121194CADF00F499D7 /* 3dar_marker_icon1.png in Resources */,
+				4D169C131194CADF00F499D7 /* 3dar_marker_icon2.png in Resources */,
+				4D169C141194CADF00F499D7 /* 3dar_marker_icon3.png in Resources */,
+				4D169C151194CADF00F499D7 /* 3dar_marker_icon4.png in Resources */,
+				4D169C161194CADF00F499D7 /* 3dar_marker_icon5.png in Resources */,
+				4D169C171194CADF00F499D7 /* 3dar_marker_icon6.png in Resources */,
+				4D169C181194CADF00F499D7 /* bubble1.png in Resources */,
+				4D169C191194CADF00F499D7 /* compass_rose.png in Resources */,
+				4D169C1A1194CADF00F499D7 /* SM3DAR_keys.txt in Resources */,
+				4DFADD771194FE3000C23B45 /* Default.png in Resources */,
+				4DFADD781194FE3000C23B45 /* iTunesArtwork in Resources */,
+				4DFADD791194FE3000C23B45 /* Icon.png in Resources */,
+				4D2841C911973AF900DC90A7 /* compass_rose_b_300.png in Resources */,
+				4D2841E411973FFA00DC90A7 /* compass_rose300.png in Resources */,
+				4DDBE1B31197635400565D41 /* compass_rose_e_300.png in Resources */,
+				4DDBE1BA1197BB8F00565D41 /* compass_rose_f_300.png in Resources */,
+				4DDBE1BB1197BB8F00565D41 /* compass_rose_g_300.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				4D169A5B1194CA5700F499D7 /* WharCarAppDelegate.m in Sources */,
+				4D169A5C1194CA5700F499D7 /* WharCarViewController.m in Sources */,
+				4DFADE621195D53700C23B45 /* RoundedLabelMarkerView.m in Sources */,
+				4DFADE6A1195D54C00C23B45 /* Model.m in Sources */,
+				4DFADE7811970D4200C23B45 /* PointerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Parkar_Prefix.pch;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = "Parkar-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SM3DAR_Common/Lib/HTTPRiot/httpriot-0.6.6/Vendor/gh-unit-iphone\"",
+					"\"$(SRCROOT)/3DAR/3DAR_Common/Lib/HTTPRiot/httpriot-0.6.6/Vendor/gh-unit-iphone\"",
+					"\"$(SRCROOT)/../../../../../../projects/Spot Metrix/PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/3DAR\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = parkAR;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Parkar_Prefix.pch;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				INFOPLIST_FILE = "Parkar-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SM3DAR_Common/Lib/HTTPRiot/httpriot-0.6.6/Vendor/gh-unit-iphone\"",
+					"\"$(SRCROOT)/3DAR/3DAR_Common/Lib/HTTPRiot/httpriot-0.6.6/Vendor/gh-unit-iphone\"",
+					"\"$(SRCROOT)/../../../../../../projects/Spot Metrix/PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/3DAR\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = parkAR;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Peter Anderson (PK484EQWS2)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D652822F-DEFE-4B67-9C91-6E6309A57703";
+				SDKROOT = iphoneos3.1;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Parkar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Parkar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
