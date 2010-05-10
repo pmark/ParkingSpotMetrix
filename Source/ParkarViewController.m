@@ -17,25 +17,35 @@
 #define POINTER_UPDATE_SEC 0.75
 #define HEADING_DELTA_THRESHOLD 5
 
+#define COMPASS_PADDING_X_SHRUNK 10
+#define COMPASS_PADDING_Y_SHRUNK 10
+#define COMPASS_PADDING_X_ENLARGED 10
+#define COMPASS_PADDING_Y_ENLARGED 85
+
+#define INSTRUCTIONS_PADDING_X 0
+#define INSTRUCTIONS_PADDING_Y 85
+
 @implementation ParkarViewController
 
 @synthesize screen1;
 @synthesize screen2;
-@synthesize crosshairs;
+@synthesize dropTarget;
 @synthesize parkButton;
 @synthesize parkingSpot;
 @synthesize pointer;
 @synthesize compass;
+@synthesize instructions;
 
 - (void)dealloc 
 {
     RELEASE(screen1);
     RELEASE(screen2);
-    RELEASE(crosshairs);
+    RELEASE(dropTarget);
     RELEASE(parkButton);
     RELEASE(parkingSpot);
     RELEASE(pointer);
     RELEASE(compass);
+    RELEASE(instructions);
     RELEASE(hudTimer);
     [super dealloc];
 }
@@ -129,13 +139,13 @@
     [screen1 addSubview:parkButton];
     parkButton.center = CGPointMake(160, 30);
 
-    // crosshairs
+    // dropTarget
     UIImage *img = [UIImage imageNamed:@"3dar_marker_icon1.png"];
     UIImageView *iv = [[UIImageView alloc] initWithImage:img];
     CGPoint p = self.view.center;
     iv.center = CGPointMake(p.x, p.y-16);
     [self.view addSubview:iv];
-    self.crosshairs = iv;
+    self.dropTarget = iv;
     iv.alpha = 0.0f;
     [iv release];
 }
@@ -143,7 +153,8 @@
 - (void) buildHUD
 {
     // compass
-    self.compass = [[[PointerView alloc] initWithPadding:CGPointMake(10, 10) image:[UIImage imageNamed:@"compass_rose_g_300.png"]] autorelease];
+    self.compass = [[[PointerView alloc] initWithPadding:CGPointMake(COMPASS_PADDING_X_SHRUNK, COMPASS_PADDING_Y_SHRUNK) 
+                                                   image:[UIImage imageNamed:@"compass_rose_g_300.png"]] autorelease];
     compass.delegate = self;
 
     // minimize the compass
@@ -158,6 +169,12 @@
     pointer.delegate = self;
     [compass addSubview:pointer];    
 
+    // instructions
+    self.instructions = [[[PointerView alloc] initWithPadding:CGPointMake(INSTRUCTIONS_PADDING_X, INSTRUCTIONS_PADDING_Y) image:[UIImage imageNamed:@"instructions_c.png"]] autorelease];
+    instructions.delegate = nil;
+    instructions.hidden = YES;
+    [self.view addSubview:instructions];    
+    
     hudTimer = [NSTimer scheduledTimerWithTimeInterval:POINTER_UPDATE_SEC target:self selector:@selector(updateHUD) userInfo:nil repeats:YES];
 }
 
@@ -173,7 +190,7 @@
     
     [self buildScreen1];        
     [self buildHUD];
-    //	[self bringActiveScreenToFront];    
+    [self bringActiveScreenToFront];
 }
 
 - (void)didReceiveMemoryWarning 
@@ -193,8 +210,20 @@
 
 - (void) bringActiveScreenToFront
 {
-	screen1.hidden = NO;
-	crosshairs.hidden = NO;
+    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    if (sm3dar.mapIsVisible)
+    {
+        screen1.hidden = NO;
+        dropTarget.hidden = NO;
+        instructions.hidden = YES;
+    }
+    else 
+    {
+        screen1.hidden = YES;
+        dropTarget.hidden = YES;        
+        instructions.hidden = (parkingSpot != nil);
+    }
+
     [self.view bringSubviewToFront:screen1];
 }
 
@@ -202,9 +231,9 @@
     didUpdateToLocation:(CLLocation*)newLocation
            fromLocation:(CLLocation*)oldLocation 
 {
-    if (!parkingSpot && crosshairs.alpha < 0.1)
+    if (!parkingSpot && dropTarget.alpha < 0.1)
     {
-        [self performSelector:@selector(showCrosshairs) withObject:nil afterDelay:2.0];
+        [self performSelector:@selector(showDropTarget) withObject:nil afterDelay:2.0];
     }
 }
 
@@ -213,18 +242,18 @@
 	return CGPointMake(160, 220);    
 }
 
-- (void) showCrosshairs
+- (void) showDropTarget
 {
-    [self setCrosshairsHidden:NO];
+    [self setDropTargetHidden:NO];
 }
 
-- (void) setCrosshairsHidden:(BOOL)hide
+- (void) setDropTargetHidden:(BOOL)hide
 {
     CGFloat alpha = (hide ? 0.0 : 1.0);
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
-    crosshairs.alpha = alpha;
+    dropTarget.alpha = alpha;
     [UIView commitAnimations];
 }
 
@@ -240,7 +269,7 @@
     [sm3dar.map addAnnotation:parkingSpot];        
     
     [parkButton setTitle:BTN_TITLE_RESET_SPOT forState:UIControlStateNormal];
-    [self setCrosshairsHidden:YES];
+    [self setDropTargetHidden:YES];
 }
 
 - (void) saveSpot
@@ -282,7 +311,7 @@
         // remove it
         [sm3dar removePointOfInterest:parkingSpot];
         self.parkingSpot = nil;
-        [self setCrosshairsHidden:NO];
+        [self setDropTargetHidden:NO];
         [parkButton setTitle:BTN_TITLE_SET_SPOT forState:UIControlStateNormal];
     }
     else
@@ -300,15 +329,39 @@
     [self saveSpot];
 }
 
+- (BOOL) compassIsEnlarged
+{
+    return (compass.currentScale > 0.9);
+}
+
+- (void) enlargeCompass
+{
+    if ([self compassIsEnlarged])
+        return;
+    
+    compass.paddingOffset = CGPointMake(COMPASS_PADDING_X_ENLARGED, COMPASS_PADDING_Y_ENLARGED);
+    [compass toggleState];
+}
+
+- (void) shrinkCompass
+{
+    if (![self compassIsEnlarged])
+        return;
+    
+    compass.paddingOffset = CGPointMake(COMPASS_PADDING_X_SHRUNK, COMPASS_PADDING_Y_SHRUNK);
+    [compass toggleState];    
+}
+
 - (void) didShowMap 
 {
+    [self shrinkCompass];
     [self bringActiveScreenToFront];
 }
 
 - (void) didHideMap 
 {
-	screen1.hidden = YES;
-	crosshairs.hidden = YES;
+    [self enlargeCompass];
+    [self bringActiveScreenToFront];
 }
 
 - (void) updatePointer
@@ -334,19 +387,34 @@
     if (!compass)
         return;
     
+    CGFloat radians;
+    
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];    
+    
+    // Update instructions
+    if (!instructions.hidden)
+    {
+        [instructions rotate:sm3dar.screenOrientationRadians duration:(POINTER_UPDATE_SEC*0.99)];  
+    }
+    
+    // Update compass
     if (abs(lastHeading - sm3dar.trueHeading) < HEADING_DELTA_THRESHOLD)
     	return;
 
     lastHeading = sm3dar.trueHeading;
 
     extern float degreesToRadians(float degrees);    
-    CGFloat radians = -degreesToRadians(lastHeading);
+    radians = -degreesToRadians(lastHeading);
     [compass rotate:radians duration:(POINTER_UPDATE_SEC*0.99)];  
 }
 
 - (void) pointerWasTapped:(PointerView*)pointerView
 {
+    if ([self compassIsEnlarged])
+        compass.paddingOffset = CGPointMake(COMPASS_PADDING_X_SHRUNK, COMPASS_PADDING_Y_SHRUNK);
+    else
+        compass.paddingOffset = CGPointMake(COMPASS_PADDING_X_ENLARGED, COMPASS_PADDING_Y_ENLARGED);
+
     [compass toggleState];
 }
 
