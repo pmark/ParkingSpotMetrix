@@ -147,6 +147,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 - (void)showMap;
 - (void)hideMap;
 - (void)zoomMapToFit;
+- (void)zoomMapToFitPointsIncludingUserLocation:(BOOL)includeUser;
 - (void)setCurrentMapLocation:(CLLocation *)location;
 - (void)fadeMapToAlpha:(CGFloat)alpha;
 - (BOOL)setMapVisibility;

@@ -25,6 +25,9 @@
 #define INSTRUCTIONS_PADDING_X 0
 #define INSTRUCTIONS_PADDING_Y 85
 
+#define NEAR_CLIP_METERS 5
+#define FAR_CLIP_METERS 161000
+
 @implementation ParkarViewController
 
 @synthesize screen1;
@@ -82,7 +85,7 @@
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     if (parkingSpot)
     {
-        [sm3dar zoomMapToFit];
+        [sm3dar zoomMapToFitPointsIncludingUserLocation:YES];
     }
     else
     {
@@ -185,6 +188,8 @@
     
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     sm3dar.delegate = self;
+    sm3dar.nearClipMeters = NEAR_CLIP_METERS;
+    sm3dar.farClipMeters = FAR_CLIP_METERS;
     sm3dar.view.backgroundColor = [UIColor blackColor];
     [self.view addSubview:sm3dar.view];
     
@@ -270,6 +275,8 @@
     
     [parkButton setTitle:BTN_TITLE_RESET_SPOT forState:UIControlStateNormal];
     [self setDropTargetHidden:YES];
+    
+    [self zoomMapIn];
 }
 
 - (void) saveSpot
