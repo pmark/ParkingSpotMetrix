@@ -16,6 +16,7 @@
     UIButton *parkButton;
 	SM3DAR_PointOfInterest *parkingSpot;
     PointerView *pointer;
+    PointerView *compass;
     NSTimer *hudTimer;
     CGFloat lastHeading;
 }
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) UIButton *parkButton;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *parkingSpot;
 @property (nonatomic, retain) PointerView *pointer;
+@property (nonatomic, retain) PointerView *compass;
 
 - (CGPoint) centerPoint;
 - (void) toggleParkingSpot;
@@ -33,6 +35,7 @@
 - (void) bringActiveScreenToFront;
 - (SM3DAR_PointOfInterest*) addPOI:(NSString*)title subtitle:(NSString*)subtitle latitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon  canReceiveFocus:(BOOL)canReceiveFocus;
 - (void) restoreSpot;
+- (void) updatePointer;
 
 @end
 

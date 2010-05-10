@@ -25,6 +25,7 @@
 @synthesize parkButton;
 @synthesize parkingSpot;
 @synthesize pointer;
+@synthesize compass;
 
 - (void)dealloc 
 {
@@ -34,6 +35,7 @@
     RELEASE(parkButton);
     RELEASE(parkingSpot);
     RELEASE(pointer);
+    RELEASE(compass);
     RELEASE(hudTimer);
     [super dealloc];
 }
@@ -96,6 +98,7 @@
     [self addPOI:@"W" subtitle:@"" latitude:lat longitude:(lon-0.01f) canReceiveFocus:NO];
     
     [self restoreSpot];
+	[self updatePointer];
 
     [self performSelector:@selector(zoomMapIn) withObject:nil afterDelay:2.0];
 
@@ -139,14 +142,22 @@
 
 - (void) buildHUD
 {
-    // pointer
-    self.pointer = [[[PointerView alloc] initWithPadding:CGPointMake(10, 10) image:[UIImage imageNamed:@"compass_rose_g_300.png"]] autorelease];
-    pointer.delegate = self;
-    pointer.currentScale = 0.3;
-    pointer.transform = CGAffineTransformMakeScale(pointer.currentScale, pointer.currentScale);
-    [pointer updateCenterPoint];
-    [self.view addSubview:pointer];
+    // compass
+    self.compass = [[[PointerView alloc] initWithPadding:CGPointMake(10, 10) image:[UIImage imageNamed:@"compass_rose_g_300.png"]] autorelease];
+    compass.delegate = self;
+
+    // minimize the compass
+    compass.currentScale = 0.3;
+    compass.transform = CGAffineTransformMakeScale(compass.currentScale, compass.currentScale);
+    [compass updateCenterPoint];
     
+    [self.view addSubview:compass];
+
+    // pointer
+    self.pointer = [[[PointerView alloc] initWithPadding:CGPointMake(104, 104) image:[UIImage imageNamed:@"wedge_92.png"]] autorelease];
+    pointer.delegate = self;
+    [compass addSubview:pointer];    
+
     hudTimer = [NSTimer scheduledTimerWithTimeInterval:POINTER_UPDATE_SEC target:self selector:@selector(updateHUD) userInfo:nil repeats:YES];
 }
 
@@ -160,12 +171,9 @@
     sm3dar.view.backgroundColor = [UIColor blackColor];
     [self.view addSubview:sm3dar.view];
     
-    [self buildScreen1];    
-    
+    [self buildScreen1];        
     [self buildHUD];
-    
-
-	[self bringActiveScreenToFront];    
+    //	[self bringActiveScreenToFront];    
 }
 
 - (void)didReceiveMemoryWarning 
@@ -288,6 +296,7 @@
         [self setParkingSpotLatitude:lat longitude:lon];
     }
 
+	[self updatePointer];
     [self saveSpot];
 }
 
@@ -302,9 +311,27 @@
 	crosshairs.hidden = YES;
 }
 
+- (void) updatePointer
+{
+    if (!parkingSpot)
+    {
+        pointer.hidden = YES;
+        return;
+    }
+    
+    pointer.hidden = NO;
+    
+    Coord3D worldPoint = parkingSpot.worldPoint;
+    CGFloat x = worldPoint.x;
+    CGFloat y = worldPoint.y;
+    CGFloat radians = atan2(x, y);
+    
+    [pointer rotate:radians duration:(POINTER_UPDATE_SEC)];  
+}
+
 - (void) updateHUD
 {
-    if (!pointer)
+    if (!compass)
         return;
     
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];    
@@ -315,12 +342,12 @@
 
     extern float degreesToRadians(float degrees);    
     CGFloat radians = -degreesToRadians(lastHeading);
-    [pointer rotate:radians duration:(POINTER_UPDATE_SEC*0.99)];  
+    [compass rotate:radians duration:(POINTER_UPDATE_SEC*0.99)];  
 }
 
 - (void) pointerWasTapped:(PointerView*)pointerView
 {
-    [pointerView toggleState];
+    [compass toggleState];
 }
 
 @end

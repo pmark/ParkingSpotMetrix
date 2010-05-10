@@ -36,6 +36,11 @@
 		4DDBE1BA1197BB8F00565D41 /* compass_rose_f_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B81197BB8F00565D41 /* compass_rose_f_300.png */; };
 		4DDBE1BB1197BB8F00565D41 /* compass_rose_g_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */; };
 		4DDBE2B71197DE6500565D41 /* PointOfInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBE2B61197DE6500565D41 /* PointOfInterest.m */; };
+		4DDBE2EB1198858700565D41 /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE2EA1198858700565D41 /* arrow_up.png */; };
+		4DDBE2ED119886D000565D41 /* arrow_up_92.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE2EC119886D000565D41 /* arrow_up_92.png */; };
+		4DDBE2F01198901200565D41 /* wedge_92.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE2EE1198901200565D41 /* wedge_92.png */; };
+		4DDBE2F11198901200565D41 /* wedge_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE2EF1198901200565D41 /* wedge_128.png */; };
+		4DDBE329119897CA00565D41 /* crosshairs_49x30.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE328119897CA00565D41 /* crosshairs_49x30.png */; };
 		4DFADD151194F2E200C23B45 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFADD141194F2E200C23B45 /* lib3DAR.a */; };
 		4DFADD771194FE3000C23B45 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD741194FE3000C23B45 /* Default.png */; };
 		4DFADD781194FE3000C23B45 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD751194FE3000C23B45 /* iTunesArtwork */; };
@@ -81,6 +86,11 @@
 		4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_g_300.png; sourceTree = "<group>"; };
 		4DDBE2B51197DE6500565D41 /* PointOfInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointOfInterest.h; sourceTree = "<group>"; };
 		4DDBE2B61197DE6500565D41 /* PointOfInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointOfInterest.m; sourceTree = "<group>"; };
+		4DDBE2EA1198858700565D41 /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
+		4DDBE2EC119886D000565D41 /* arrow_up_92.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up_92.png; sourceTree = "<group>"; };
+		4DDBE2EE1198901200565D41 /* wedge_92.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wedge_92.png; sourceTree = "<group>"; };
+		4DDBE2EF1198901200565D41 /* wedge_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wedge_128.png; sourceTree = "<group>"; };
+		4DDBE328119897CA00565D41 /* crosshairs_49x30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshairs_49x30.png; sourceTree = "<group>"; };
 		4DFADD141194F2E200C23B45 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib3DAR.a; path = "../../../../../../projects/Spot Metrix/PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos/lib3DAR.a"; sourceTree = SOURCE_ROOT; };
 		4DFADD741194FE3000C23B45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4DFADD751194FE3000C23B45 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -189,6 +199,11 @@
 			isa = PBXGroup;
 			children = (
 				4DFADD141194F2E200C23B45 /* lib3DAR.a */,
+				4DDBE2EA1198858700565D41 /* arrow_up.png */,
+				4DDBE328119897CA00565D41 /* crosshairs_49x30.png */,
+				4DDBE2EC119886D000565D41 /* arrow_up_92.png */,
+				4DDBE2EE1198901200565D41 /* wedge_92.png */,
+				4DDBE2EF1198901200565D41 /* wedge_128.png */,
 				4DDBE1B81197BB8F00565D41 /* compass_rose_f_300.png */,
 				4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */,
 				4DDBE1B21197635400565D41 /* compass_rose_e_300.png */,
@@ -291,6 +306,11 @@
 				4DDBE1B31197635400565D41 /* compass_rose_e_300.png in Resources */,
 				4DDBE1BA1197BB8F00565D41 /* compass_rose_f_300.png in Resources */,
 				4DDBE1BB1197BB8F00565D41 /* compass_rose_g_300.png in Resources */,
+				4DDBE2EB1198858700565D41 /* arrow_up.png in Resources */,
+				4DDBE2ED119886D000565D41 /* arrow_up_92.png in Resources */,
+				4DDBE2F01198901200565D41 /* wedge_92.png in Resources */,
+				4DDBE2F11198901200565D41 /* wedge_128.png in Resources */,
+				4DDBE329119897CA00565D41 /* crosshairs_49x30.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
