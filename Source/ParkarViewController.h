@@ -10,7 +10,7 @@
 #import "SM3DAR.h"
 #import "PointerView.h"
 
-@interface WharCarViewController : UIViewController <SM3DAR_Delegate, CLLocationManagerDelegate, PointerButtonDelegate> {
+@interface ParkarViewController : UIViewController <SM3DAR_Delegate, CLLocationManagerDelegate, PointerButtonDelegate> {
 	UIView *screen1;
     UIImageView *crosshairs;
     UIButton *parkButton;
@@ -32,6 +32,7 @@
 - (void) setCrosshairsHidden:(BOOL)hide;
 - (void) bringActiveScreenToFront;
 - (SM3DAR_PointOfInterest*) addPOI:(NSString*)title subtitle:(NSString*)subtitle latitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon  canReceiveFocus:(BOOL)canReceiveFocus;
+- (void) restoreSpot;
 
 @end
 

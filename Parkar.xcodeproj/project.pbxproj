@@ -13,8 +13,8 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		2899E5220DE3E06400AC0155 /* WharCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* WharCarViewController.xib */; };
 		4D169A5A1194CA5700F499D7 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D169A551194CA5700F499D7 /* MainWindow.xib */; };
-		4D169A5B1194CA5700F499D7 /* WharCarAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D169A571194CA5700F499D7 /* WharCarAppDelegate.m */; };
-		4D169A5C1194CA5700F499D7 /* WharCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D169A591194CA5700F499D7 /* WharCarViewController.m */; };
+		4D169A5B1194CA5700F499D7 /* ParkarAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D169A571194CA5700F499D7 /* ParkarAppDelegate.m */; };
+		4D169A5C1194CA5700F499D7 /* ParkarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D169A591194CA5700F499D7 /* ParkarViewController.m */; };
 		4D169BDD1194CADF00F499D7 /* 3dar.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D169B441194CADF00F499D7 /* 3dar.plist */; };
 		4D169C111194CADF00F499D7 /* 3dar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD21194CADF00F499D7 /* 3dar_logo.png */; };
 		4D169C121194CADF00F499D7 /* 3dar_marker_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */; };
@@ -35,6 +35,7 @@
 		4DDBE1B31197635400565D41 /* compass_rose_e_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B21197635400565D41 /* compass_rose_e_300.png */; };
 		4DDBE1BA1197BB8F00565D41 /* compass_rose_f_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B81197BB8F00565D41 /* compass_rose_f_300.png */; };
 		4DDBE1BB1197BB8F00565D41 /* compass_rose_g_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */; };
+		4DDBE2B71197DE6500565D41 /* PointOfInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBE2B61197DE6500565D41 /* PointOfInterest.m */; };
 		4DFADD151194F2E200C23B45 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFADD141194F2E200C23B45 /* lib3DAR.a */; };
 		4DFADD771194FE3000C23B45 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD741194FE3000C23B45 /* Default.png */; };
 		4DFADD781194FE3000C23B45 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD751194FE3000C23B45 /* iTunesArtwork */; };
@@ -53,10 +54,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Parkar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parkar_Prefix.pch; sourceTree = "<group>"; };
 		4D169A551194CA5700F499D7 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		4D169A561194CA5700F499D7 /* WharCarAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WharCarAppDelegate.h; sourceTree = "<group>"; };
-		4D169A571194CA5700F499D7 /* WharCarAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WharCarAppDelegate.m; sourceTree = "<group>"; };
-		4D169A581194CA5700F499D7 /* WharCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WharCarViewController.h; sourceTree = "<group>"; };
-		4D169A591194CA5700F499D7 /* WharCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WharCarViewController.m; sourceTree = "<group>"; };
+		4D169A561194CA5700F499D7 /* ParkarAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkarAppDelegate.h; sourceTree = "<group>"; };
+		4D169A571194CA5700F499D7 /* ParkarAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkarAppDelegate.m; sourceTree = "<group>"; };
+		4D169A581194CA5700F499D7 /* ParkarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkarViewController.h; sourceTree = "<group>"; };
+		4D169A591194CA5700F499D7 /* ParkarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkarViewController.m; sourceTree = "<group>"; };
 		4D169B441194CADF00F499D7 /* 3dar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3dar.plist; sourceTree = "<group>"; };
 		4D169BD21194CADF00F499D7 /* 3dar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_logo.png; sourceTree = "<group>"; };
 		4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon1.png; sourceTree = "<group>"; };
@@ -78,6 +79,8 @@
 		4DDBE1B21197635400565D41 /* compass_rose_e_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_e_300.png; sourceTree = "<group>"; };
 		4DDBE1B81197BB8F00565D41 /* compass_rose_f_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_f_300.png; sourceTree = "<group>"; };
 		4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_g_300.png; sourceTree = "<group>"; };
+		4DDBE2B51197DE6500565D41 /* PointOfInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointOfInterest.h; sourceTree = "<group>"; };
+		4DDBE2B61197DE6500565D41 /* PointOfInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointOfInterest.m; sourceTree = "<group>"; };
 		4DFADD141194F2E200C23B45 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib3DAR.a; path = "../../../../../../projects/Spot Metrix/PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos/lib3DAR.a"; sourceTree = SOURCE_ROOT; };
 		4DFADD741194FE3000C23B45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4DFADD751194FE3000C23B45 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -174,10 +177,10 @@
 			children = (
 				4DFADE5C1195D51100C23B45 /* Common */,
 				4D169A551194CA5700F499D7 /* MainWindow.xib */,
-				4D169A561194CA5700F499D7 /* WharCarAppDelegate.h */,
-				4D169A571194CA5700F499D7 /* WharCarAppDelegate.m */,
-				4D169A581194CA5700F499D7 /* WharCarViewController.h */,
-				4D169A591194CA5700F499D7 /* WharCarViewController.m */,
+				4D169A561194CA5700F499D7 /* ParkarAppDelegate.h */,
+				4D169A571194CA5700F499D7 /* ParkarAppDelegate.m */,
+				4D169A581194CA5700F499D7 /* ParkarViewController.h */,
+				4D169A591194CA5700F499D7 /* ParkarViewController.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -185,11 +188,11 @@
 		4D169B431194CADF00F499D7 /* 3DAR */ = {
 			isa = PBXGroup;
 			children = (
+				4DFADD141194F2E200C23B45 /* lib3DAR.a */,
 				4DDBE1B81197BB8F00565D41 /* compass_rose_f_300.png */,
 				4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */,
 				4DDBE1B21197635400565D41 /* compass_rose_e_300.png */,
 				4D2841E211973FFA00DC90A7 /* compass_rose300.png */,
-				4DFADD141194F2E200C23B45 /* lib3DAR.a */,
 				4D169B441194CADF00F499D7 /* 3dar.plist */,
 				4D169BD21194CADF00F499D7 /* 3dar_logo.png */,
 				4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */,
@@ -219,6 +222,8 @@
 				4DFADE611195D53700C23B45 /* RoundedLabelMarkerView.h */,
 				4DFADE7611970D4200C23B45 /* PointerView.h */,
 				4DFADE7711970D4200C23B45 /* PointerView.m */,
+				4DDBE2B51197DE6500565D41 /* PointOfInterest.h */,
+				4DDBE2B61197DE6500565D41 /* PointOfInterest.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -297,11 +302,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				4D169A5B1194CA5700F499D7 /* WharCarAppDelegate.m in Sources */,
-				4D169A5C1194CA5700F499D7 /* WharCarViewController.m in Sources */,
+				4D169A5B1194CA5700F499D7 /* ParkarAppDelegate.m in Sources */,
+				4D169A5C1194CA5700F499D7 /* ParkarViewController.m in Sources */,
 				4DFADE621195D53700C23B45 /* RoundedLabelMarkerView.m in Sources */,
 				4DFADE6A1195D54C00C23B45 /* Model.m in Sources */,
 				4DFADE7811970D4200C23B45 /* PointerView.m in Sources */,
+				4DDBE2B71197DE6500565D41 /* PointOfInterest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

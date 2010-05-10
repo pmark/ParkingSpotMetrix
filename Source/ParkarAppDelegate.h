@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class WharCarViewController;
+@class ParkarViewController;
 
-@interface WharCarAppDelegate : NSObject <UIApplicationDelegate> {
+@interface ParkarAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-    WharCarViewController *viewController;
+    ParkarViewController *viewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet WharCarViewController *viewController;
+@property (nonatomic, retain) IBOutlet ParkarViewController *viewController;
 
 @end
 

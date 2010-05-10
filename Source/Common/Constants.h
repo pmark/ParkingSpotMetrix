@@ -20,6 +20,7 @@
 #define PREF_READ_BOOL(name) [[NSUserDefaults standardUserDefaults] boolForKey:name]
 #define PREF_EXISTS(name) ([[NSUserDefaults standardUserDefaults] objectForKey:name] != nil)
 
+#define PREF_KEY_LAST_POI @"PREF_KEY_LAST_POI" 
 
 #define RELEASE(object) \
 { \

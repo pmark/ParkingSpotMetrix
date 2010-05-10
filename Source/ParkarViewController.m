@@ -6,17 +6,18 @@
 //  Copyright Spot Metrix, Inc 2010. All rights reserved.
 //
 
-#import "WharCarViewController.h"
+#import "ParkarViewController.h"
 #import "Constants.h"
 #import "RoundedLabelMarkerView.h"
+#import "PointOfInterest.h"
 
 #define BTN_TITLE_SET_SPOT @"Drop Pin"
 #define BTN_TITLE_RESET_SPOT @"Reset"
 
-#define POINTER_UPDATE_SEC 0.85
+#define POINTER_UPDATE_SEC 0.75
 #define HEADING_DELTA_THRESHOLD 5
 
-@implementation WharCarViewController
+@implementation ParkarViewController
 
 @synthesize screen1;
 @synthesize screen2;
@@ -41,7 +42,6 @@
 {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) 
     {
-        // Custom initialization
         lastHeading = 0.0;
     }
     return self;
@@ -68,11 +68,18 @@
 - (void) zoomMapIn
 {
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
-	MKCoordinateRegion region = {{0.0f, 0.0f}, {0.0f, 0.0f}};
-	region.center = sm3dar.currentLocation.coordinate;
-	region.span.longitudeDelta = 0.0001f;
-	region.span.latitudeDelta = 0.0001f;
-	[sm3dar.map setRegion:region animated:YES];
+    if (parkingSpot)
+    {
+        [sm3dar zoomMapToFit];
+    }
+    else
+    {
+        MKCoordinateRegion region = {{0.0f, 0.0f}, {0.0f, 0.0f}};
+        region.center = sm3dar.currentLocation.coordinate;
+        region.span.longitudeDelta = 0.0001f;
+        region.span.latitudeDelta = 0.0001f;
+        [sm3dar.map setRegion:region animated:YES];
+    }
 }
 
 - (void) loadPointsOfInterest
@@ -88,6 +95,8 @@
     [self addPOI:@"E" subtitle:@"" latitude:lat longitude:(lon+0.01f) canReceiveFocus:NO];
     [self addPOI:@"W" subtitle:@"" latitude:lat longitude:(lon-0.01f) canReceiveFocus:NO];
     
+    [self restoreSpot];
+
     [self performSelector:@selector(zoomMapIn) withObject:nil afterDelay:2.0];
 
     [self bringActiveScreenToFront];
@@ -98,12 +107,12 @@
     if (screen1)
         return;
     
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 420, 320, 60)];
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 400, 320, 60)];
     [self.view addSubview:v];
     self.screen1 = v;
     [v release];
 
-    UIView *bg = [[UIView alloc] initWithFrame:v.frame];
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
     bg.backgroundColor = [UIColor blackColor];
     bg.alpha = 0.2f;    
     [screen1 addSubview:bg];
@@ -115,13 +124,14 @@
     [parkButton addTarget:self action:@selector(toggleParkingSpot) forControlEvents:UIControlEventTouchUpInside];
     [parkButton sizeToFit];
     [screen1 addSubview:parkButton];
-    parkButton.center = screen1.center;
+    parkButton.center = CGPointMake(160, 30);
 
     // crosshairs
     UIImage *img = [UIImage imageNamed:@"3dar_marker_icon1.png"];
     UIImageView *iv = [[UIImageView alloc] initWithImage:img];
-    iv.center = self.view.center;
-    [screen1 addSubview:iv];
+    CGPoint p = self.view.center;
+    iv.center = CGPointMake(p.x, p.y-16);
+    [self.view addSubview:iv];
     self.crosshairs = iv;
     iv.alpha = 0.0f;
     [iv release];
@@ -176,6 +186,7 @@
 - (void) bringActiveScreenToFront
 {
 	screen1.hidden = NO;
+	crosshairs.hidden = NO;
     [self.view bringSubviewToFront:screen1];
 }
 
@@ -209,10 +220,55 @@
     [UIView commitAnimations];
 }
 
+- (void) setParkingSpotLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
+{
+    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:latitude longitude:longitude canReceiveFocus:YES];
+    
+    UILabel *parkingSpotLabel = ((RoundedLabelMarkerView*)parkingSpot.view).label;
+    parkingSpotLabel.backgroundColor = [UIColor darkGrayColor];
+    parkingSpotLabel.textColor = [UIColor yellowColor];
+    
+    [sm3dar.map addAnnotation:parkingSpot];        
+    
+    [parkButton setTitle:BTN_TITLE_RESET_SPOT forState:UIControlStateNormal];
+    [self setCrosshairsHidden:YES];
+}
+
+- (void) saveSpot
+{
+    PointOfInterest *poi = nil;
+
+    if (parkingSpot)
+    {
+        NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSNumber numberWithDouble:parkingSpot.coordinate.latitude], @"latitude",
+                                    [NSNumber numberWithDouble:parkingSpot.coordinate.longitude], @"longitude",
+                                    nil];
+        
+        poi = [[PointOfInterest alloc] initWithDictionary:properties];    
+    }
+    
+    PREF_SAVE_OBJECT(PREF_KEY_LAST_POI, poi.dictionary);
+    [poi release];
+}
+
+- (void) restoreSpot
+{
+    NSDictionary *properties = (NSDictionary*)PREF_READ_OBJECT(PREF_KEY_LAST_POI);
+    NSLog(@"restoring: %@", properties);
+    if (!properties)
+        return;
+    
+    CLLocationDegrees latitude = [(NSNumber*)[properties objectForKey:@"latitude"] doubleValue];
+    CLLocationDegrees longitude = [(NSNumber*)[properties objectForKey:@"longitude"] doubleValue];
+    [self setParkingSpotLatitude:latitude longitude:longitude];
+}
+
 - (void) toggleParkingSpot
 {
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
-
+    
     if (parkingSpot)
     {
         // remove it
@@ -229,19 +285,10 @@
         CLLocationDegrees lat = currentLoc.latitude;
         CLLocationDegrees lon = currentLoc.longitude;
         
-        self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:lat longitude:lon canReceiveFocus:YES];
-        
-        UILabel *parkingSpotLabel = ((RoundedLabelMarkerView*)parkingSpot.view).label;
-        parkingSpotLabel.backgroundColor = [UIColor whiteColor];
-        parkingSpotLabel.textColor = [UIColor blackColor];
-        
-        
-        [sm3dar.map addAnnotation:parkingSpot];        
-        
-        
-        [parkButton setTitle:BTN_TITLE_RESET_SPOT forState:UIControlStateNormal];
-        [self setCrosshairsHidden:YES];
+        [self setParkingSpotLatitude:lat longitude:lon];
     }
+
+    [self saveSpot];
 }
 
 - (void) didShowMap 
@@ -252,6 +299,7 @@
 - (void) didHideMap 
 {
 	screen1.hidden = YES;
+	crosshairs.hidden = YES;
 }
 
 - (void) updateHUD

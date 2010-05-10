@@ -6,10 +6,10 @@
 //  Copyright Spot Metrix, Inc 2010. All rights reserved.
 //
 
-#import "WharCarAppDelegate.h"
-#import "WharCarViewController.h"
+#import "ParkarAppDelegate.h"
+#import "ParkarViewController.h"
 
-@implementation WharCarAppDelegate
+@implementation ParkarAppDelegate
 
 @synthesize window;
 @synthesize viewController;
@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
-    WharCarViewController *c = [[WharCarViewController alloc] init];
+    ParkarViewController *c = [[ParkarViewController alloc] init];
     self.viewController = c;
     [c release];
 
