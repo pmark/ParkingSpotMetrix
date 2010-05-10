@@ -44,6 +44,19 @@
 		4DDBE33A1198A0EE00565D41 /* instructions_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3371198A0EE00565D41 /* instructions_a.png */; };
 		4DDBE33B1198A0EE00565D41 /* instructions_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3381198A0EE00565D41 /* instructions_b.png */; };
 		4DDBE33C1198A0EE00565D41 /* instructions_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3391198A0EE00565D41 /* instructions_c.png */; };
+		4DDBE3851198AFDD00565D41 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3841198AFDD00565D41 /* sky.png */; };
+		4DDBE38A1198B00700565D41 /* GroundPlaneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBE3871198B00700565D41 /* GroundPlaneView.m */; };
+		4DDBE38B1198B00700565D41 /* SphereView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBE3891198B00700565D41 /* SphereView.m */; };
+		4DDBE38E1198B02200565D41 /* TexturedGeometryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBE38D1198B02200565D41 /* TexturedGeometryView.m */; };
+		4DDBE3911198B0A500565D41 /* AsyncArtworkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDBE3901198B0A500565D41 /* AsyncArtworkFetcher.m */; };
+		4DDBE3A31198B26C00565D41 /* wallpaper1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3A21198B26C00565D41 /* wallpaper1.jpg */; };
+		4DDBE3B71198B37D00565D41 /* asphalt_a_256.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3B61198B37D00565D41 /* asphalt_a_256.png */; };
+		4DDBE3C21198BA1600565D41 /* ground1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3BE1198BA1500565D41 /* ground1.jpg */; };
+		4DDBE3C31198BA1600565D41 /* ground2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3BF1198BA1500565D41 /* ground2.jpg */; };
+		4DDBE3C41198BA1600565D41 /* ground3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3C01198BA1600565D41 /* ground3.jpg */; };
+		4DDBE3C51198BA1600565D41 /* ground4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3C11198BA1600565D41 /* ground4.jpg */; };
+		4DDBE3D01198BD6A00565D41 /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3CF1198BD6A00565D41 /* sky2.png */; };
+		4DDBE3DB1198BDE000565D41 /* ground1_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3DA1198BDE000565D41 /* ground1_1024.jpg */; };
 		4DFADD151194F2E200C23B45 /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFADD141194F2E200C23B45 /* lib3DAR.a */; };
 		4DFADD771194FE3000C23B45 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD741194FE3000C23B45 /* Default.png */; };
 		4DFADD781194FE3000C23B45 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD751194FE3000C23B45 /* iTunesArtwork */; };
@@ -97,6 +110,23 @@
 		4DDBE3371198A0EE00565D41 /* instructions_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructions_a.png; sourceTree = "<group>"; };
 		4DDBE3381198A0EE00565D41 /* instructions_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructions_b.png; sourceTree = "<group>"; };
 		4DDBE3391198A0EE00565D41 /* instructions_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructions_c.png; sourceTree = "<group>"; };
+		4DDBE3841198AFDD00565D41 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
+		4DDBE3861198B00700565D41 /* GroundPlaneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundPlaneView.h; sourceTree = "<group>"; };
+		4DDBE3871198B00700565D41 /* GroundPlaneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundPlaneView.m; sourceTree = "<group>"; };
+		4DDBE3881198B00700565D41 /* SphereView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereView.h; sourceTree = "<group>"; };
+		4DDBE3891198B00700565D41 /* SphereView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SphereView.m; sourceTree = "<group>"; };
+		4DDBE38C1198B02200565D41 /* TexturedGeometryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TexturedGeometryView.h; sourceTree = "<group>"; };
+		4DDBE38D1198B02200565D41 /* TexturedGeometryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TexturedGeometryView.m; sourceTree = "<group>"; };
+		4DDBE38F1198B0A500565D41 /* AsyncArtworkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncArtworkFetcher.h; sourceTree = "<group>"; };
+		4DDBE3901198B0A500565D41 /* AsyncArtworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncArtworkFetcher.m; sourceTree = "<group>"; };
+		4DDBE3A21198B26C00565D41 /* wallpaper1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaper1.jpg; sourceTree = "<group>"; };
+		4DDBE3B61198B37D00565D41 /* asphalt_a_256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asphalt_a_256.png; sourceTree = "<group>"; };
+		4DDBE3BE1198BA1500565D41 /* ground1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground1.jpg; sourceTree = "<group>"; };
+		4DDBE3BF1198BA1500565D41 /* ground2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground2.jpg; sourceTree = "<group>"; };
+		4DDBE3C01198BA1600565D41 /* ground3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground3.jpg; sourceTree = "<group>"; };
+		4DDBE3C11198BA1600565D41 /* ground4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground4.jpg; sourceTree = "<group>"; };
+		4DDBE3CF1198BD6A00565D41 /* sky2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky2.png; sourceTree = "<group>"; };
+		4DDBE3DA1198BDE000565D41 /* ground1_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground1_1024.jpg; sourceTree = "<group>"; };
 		4DFADD141194F2E200C23B45 /* lib3DAR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = lib3DAR.a; path = "../../../../../../projects/Spot Metrix/PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos/lib3DAR.a"; sourceTree = SOURCE_ROOT; };
 		4DFADD741194FE3000C23B45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4DFADD751194FE3000C23B45 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -217,6 +247,13 @@
 				4DDBE3371198A0EE00565D41 /* instructions_a.png */,
 				4DDBE3381198A0EE00565D41 /* instructions_b.png */,
 				4DDBE3391198A0EE00565D41 /* instructions_c.png */,
+				4DDBE3B61198B37D00565D41 /* asphalt_a_256.png */,
+				4DDBE3BE1198BA1500565D41 /* ground1.jpg */,
+				4DDBE3DA1198BDE000565D41 /* ground1_1024.jpg */,
+				4DDBE3BF1198BA1500565D41 /* ground2.jpg */,
+				4DDBE3C01198BA1600565D41 /* ground3.jpg */,
+				4DDBE3C11198BA1600565D41 /* ground4.jpg */,
+				4DDBE3A21198B26C00565D41 /* wallpaper1.jpg */,
 				4D169B441194CADF00F499D7 /* 3dar.plist */,
 				4D169BD21194CADF00F499D7 /* 3dar_logo.png */,
 				4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */,
@@ -228,6 +265,8 @@
 				4D169BD91194CADF00F499D7 /* bubble1.png */,
 				4D169BDA1194CADF00F499D7 /* compass_rose.png */,
 				4D2841C811973AF900DC90A7 /* compass_rose_b_300.png */,
+				4DDBE3841198AFDD00565D41 /* sky.png */,
+				4DDBE3CF1198BD6A00565D41 /* sky2.png */,
 				4D169BDB1194CADF00F499D7 /* SM3DAR.h */,
 				4D169BDC1194CADF00F499D7 /* SM3DAR_keys.txt */,
 			);
@@ -237,6 +276,14 @@
 		4DFADE5C1195D51100C23B45 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4DDBE38F1198B0A500565D41 /* AsyncArtworkFetcher.h */,
+				4DDBE3901198B0A500565D41 /* AsyncArtworkFetcher.m */,
+				4DDBE3861198B00700565D41 /* GroundPlaneView.h */,
+				4DDBE3871198B00700565D41 /* GroundPlaneView.m */,
+				4DDBE3881198B00700565D41 /* SphereView.h */,
+				4DDBE3891198B00700565D41 /* SphereView.m */,
+				4DDBE38C1198B02200565D41 /* TexturedGeometryView.h */,
+				4DDBE38D1198B02200565D41 /* TexturedGeometryView.m */,
 				4DFADE651195D54C00C23B45 /* Model.h */,
 				4DFADE661195D54C00C23B45 /* Model.m */,
 				4DFADE671195D54C00C23B45 /* Protocols.h */,
@@ -323,6 +370,15 @@
 				4DDBE33A1198A0EE00565D41 /* instructions_a.png in Resources */,
 				4DDBE33B1198A0EE00565D41 /* instructions_b.png in Resources */,
 				4DDBE33C1198A0EE00565D41 /* instructions_c.png in Resources */,
+				4DDBE3851198AFDD00565D41 /* sky.png in Resources */,
+				4DDBE3A31198B26C00565D41 /* wallpaper1.jpg in Resources */,
+				4DDBE3B71198B37D00565D41 /* asphalt_a_256.png in Resources */,
+				4DDBE3C21198BA1600565D41 /* ground1.jpg in Resources */,
+				4DDBE3C31198BA1600565D41 /* ground2.jpg in Resources */,
+				4DDBE3C41198BA1600565D41 /* ground3.jpg in Resources */,
+				4DDBE3C51198BA1600565D41 /* ground4.jpg in Resources */,
+				4DDBE3D01198BD6A00565D41 /* sky2.png in Resources */,
+				4DDBE3DB1198BDE000565D41 /* ground1_1024.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +396,10 @@
 				4DFADE6A1195D54C00C23B45 /* Model.m in Sources */,
 				4DFADE7811970D4200C23B45 /* PointerView.m in Sources */,
 				4DDBE2B71197DE6500565D41 /* PointOfInterest.m in Sources */,
+				4DDBE38A1198B00700565D41 /* GroundPlaneView.m in Sources */,
+				4DDBE38B1198B00700565D41 /* SphereView.m in Sources */,
+				4DDBE38E1198B02200565D41 /* TexturedGeometryView.m in Sources */,
+				4DDBE3911198B0A500565D41 /* AsyncArtworkFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

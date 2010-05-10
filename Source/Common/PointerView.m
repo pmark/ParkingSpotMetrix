@@ -129,7 +129,7 @@
 
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:duration];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 
     [self updateTransform];
     

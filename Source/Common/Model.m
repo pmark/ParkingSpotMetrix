@@ -1,9 +1,5 @@
 //
 //  Model.m
-//  PubReader2
-//
-//  Created by P. Mark Anderson on 2/19/10.
-//  © Copyright, Digimarc Corporation, USA. All rights reserved.
 //
 
 #import "Model.h"

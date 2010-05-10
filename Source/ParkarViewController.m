@@ -10,6 +10,8 @@
 #import "Constants.h"
 #import "RoundedLabelMarkerView.h"
 #import "PointOfInterest.h"
+#import "SphereView.h"
+#import "GroundPlaneView.h"
 
 #define BTN_TITLE_SET_SPOT @"Drop Pin"
 #define BTN_TITLE_RESET_SPOT @"Reset"
@@ -99,6 +101,9 @@
 
 - (void) loadPointsOfInterest
 {
+    [self addBackground];
+	[self addGroundPlane];
+    
     // Add compass points.
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     CLLocationCoordinate2D currentLoc = [sm3dar currentLocation].coordinate;
@@ -130,7 +135,7 @@
 
     UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
     bg.backgroundColor = [UIColor blackColor];
-    bg.alpha = 0.2f;    
+    bg.alpha = 0.6f;    
     [screen1 addSubview:bg];
     [bg release];
 
@@ -276,7 +281,7 @@
     [parkButton setTitle:BTN_TITLE_RESET_SPOT forState:UIControlStateNormal];
     [self setDropTargetHidden:YES];
     
-    [self zoomMapIn];
+    [self performSelector:@selector(zoomMapIn) withObject:nil afterDelay:0.66];
 }
 
 - (void) saveSpot
@@ -424,5 +429,34 @@
 
     [compass toggleState];
 }
+
+#pragma mark Background
+- (void) addFixtureWithView:(SM3DAR_PointView*)pointView
+{
+    // create point
+    SM3DAR_Point *point = [[SM3DAR_Fixture alloc] init];
+    
+    // give point a view
+    point.view = pointView;  
+    
+    // add point to 3DAR scene
+    [[SM3DAR_Controller sharedController] addPointOfInterest:point];
+    [point release];
+}
+
+- (void) addBackground
+{
+    SphereView *sphereView = [[SphereView alloc] initWithTextureNamed:@"sky2.png"];
+    [self addFixtureWithView:sphereView];
+    [sphereView release];
+}
+
+- (void) addGroundPlane
+{
+    GroundPlaneView *gpView = [[GroundPlaneView alloc] initWithTextureNamed:@"ground1_1024.jpg"];
+    [self addFixtureWithView:gpView];
+    [gpView release];
+}
+
 
 @end

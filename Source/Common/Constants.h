@@ -7,11 +7,6 @@
  *
  */
 
-#define CONFIG_STRING(name) [PubReaderSession stringForConfigItem:name]
-#define CONFIG_BOOL(name) [PubReaderSession boolForConfigItem:name]
-#define CONFIG_INTEGER(name) [PubReaderSession integerForConfigItem:name]
-#define CONFIG_DOUBLE(name) [PubReaderSession doubleForConfigItem:name]
-
 #define PREF_SAVE_OBJECT(name, value) [[NSUserDefaults standardUserDefaults] setObject:value forKey:name]
 #define PREF_READ_OBJECT(name) [[NSUserDefaults standardUserDefaults] objectForKey:name]
 #define PREF_READ_ARRAY(name) (NSArray*)PREF_READ_OBJECT(name)

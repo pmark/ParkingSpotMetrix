@@ -39,6 +39,8 @@
 - (void) restoreSpot;
 - (void) updatePointer;
 - (BOOL) compassIsEnlarged;
+- (void) addBackground;
+- (void) addGroundPlane;
 
 @end
 

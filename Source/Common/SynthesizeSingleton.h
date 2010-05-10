@@ -1,9 +1,5 @@
 /*
  *  SynthesizeSingleton.h
- *  PubReader2
- *
- *  Created by P. Mark Anderson on 2/17/10.
- *  © Copyright, Digimarc Corporation, USA. All rights reserved.
  *
  */
 
