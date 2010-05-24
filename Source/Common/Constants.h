@@ -25,3 +25,5 @@
 		object=nil; \
 	} \
 }
+
+#define APP_DELEGATE ((ParkarAppDelegate*)[[UIApplication sharedApplication] delegate])

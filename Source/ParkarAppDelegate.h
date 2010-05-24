@@ -10,13 +10,13 @@
 
 @class ParkarViewController;
 
-@interface ParkarAppDelegate : NSObject <UIApplicationDelegate> {
+@interface ParkarAppDelegate : NSObject <UIApplicationDelegate, UITabBarDelegate> {
     UIWindow *window;
-    ParkarViewController *viewController;
+    IBOutlet UITabBarController *tabBarController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet ParkarViewController *viewController;
+@property (nonatomic, retain) UITabBarController *tabBarController;
 
 @end
 

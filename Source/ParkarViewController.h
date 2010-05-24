@@ -26,7 +26,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIView *screen1;
-@property (nonatomic, retain) IBOutlet UIView *screen2;
 @property (nonatomic, retain) IBOutlet UIImageView *dropTarget;
 @property (nonatomic, retain) UIButton *parkButton;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *parkingSpot;

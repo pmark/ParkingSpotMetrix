@@ -13,6 +13,7 @@
 #import "SphereView.h"
 #import "GroundPlaneView.h"
 #import "ArrowView.h"
+#import "ParkarAppDelegate.h"
 
 extern float degreesToRadians(float degrees);
 extern float radiansToDegrees(float radians);
@@ -37,7 +38,6 @@ extern float radiansToDegrees(float radians);
 @implementation ParkarViewController
 
 @synthesize screen1;
-@synthesize screen2;
 @synthesize dropTarget;
 @synthesize parkButton;
 @synthesize parkingSpot;
@@ -49,7 +49,6 @@ extern float radiansToDegrees(float radians);
 - (void)dealloc 
 {
     RELEASE(screen1);
-    RELEASE(screen2);
     RELEASE(dropTarget);
     RELEASE(parkButton);
     RELEASE(parkingSpot);
@@ -71,7 +70,6 @@ extern float radiansToDegrees(float radians);
 
 - (SM3DAR_PointOfInterest*) addPOI:(NSString*)title subtitle:(NSString*)subtitle latitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon  canReceiveFocus:(BOOL)canReceiveFocus 
 {
-    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     NSDictionary *poiProperties = [NSDictionary dictionaryWithObjectsAndKeys: 
                                    title, @"title",
                                    subtitle, @"subtitle",
@@ -89,7 +87,6 @@ extern float radiansToDegrees(float radians);
 
 - (void) zoomMapIn
 {
-    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     if (parkingSpot)
     {
         [sm3dar zoomMapToFitPointsIncludingUserLocation:YES];
@@ -111,7 +108,6 @@ extern float radiansToDegrees(float radians);
 	[self addArrow];
     
     // Add compass points.
-    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
 //    CLLocationCoordinate2D currentLoc = [sm3dar currentLocation].coordinate;
 //    CLLocationDegrees lat=currentLoc.latitude;
 //    CLLocationDegrees lon=currentLoc.longitude;
@@ -274,7 +270,6 @@ extern float radiansToDegrees(float radians);
 
 - (void) setParkingSpotLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
 {
-    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:latitude longitude:longitude canReceiveFocus:YES];
     
     UILabel *parkingSpotLabel = ((RoundedLabelMarkerView*)parkingSpot.view).label;
@@ -321,8 +316,6 @@ extern float radiansToDegrees(float radians);
 
 - (void) toggleParkingSpot
 {
-    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
-    
     if (parkingSpot)
     {
         // remove it
@@ -373,12 +366,16 @@ extern float radiansToDegrees(float radians);
 {
     [self shrinkCompass];
     [self bringActiveScreenToFront];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    APP_DELEGATE.tabBarController.view.hidden = NO;
 }
 
+// Show the AR view
 - (void) didHideMap 
 {
-    //    [self enlargeCompass];
     [self bringActiveScreenToFront];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    APP_DELEGATE.tabBarController.view.hidden = YES;
 }
 
 - (void) updatePointer
@@ -406,8 +403,6 @@ extern float radiansToDegrees(float radians);
         return;
     
     CGFloat radians;
-    
-    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];    
     
     // Update instructions
     if (!instructions.hidden)

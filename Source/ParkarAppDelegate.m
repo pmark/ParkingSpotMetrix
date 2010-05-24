@@ -8,32 +8,35 @@
 
 #import "ParkarAppDelegate.h"
 #import "ParkarViewController.h"
+#import "Constants.h"
 
 @implementation ParkarAppDelegate
 
 @synthesize window;
-@synthesize viewController;
+@synthesize tabBarController;
 
+- (void) dealloc 
+{
+    RELEASE(tabBarController);
+    RELEASE(window);
+    [super dealloc];
+}
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-
-    ParkarViewController *c = [[ParkarViewController alloc] init];
-    self.viewController = c;
-    [c release];
-
-    viewController.view.frame = [UIScreen mainScreen].applicationFrame;
-    [window addSubview:viewController.view];
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+{    
+    [application setStatusBarHidden:NO];
+    [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 	
 	return YES;
 }
 
-
-- (void)dealloc {
-    [viewController release];
-    [window release];
-    [super dealloc];
+// called when a new view is selected by the user (but not programatically)
+- (void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    // TODO: if not Map item, suspend 3DAR
 }
+
 
 
 @end
