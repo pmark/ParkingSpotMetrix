@@ -44,7 +44,7 @@
         button.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         [button setImage:image forState:UIControlStateNormal];    
         [button setImage:image forState:UIControlStateHighlighted];    
-        [button addTarget:self action:@selector(wasTapped) forControlEvents:UIControlEventTouchDown];
+        [button addTarget:self action:@selector(wasTapped) forControlEvents:UIControlEventTouchUpInside];
         button.showsTouchWhenHighlighted = NO;
         [self addSubview:button];
         [self updateCenterPoint];

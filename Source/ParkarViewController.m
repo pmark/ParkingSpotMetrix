@@ -14,6 +14,9 @@
 #import "GroundPlaneView.h"
 #import "ArrowView.h"
 
+extern float degreesToRadians(float degrees);
+extern float radiansToDegrees(float radians);
+
 #define BTN_TITLE_SET_SPOT @"Drop Pin"
 #define BTN_TITLE_RESET_SPOT @"Reset"
 
@@ -223,7 +226,6 @@
 
 - (void) bringActiveScreenToFront
 {
-    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     if (sm3dar.mapIsVisible)
     {
         screen1.hidden = NO;
@@ -375,7 +377,7 @@
 
 - (void) didHideMap 
 {
-    [self enlargeCompass];
+    //    [self enlargeCompass];
     [self bringActiveScreenToFront];
 }
 
@@ -394,7 +396,8 @@
     CGFloat y = worldPoint.y;
     CGFloat radians = atan2(x, y);
     
-    [pointer rotate:radians duration:(POINTER_UPDATE_SEC)];  
+    [pointer rotate:radians duration:(POINTER_UPDATE_SEC)];
+    [arrow pointAt:radiansToDegrees(radians)];    
 }
 
 - (void) updateHUD
@@ -418,7 +421,6 @@
 
     lastHeading = sm3dar.trueHeading;
 
-    extern float degreesToRadians(float degrees);    
     radians = -degreesToRadians(lastHeading);
     [compass rotate:radians duration:(POINTER_UPDATE_SEC*0.99)];  
 }
@@ -463,11 +465,12 @@
 
 - (void) addArrow
 {
+    // Create the arrow view
     ArrowView *arrowView = [[[ArrowView alloc] initWithTextureNamed:@""] autorelease];
-    arrowView.color = [UIColor whiteColor];
+    arrowView.color = [UIColor yellowColor];
 
-    self.arrow = [[[ArrowFixture alloc] initWithView:arrowView] autorelease];
-    
+    // Create a fixture for the arrow
+    self.arrow = [[[ArrowFixture alloc] initWithView:arrowView] autorelease];    
     [[SM3DAR_Controller sharedController] addPointOfInterest:arrow];
     
     [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
@@ -479,7 +482,7 @@
     CGFloat distance = 250.0;
     c.x *= distance;
     c.y *= distance;
-    c.z *= distance * 0.95;
+    c.z *= distance;// * 0.95;
     self.arrow.worldPoint = c;
 }
 

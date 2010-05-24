@@ -12,10 +12,13 @@
 
 @interface ArrowFixture : SM3DAR_Fixture {
 	CGFloat rotationDegrees;
+	CGFloat heading;
 }
 
 - (id) initWithView:(ArrowView*)arrowView;
+- (void) pointAt:(CGFloat)degrees;
 
 @property (nonatomic, assign) CGFloat rotationDegrees;
+@property (nonatomic, assign) CGFloat heading;
 
 @end

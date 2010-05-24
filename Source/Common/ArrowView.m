@@ -43,6 +43,7 @@
     
     ArrowFixture *fixture = (ArrowFixture*)self.point;
     glRotatef(fixture.rotationDegrees, 0.0, 1.0, 0.0);
+    glRotatef(fixture.heading, 1.0, 0.0, 0.0);
     
     if (texture)
         [Geometry displaySphereWithTexture:self.texture];

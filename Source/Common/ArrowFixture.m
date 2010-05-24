@@ -11,6 +11,7 @@
 @implementation ArrowFixture
 
 @synthesize rotationDegrees;
+@synthesize heading;
 
 - (id) initWithView:(ArrowView*)arrowView 
 {
@@ -20,6 +21,12 @@
         arrowView.point = self;        
     }
     return self;
+}
+
+- (void) pointAt:(CGFloat)degrees
+{
+	self.heading = degrees;    
+    NSLog(@"heading: %.1f", heading);
 }
 
 - (CGFloat) gearSpeed
@@ -35,7 +42,6 @@
 - (void) gearHasTurned
 {
     // rotate on x
-    //NSLog(@"pos: %.1f", self.gearPosition);
     self.rotationDegrees = self.gearPosition;
 }
 
