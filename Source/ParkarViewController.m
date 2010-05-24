@@ -12,6 +12,7 @@
 #import "PointOfInterest.h"
 #import "SphereView.h"
 #import "GroundPlaneView.h"
+#import "ArrowView.h"
 
 #define BTN_TITLE_SET_SPOT @"Drop Pin"
 #define BTN_TITLE_RESET_SPOT @"Reset"
@@ -40,6 +41,7 @@
 @synthesize pointer;
 @synthesize compass;
 @synthesize instructions;
+@synthesize arrow;
 
 - (void)dealloc 
 {
@@ -66,7 +68,7 @@
 
 - (SM3DAR_PointOfInterest*) addPOI:(NSString*)title subtitle:(NSString*)subtitle latitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon  canReceiveFocus:(BOOL)canReceiveFocus 
 {
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     NSDictionary *poiProperties = [NSDictionary dictionaryWithObjectsAndKeys: 
                                    title, @"title",
                                    subtitle, @"subtitle",
@@ -84,7 +86,7 @@
 
 - (void) zoomMapIn
 {
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     if (parkingSpot)
     {
         [sm3dar zoomMapToFitPointsIncludingUserLocation:YES];
@@ -103,17 +105,18 @@
 {
     [self addBackground];
 	[self addGroundPlane];
+	[self addArrow];
     
     // Add compass points.
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
-    CLLocationCoordinate2D currentLoc = [sm3dar currentLocation].coordinate;
-    CLLocationDegrees lat=currentLoc.latitude;
-    CLLocationDegrees lon=currentLoc.longitude;
+    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+//    CLLocationCoordinate2D currentLoc = [sm3dar currentLocation].coordinate;
+//    CLLocationDegrees lat=currentLoc.latitude;
+//    CLLocationDegrees lon=currentLoc.longitude;
     
-    [self addPOI:@"N" subtitle:@"" latitude:(lat+0.01f) longitude:lon canReceiveFocus:NO];
-    [self addPOI:@"S" subtitle:@"" latitude:(lat-0.01f) longitude:lon canReceiveFocus:NO];
-    [self addPOI:@"E" subtitle:@"" latitude:lat longitude:(lon+0.01f) canReceiveFocus:NO];
-    [self addPOI:@"W" subtitle:@"" latitude:lat longitude:(lon-0.01f) canReceiveFocus:NO];
+//    [self addPOI:@"N" subtitle:@"" latitude:(lat+0.01f) longitude:lon canReceiveFocus:NO];
+//    [self addPOI:@"S" subtitle:@"" latitude:(lat-0.01f) longitude:lon canReceiveFocus:NO];
+//    [self addPOI:@"E" subtitle:@"" latitude:lat longitude:(lon+0.01f) canReceiveFocus:NO];
+//    [self addPOI:@"W" subtitle:@"" latitude:lat longitude:(lon-0.01f) canReceiveFocus:NO];
     
     [self restoreSpot];
 	[self updatePointer];
@@ -128,14 +131,14 @@
     if (screen1)
         return;
     
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 400, 320, 60)];
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 420, 320, 60)];
     [self.view addSubview:v];
     self.screen1 = v;
     [v release];
 
     UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
     bg.backgroundColor = [UIColor blackColor];
-    bg.alpha = 0.6f;    
+    bg.alpha = 0.3f;    
     [screen1 addSubview:bg];
     [bg release];
 
@@ -191,7 +194,7 @@
     NSLog(@"\n\nWCVC: viewDidLoad\n\n");
     [super viewDidLoad];
     
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    sm3dar = [SM3DAR_Controller sharedController];
     sm3dar.delegate = self;
     sm3dar.nearClipMeters = NEAR_CLIP_METERS;
     sm3dar.farClipMeters = FAR_CLIP_METERS;
@@ -220,7 +223,7 @@
 
 - (void) bringActiveScreenToFront
 {
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     if (sm3dar.mapIsVisible)
     {
         screen1.hidden = NO;
@@ -269,7 +272,7 @@
 
 - (void) setParkingSpotLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
 {
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:latitude longitude:longitude canReceiveFocus:YES];
     
     UILabel *parkingSpotLabel = ((RoundedLabelMarkerView*)parkingSpot.view).label;
@@ -316,7 +319,7 @@
 
 - (void) toggleParkingSpot
 {
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
+    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     
     if (parkingSpot)
     {
@@ -401,7 +404,7 @@
     
     CGFloat radians;
     
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];    
+    //    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];    
     
     // Update instructions
     if (!instructions.hidden)
@@ -431,17 +434,17 @@
 }
 
 #pragma mark Background
-- (void) addFixtureWithView:(SM3DAR_PointView*)pointView
+- (SM3DAR_Fixture*) addFixtureWithView:(SM3DAR_PointView*)pointView
 {
     // create point
-    SM3DAR_Point *point = [[SM3DAR_Fixture alloc] init];
+    SM3DAR_Fixture *point = [[SM3DAR_Fixture alloc] init];
     
     // give point a view
     point.view = pointView;  
     
     // add point to 3DAR scene
     [[SM3DAR_Controller sharedController] addPointOfInterest:point];
-    [point release];
+    return [point autorelease];
 }
 
 - (void) addBackground
@@ -458,5 +461,35 @@
     [gpView release];
 }
 
+- (void) addArrow
+{
+    ArrowView *arrowView = [[[ArrowView alloc] initWithTextureNamed:@""] autorelease];
+    arrowView.color = [UIColor whiteColor];
+
+    self.arrow = [[[ArrowFixture alloc] initWithView:arrowView] autorelease];
+    
+    [[SM3DAR_Controller sharedController] addPointOfInterest:arrow];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
+}
+
+- (void) moveArrow
+{    
+    Coord3D c = [sm3dar ray:CGPointMake(160, 240)];
+    CGFloat distance = 250.0;
+    c.x *= distance;
+    c.y *= distance;
+    c.z *= distance * 0.95;
+    self.arrow.worldPoint = c;
+}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+}
+
+- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    ((ArrowView*)arrow.view).scalar += 1;
+}
 
 @end

@@ -11,6 +11,6 @@
 	<key>3darLocationUpdateIntervalSec</key>
 	<real>1</real>
 	<key>3darEnableMap</key>
-	<true/>
+	<false/>
 </dict>
 </plist>

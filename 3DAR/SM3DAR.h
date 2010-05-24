@@ -112,6 +112,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 + (SM3DAR_Controller*)sharedController;
 + (SM3DAR_Controller*)reinit;
 + (void)printMemoryUsage:(NSString*)message;
++ (void)printMatrix:(CATransform3D)t;
 - (void)forceRelease;
 - (void)addPoint:(SM3DAR_Point*)point;
 - (void)addPointOfInterest:(SM3DAR_Point*)point;
@@ -156,6 +157,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 - (Coord3D)solarPosition;
 - (Coord3D)solarPositionScaled:(CGFloat)meters;
 - (void)initOrigin;
+- (Coord3D)ray:(CGPoint)screenPoint;
 @end
 
 
@@ -308,12 +310,12 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 
 @property (nonatomic) BOOL cullFace;
 
-+ (Geometry*) newOBJFromResource:(NSString*)resource;
-+ (void) displaySphereWithTexture:(Texture*)texture;
-+ (void) displayHemisphereWithTexture:(Texture*)texture;
++ (Geometry *) newOBJFromResource:(NSString *)resource;
++ (void) displayHemisphereWithTexture:(Texture *)texture;
++ (void) displaySphereWithTexture:(Texture *)texture;
 - (void) displayWireframe;
-- (void) displayFilledWithTexture:(Texture*)texture;
-- (void) displayShaded;
+- (void) displayFilledWithTexture:(Texture *)texture;
+- (void) displayShaded:(UIColor *)color;
 @end
 
 

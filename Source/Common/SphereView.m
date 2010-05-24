@@ -41,17 +41,17 @@
     // Temporary fix - we are getting a translation in the modelview
     // matrix when we should not.  build our own.
     
-    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];    
-    CATransform3D xfm = [sm3dar cameraTransform];
-    xfm.m41 = xfm.m42 = xfm.m43 = 0.0f;
+//    SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];    
+//    CATransform3D xfm = [sm3dar cameraTransform];
+//    xfm.m41 = xfm.m42 = xfm.m43 = 0.0f;
     
-    glMatrixMode(GL_MODELVIEW);
-    glPushMatrix();
-    glLoadMatrixf((const GLfloat *)&xfm);
+//    glMatrixMode(GL_MODELVIEW);
+//    glPushMatrix();
+//    glLoadMatrixf((const GLfloat *)&xfm);
 
     // draw sphere
 
-    CGFloat scalar = 10000.0f;
+    CGFloat scalar = 3000.0f;
     glScalef (-scalar, scalar, scalar);
     glRotatef (180, 1, 0, 0);
     
@@ -63,7 +63,7 @@
     }  
     glDepthMask(1);
     
-    glPopMatrix();
+//    glPopMatrix();
 }
 
 
