@@ -7,7 +7,8 @@
 //
 
 #import "UpgradesController.h"
-
+#import "UpgradeDetailController.h"
+#import "UpgradeItem.h"
 
 @implementation UpgradesController
 
@@ -19,7 +20,7 @@
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
     }
@@ -89,7 +90,7 @@
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
     return 3;
 }
@@ -122,5 +123,12 @@
     }
 }
 
+- (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+{
+	// load upgrade
+//    UpgradeItemType type;
+//    
+//    UpgradeItem *item = [UpgradeItem upgradeItemForType:type];
+}
 
 @end

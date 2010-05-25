@@ -73,9 +73,25 @@
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = @"test";
-        
+
+    switch (indexPath.section) {
+        case 0:
+            cell.textLabel.text = @"None";
+            break;
+        case 1:
+            cell.textLabel.text = @"None";
+            break;
+        default:
+            cell.textLabel.text = @"";
+            break;
+    }    
+
     return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
 }
 
 - (NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
@@ -90,7 +106,18 @@
 
 - (NSString*) tableView:(UITableView*)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Past Parking Spots";
+    switch (section) {
+        case 0:
+            return @"Current Parking Spot";
+            break;
+        case 1:
+            return @"Past Parking Spots";
+            break;
+        default:
+            break;
+    }
+    
+    return @"";
 }
 
 @end
