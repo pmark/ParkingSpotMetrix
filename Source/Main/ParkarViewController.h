@@ -23,10 +23,14 @@
     NSTimer *hudTimer;
     CGFloat lastHeading;
     SM3DAR_Controller *sm3dar;
+    IBOutlet UIView *sm3darView;
+    IBOutlet UIToolbar *toolbar;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *screen1;
 @property (nonatomic, retain) IBOutlet UIImageView *dropTarget;
+@property (nonatomic, retain) IBOutlet UIView *sm3darView;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, retain) UIButton *parkButton;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *parkingSpot;
 @property (nonatomic, retain) PointerView *pointer;

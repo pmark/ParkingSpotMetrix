@@ -14,6 +14,8 @@
 #import "GroundPlaneView.h"
 #import "ArrowView.h"
 #import "ParkarAppDelegate.h"
+#import "NSUserDefaults_Database.h"
+#import "ParkingSpot.h"
 
 extern float degreesToRadians(float degrees);
 extern float radiansToDegrees(float radians);
@@ -39,6 +41,8 @@ extern float radiansToDegrees(float radians);
 
 @synthesize screen1;
 @synthesize dropTarget;
+@synthesize toolbar;
+@synthesize sm3darView;
 @synthesize parkButton;
 @synthesize parkingSpot;
 @synthesize pointer;
@@ -50,6 +54,8 @@ extern float radiansToDegrees(float radians);
 {
     RELEASE(screen1);
     RELEASE(dropTarget);
+    RELEASE(sm3darView);
+    RELEASE(toolbar);
     RELEASE(parkButton);
     RELEASE(parkingSpot);
     RELEASE(pointer);
@@ -197,12 +203,17 @@ extern float radiansToDegrees(float radians);
     sm3dar.delegate = self;
     sm3dar.nearClipMeters = NEAR_CLIP_METERS;
     sm3dar.farClipMeters = FAR_CLIP_METERS;
+    sm3dar.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     sm3dar.view.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:sm3dar.view];
+
+    [sm3dar setFrame:CGRectMake(0, 0, 200, 200)];
+	[self.view addSubview:sm3dar.view];
+    NSLog(@"3dar view: %@", sm3dar.view);
     
-    [self buildScreen1];        
+    //[self buildScreen1];        
     [self buildHUD];
     [self bringActiveScreenToFront];
+    [self.view bringSubviewToFront:toolbar];
 }
 
 - (void)didReceiveMemoryWarning 
@@ -286,6 +297,9 @@ extern float radiansToDegrees(float radians);
 
 - (void) saveSpot
 {
+    // 
+    
+    ////
     PointOfInterest *poi = nil;
 
     if (parkingSpot)
@@ -305,7 +319,7 @@ extern float radiansToDegrees(float radians);
 - (void) restoreSpot
 {
     NSDictionary *properties = (NSDictionary*)PREF_READ_OBJECT(PREF_KEY_LAST_POI);
-    NSLog(@"restoring: %@", properties);
+    //NSLog(@"restoring: %@", properties);
     if (!properties)
         return;
     
@@ -367,7 +381,7 @@ extern float radiansToDegrees(float radians);
     [self shrinkCompass];
     [self bringActiveScreenToFront];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    APP_DELEGATE.tabBarController.view.hidden = NO;
+    //    APP_DELEGATE.tabBarController.view.hidden = NO;
 }
 
 // Show the AR view
@@ -375,17 +389,19 @@ extern float radiansToDegrees(float radians);
 {
     [self bringActiveScreenToFront];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    APP_DELEGATE.tabBarController.view.hidden = YES;
+    //    APP_DELEGATE.tabBarController.view.hidden = YES;
 }
 
 - (void) updatePointer
 {
     if (!parkingSpot)
     {
+        arrow.view.hidden = YES;
         pointer.hidden = YES;
         return;
     }
     
+    arrow.view.hidden = NO;
     pointer.hidden = NO;
     
     Coord3D worldPoint = parkingSpot.worldPoint;
