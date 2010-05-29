@@ -114,6 +114,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 + (void)printMemoryUsage:(NSString*)message;
 + (void)printMatrix:(CATransform3D)t;
 - (void)forceRelease;
+- (void)setFrame:(CGRect)newFrame;
 - (void)addPoint:(SM3DAR_Point*)point;
 - (void)addPointOfInterest:(SM3DAR_Point*)point;
 - (void)addPointsOfInterest:(NSArray*)points;

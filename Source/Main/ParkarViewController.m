@@ -206,7 +206,7 @@ extern float radiansToDegrees(float radians);
     sm3dar.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     sm3dar.view.backgroundColor = [UIColor blackColor];
 
-    [sm3dar setFrame:CGRectMake(0, 0, 200, 200)];
+    [sm3dar setFrame:CGRectMake(0, 0, 320, 460)];
 	[self.view addSubview:sm3dar.view];
     NSLog(@"3dar view: %@", sm3dar.view);
     
@@ -388,7 +388,7 @@ extern float radiansToDegrees(float radians);
 - (void) didHideMap 
 {
     [self bringActiveScreenToFront];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     //    APP_DELEGATE.tabBarController.view.hidden = YES;
 }
 
