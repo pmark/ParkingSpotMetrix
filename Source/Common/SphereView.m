@@ -14,6 +14,9 @@
     self.zrot = 0.0;
     
 	self.frame = CGRectZero;
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"sphere" ofType:@"obj"];
+    self.geometry = [[Geometry newOBJFromResource:path] autorelease];
+    self.geometry.cullFace = YES;
 }
 
 - (void) displayGeometry 
@@ -51,17 +54,25 @@
 
     // draw sphere
 
-    CGFloat scalar = 3000.0f;
+    CGFloat scalar = 300.0f;
     glScalef (-scalar, scalar, scalar);
     glRotatef (180, 1, 0, 0);
     
     //[self updateTexture];
     
-    glDepthMask(0);
-    if (self.texture) {
+    if (texture)
+    {
+        //    glDepthMask(0);
+        
         [Geometry displaySphereWithTexture:self.texture];
-    }  
-    glDepthMask(1);
+        //    glDepthMask(1);
+    }
+	else
+    {
+        //[self.geometry displayShaded:self.color];
+        [self.geometry displayWireframe];
+    }
+    
     
 //    glPopMatrix();
 }

@@ -99,10 +99,11 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 @property (nonatomic, assign) Coord3D worldPointTransform;
 @property (nonatomic, assign) Coord3D worldPointVector;
 @property (nonatomic, retain) UIButton *iconLogo;
-@property (nonatomic, assign) CLLocation *currentLocation;
+@property (nonatomic, retain) CLLocation *currentLocation;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, assign) CLLocationDirection trueHeading;
 @property (nonatomic, assign) CLLocationDirection magneticHeading;
+@property (nonatomic, assign) Coord3D currentPosition;
 @property (nonatomic, assign) Coord3D downVector;
 @property (nonatomic, assign) Coord3D northVector;
 @property (nonatomic, assign) CGFloat currentYaw;
@@ -113,6 +114,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 + (SM3DAR_Controller*)reinit;
 + (void)printMemoryUsage:(NSString*)message;
 + (void)printMatrix:(CATransform3D)t;
++ (Coord3D) worldCoordinateFor:(CLLocation*)location;
 - (void)forceRelease;
 - (void)setFrame:(CGRect)newFrame;
 - (void)addPoint:(SM3DAR_Point*)point;
@@ -190,6 +192,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 @property (nonatomic, retain) NSString *mapAnnotationImageName;
 @property (assign) BOOL hasFocus;
 @property (assign) BOOL canReceiveFocus;
+@property (nonatomic, assign) CGFloat gearPosition;
 
 - (id)initWithLocation:(CLLocation*)loc properties:(NSDictionary*)props;
 - (id)initWithLocation:(CLLocation*)loc title:(NSString*)title subtitle:(NSString*)subtitle url:(NSURL*)url;
@@ -203,20 +206,10 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 - (NSString*)formattedDistanceInMilesFromCurrentLocation;
 - (BOOL)isInView:(CGPoint*)point;
 - (CATransform3D)objectTransform;
-@end
+- (CGFloat)gearSpeed;
+- (NSInteger)numberOfTeethInGear;
+- (void) gearHasTurned;
 
-
-//
-//
-//
-@interface SM3DAR_Session : NSObject {
-}
-
-@property (nonatomic, retain) CLLocation *currentLocation;
-@property (nonatomic, assign) CGFloat nearClipMeters;
-@property (nonatomic, assign) CGFloat farClipMeters;
-
-+ (SM3DAR_Session*)sharedSM3DAR_Session;
 @end
 
 

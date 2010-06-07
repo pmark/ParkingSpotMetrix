@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "SM3DAR.h"
 #import "ArrowView.h"
+#import "TexturedGeometryView.h"
 
 @interface ArrowFixture : SM3DAR_Fixture {
 	CGFloat rotationDegrees;
 	CGFloat heading;
 }
 
-- (id) initWithView:(ArrowView*)arrowView;
+- (id) initWithView:(TexturedGeometryView*)arrowView;
 - (void) pointAt:(CGFloat)degrees;
 
 @property (nonatomic, assign) CGFloat rotationDegrees;

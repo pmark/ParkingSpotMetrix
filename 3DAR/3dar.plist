@@ -7,16 +7,16 @@
 	<key>3darOverridePoiAltitude</key>
 	<true/>
 	<key>3darLookMode</key>
-	<string>free</string>
+	<string>tilt</string>
 	<key>3darLocationUpdateIntervalSec</key>
-	<integer>0</integer>
+	<real>0.2</real>
 	<key>3darEnableMap</key>
 	<true/>
 	<key>3darHeadless</key>
 	<false/>
-	<key>3darViewWidth</key>
+	<key>3darFrameWidth</key>
 	<integer>320</integer>
-	<key>3darViewHeight</key>
-	<integer>460</integer>
+	<key>3darFrameHeight</key>
+	<integer>411</integer>
 </dict>
 </plist>

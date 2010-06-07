@@ -16,6 +16,7 @@
 #import "ParkarAppDelegate.h"
 #import "NSUserDefaults_Database.h"
 #import "ParkingSpot.h"
+#import "ParkingSpotPOI.h"
 
 extern float degreesToRadians(float degrees);
 extern float radiansToDegrees(float radians);
@@ -36,6 +37,9 @@ extern float radiansToDegrees(float radians);
 
 #define NEAR_CLIP_METERS 5
 #define FAR_CLIP_METERS 161000
+
+#define ARROW_ORBIT_DISTANCE 250.0
+#define ARROW_MOVEMENT_TIMER_INTERVAL 0.013
 
 @implementation ParkarViewController
 
@@ -74,6 +78,21 @@ extern float radiansToDegrees(float radians);
     return self;
 }
 
+- (SM3DAR_Fixture*) addLabelFixture:(NSString*)title subtitle:(NSString*)subtitle coord:(Coord3D)coord
+{
+    //    RoundedLabelMarkerView *v = [[RoundedLabelMarkerView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    ArrowView *v = [[ArrowView alloc] initWithTextureNamed:@""];
+    v.color = [UIColor blueColor];
+//    v.title = title;
+//    v.subtitle = subtitle;
+//SM3DAR_Fixture *fixture = [self addFixtureWithView:v];
+    ArrowFixture *fixture = [self addArrowFixture:v];
+    fixture.worldPoint = coord;
+    [v release];
+
+    return fixture;
+}
+
 - (SM3DAR_PointOfInterest*) addPOI:(NSString*)title subtitle:(NSString*)subtitle latitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon  canReceiveFocus:(BOOL)canReceiveFocus 
 {
     NSDictionary *poiProperties = [NSDictionary dictionaryWithObjectsAndKeys: 
@@ -107,22 +126,31 @@ extern float radiansToDegrees(float radians);
     }
 }
 
-- (void) loadPointsOfInterest
+- (void) addDirectionBillboards 
 {
-    [self addBackground];
-	[self addGroundPlane];
-	[self addArrow];
-    
     // Add compass points.
 //    CLLocationCoordinate2D currentLoc = [sm3dar currentLocation].coordinate;
 //    CLLocationDegrees lat=currentLoc.latitude;
 //    CLLocationDegrees lon=currentLoc.longitude;
     
-//    [self addPOI:@"N" subtitle:@"" latitude:(lat+0.01f) longitude:lon canReceiveFocus:NO];
-//    [self addPOI:@"S" subtitle:@"" latitude:(lat-0.01f) longitude:lon canReceiveFocus:NO];
-//    [self addPOI:@"E" subtitle:@"" latitude:lat longitude:(lon+0.01f) canReceiveFocus:NO];
-//    [self addPOI:@"W" subtitle:@"" latitude:lat longitude:(lon-0.01f) canReceiveFocus:NO];
+    Coord3D north, south, east, west = sm3dar.currentPosition;
+    north.x += 1000;
+    south.x -= 1000;
+    east.y += 1000;
+    west.y -= 1000;
     
+    [self addLabelFixture:@"N" subtitle:@"" coord:north];
+    [self addLabelFixture:@"S" subtitle:@"" coord:south];
+    [self addLabelFixture:@"E" subtitle:@"" coord:east];
+    [self addLabelFixture:@"W" subtitle:@"" coord:west];
+}
+
+- (void) loadPointsOfInterest
+{
+    //    [self addBackground];
+    //	[self addGroundPlane];
+	[self addArrow];
+    [self addDirectionBillboards];        
     [self restoreSpot];
 	[self updatePointer];
 
@@ -205,10 +233,7 @@ extern float radiansToDegrees(float radians);
     sm3dar.farClipMeters = FAR_CLIP_METERS;
     sm3dar.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     sm3dar.view.backgroundColor = [UIColor blackColor];
-
-    [sm3dar setFrame:CGRectMake(0, 0, 320, 460)];
 	[self.view addSubview:sm3dar.view];
-    NSLog(@"3dar view: %@", sm3dar.view);
     
     //[self buildScreen1];        
     [self buildHUD];
@@ -243,7 +268,7 @@ extern float radiansToDegrees(float radians);
     {
         screen1.hidden = YES;
         dropTarget.hidden = YES;        
-        instructions.hidden = (parkingSpot != nil);
+        //instructions.hidden = (parkingSpot != nil);
     }
 
     [self.view bringSubviewToFront:screen1];
@@ -253,6 +278,8 @@ extern float radiansToDegrees(float radians);
     didUpdateToLocation:(CLLocation*)newLocation
            fromLocation:(CLLocation*)oldLocation 
 {
+    [manager stopUpdatingLocation];
+    
     if (!parkingSpot && dropTarget.alpha < 0.1)
     {
         [self performSelector:@selector(showDropTarget) withObject:nil afterDelay:2.0];
@@ -281,11 +308,17 @@ extern float radiansToDegrees(float radians);
 
 - (void) setParkingSpotLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
 {
-    self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:latitude longitude:longitude canReceiveFocus:YES];
+    if (parkingSpot)
+    {
+    	[sm3dar removePointOfInterest:parkingSpot];    
+    }
     
-    UILabel *parkingSpotLabel = ((RoundedLabelMarkerView*)parkingSpot.view).label;
-    parkingSpotLabel.backgroundColor = [UIColor darkGrayColor];
-    parkingSpotLabel.textColor = [UIColor yellowColor];
+    self.parkingSpot = [ParkingSpotPOI parkingSpotPOIWithLatitude:latitude longitude:longitude];
+    
+//    self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:latitude longitude:longitude canReceiveFocus:YES];    
+//    UILabel *parkingSpotLabel = ((RoundedLabelMarkerView*)parkingSpot.view).label;
+//    parkingSpotLabel.backgroundColor = [UIColor darkGrayColor];
+//    parkingSpotLabel.textColor = [UIColor yellowColor];
     
     [sm3dar.map addAnnotation:parkingSpot];        
     
@@ -297,9 +330,6 @@ extern float radiansToDegrees(float radians);
 
 - (void) saveSpot
 {
-    // 
-    
-    ////
     PointOfInterest *poi = nil;
 
     if (parkingSpot)
@@ -396,7 +426,7 @@ extern float radiansToDegrees(float radians);
 {
     if (!parkingSpot)
     {
-        arrow.view.hidden = YES;
+        //        arrow.view.hidden = YES;
         pointer.hidden = YES;
         return;
     }
@@ -460,6 +490,16 @@ extern float radiansToDegrees(float radians);
     return [point autorelease];
 }
 
+- (ArrowFixture*) addArrowFixture:(ArrowView*)arrowView
+{
+    // create point
+    ArrowFixture *a = [[ArrowFixture alloc] initWithView:arrowView];
+    
+    // add point to 3DAR scene
+    [[SM3DAR_Controller sharedController] addPointOfInterest:a];
+    return [a autorelease];
+}
+
 - (void) addBackground
 {
     SphereView *sphereView = [[SphereView alloc] initWithTextureNamed:@"sky2.png"];
@@ -478,32 +518,55 @@ extern float radiansToDegrees(float radians);
 {
     // Create the arrow view
     ArrowView *arrowView = [[[ArrowView alloc] initWithTextureNamed:@""] autorelease];
+    //SphereView *arrowView = [[[SphereView alloc] initWithTextureNamed:@""] autorelease];
     arrowView.color = [UIColor yellowColor];
 
     // Create a fixture for the arrow
     self.arrow = [[[ArrowFixture alloc] initWithView:arrowView] autorelease];    
     [[SM3DAR_Controller sharedController] addPointOfInterest:arrow];
     
-    [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:ARROW_MOVEMENT_TIMER_INTERVAL target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
+
+    Coord3D wp = sm3dar.currentPosition;
+    wp.x -= ARROW_ORBIT_DISTANCE;
+    self.arrow.worldPoint = wp;
 }
 
 - (void) moveArrow
 {    
-    Coord3D c = [sm3dar ray:CGPointMake(160, 240)];
-    CGFloat distance = 250.0;
+    Coord3D c = [sm3dar ray:CGPointMake(160, 205)];  // 20 + 49
+    CGFloat distance = ARROW_ORBIT_DISTANCE;
     c.x *= distance;
     c.y *= distance;
     c.z *= distance;// * 0.95;
-    self.arrow.worldPoint = c;
+    //NSLog(@"ray (%.0f, %.0f, %.0f)", c.x, c.y, c.z);
+
+    Coord3D wp = sm3dar.currentPosition;
+    wp.x += c.x;
+    wp.y += c.y;
+    wp.z += c.z;
+    self.arrow.worldPoint = wp;
+    //NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n\n", wp.x, wp.y, wp.z);
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    Coord3D wp = sm3dar.currentPosition;
+    self.arrow.worldPoint = wp;
+    NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n", wp.x, wp.y, wp.z);
 }
 
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    ((ArrowView*)arrow.view).scalar += 1;
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    Coord3D wp = {
+        0, 0, 0
+    };
+    self.arrow.worldPoint = wp;
+    NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n", wp.x, wp.y, wp.z);
 }
 
 @end

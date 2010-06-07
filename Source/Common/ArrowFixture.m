@@ -13,7 +13,7 @@
 @synthesize rotationDegrees;
 @synthesize heading;
 
-- (id) initWithView:(ArrowView*)arrowView 
+- (id) initWithView:(TexturedGeometryView*)arrowView 
 {
     if (self = [super init])
     {
@@ -25,7 +25,7 @@
 
 - (void) pointAt:(CGFloat)degrees
 {
-	self.heading = degrees;    
+	self.heading = degrees;
     NSLog(@"heading: %.1f", heading);
 }
 

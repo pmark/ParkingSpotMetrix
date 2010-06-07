@@ -11,8 +11,12 @@
 
 @interface RoundedLabelMarkerView : SM3DAR_MarkerView {
 	UILabel *label;
+    NSString *title;
+    NSString *subtitle;
 }
 
 @property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *subtitle;
 
 @end

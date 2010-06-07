@@ -11,6 +11,9 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		4D08ADD611BD9F7800643BF5 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D08ADD511BD9F7800643BF5 /* README.txt */; };
+		4D08ADF211BDA13000643BF5 /* OscillatingFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08ADF111BDA13000643BF5 /* OscillatingFixture.m */; };
+		4D08ADF711BDA23400643BF5 /* ParkingSpotPOI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08ADF611BDA23400643BF5 /* ParkingSpotPOI.m */; };
 		4D169BDD1194CADF00F499D7 /* 3dar.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D169B441194CADF00F499D7 /* 3dar.plist */; };
 		4D169C111194CADF00F499D7 /* 3dar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD21194CADF00F499D7 /* 3dar_logo.png */; };
 		4D169C121194CADF00F499D7 /* 3dar_marker_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */; };
@@ -77,6 +80,11 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Parkar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parkar_Prefix.pch; sourceTree = "<group>"; };
+		4D08ADD511BD9F7800643BF5 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		4D08ADF011BDA13000643BF5 /* OscillatingFixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscillatingFixture.h; sourceTree = "<group>"; };
+		4D08ADF111BDA13000643BF5 /* OscillatingFixture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OscillatingFixture.m; sourceTree = "<group>"; };
+		4D08ADF511BDA23400643BF5 /* ParkingSpotPOI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpotPOI.h; sourceTree = "<group>"; };
+		4D08ADF611BDA23400643BF5 /* ParkingSpotPOI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotPOI.m; sourceTree = "<group>"; };
 		4D169B441194CADF00F499D7 /* 3dar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3dar.plist; sourceTree = "<group>"; };
 		4D169BD21194CADF00F499D7 /* 3dar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_logo.png; sourceTree = "<group>"; };
 		4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon1.png; sourceTree = "<group>"; };
@@ -218,6 +226,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				4D08ADD511BD9F7800643BF5 /* README.txt */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -412,8 +421,12 @@
 				4DDBE3871198B00700565D41 /* GroundPlaneView.m */,
 				4DFADE651195D54C00C23B45 /* Model.h */,
 				4DFADE661195D54C00C23B45 /* Model.m */,
+				4D08ADF011BDA13000643BF5 /* OscillatingFixture.h */,
+				4D08ADF111BDA13000643BF5 /* OscillatingFixture.m */,
 				4D21464D11ABA45B00FD6222 /* ParkingSpot.h */,
 				4D21464E11ABA45B00FD6222 /* ParkingSpot.m */,
+				4D08ADF511BDA23400643BF5 /* ParkingSpotPOI.h */,
+				4D08ADF611BDA23400643BF5 /* ParkingSpotPOI.m */,
 				4DDBE2B51197DE6500565D41 /* PointOfInterest.h */,
 				4DDBE2B61197DE6500565D41 /* PointOfInterest.m */,
 				4DFADE7611970D4200C23B45 /* PointerView.h */,
@@ -504,6 +517,7 @@
 				4D21461911AB6B5C00FD6222 /* InfoController.xib in Resources */,
 				4D2146E911AC217800FD6222 /* WharCarViewController.xib in Resources */,
 				4D2146EA11AC217800FD6222 /* MainWindow.xib in Resources */,
+				4D08ADD611BD9F7800643BF5 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +549,8 @@
 				4D21464F11ABA45B00FD6222 /* ParkingSpot.m in Sources */,
 				4D2146E811AC217800FD6222 /* ParkarViewController.m in Sources */,
 				4D2146EB11AC217800FD6222 /* ParkarAppDelegate.m in Sources */,
+				4D08ADF211BDA13000643BF5 /* OscillatingFixture.m in Sources */,
+				4D08ADF711BDA23400643BF5 /* ParkingSpotPOI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

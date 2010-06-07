@@ -14,10 +14,14 @@
 @implementation RoundedLabelMarkerView
 
 @synthesize label;
+@synthesize title;
+@synthesize subtitle;
 
 - (void) dealloc
 {
     RELEASE(label);
+    RELEASE(title);
+    RELEASE(subtitle);
     [super dealloc];
 }
 
@@ -33,21 +37,21 @@
 
     CGFloat h;
 
-    if ([self.poi.subtitle isEqualToString:@"distance"])
+    if ([self.subtitle isEqualToString:@"distance"])
     {
         h = (4*fontSize);
-        label.text = [NSString stringWithFormat:@"%@\n%@ mi", self.poi.title, distance];
+        label.text = [NSString stringWithFormat:@"%@\n%@ mi", self.title, distance];
         label.numberOfLines = 2;
     }
     else
     {
         h = (2*fontSize);
-        label.text = self.poi.title;
+        label.text = self.title;
         label.numberOfLines = 1;
     }
     
     CGFloat padding = (3*fontSize);
-    CGFloat w = ([self.poi.title length] * fontSize) + padding;
+    CGFloat w = ([self.title length] * fontSize) + padding;
 	label.frame = self.frame = CGRectMake(0, 0, w, h);
     
 	[self addSubview:label];
@@ -68,6 +72,26 @@
 #pragma mark -
 
 - (void) drawInGLContext {  
+}
+
+- (NSString*) title {
+    if ([title length] == 0) {
+        if (self.poi)
+            return self.poi.title;
+    } else {
+        return title;
+    }
+    return nil;
+}
+
+- (NSString*) subtitle {
+    if ([subtitle length] == 0) {
+        if (self.poi)
+            return self.poi.subtitle;
+    } else {
+        return subtitle;
+    }
+    return nil;
 }
 
 @end

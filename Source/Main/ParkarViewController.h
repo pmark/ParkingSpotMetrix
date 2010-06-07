@@ -43,6 +43,8 @@
 - (void) setDropTargetHidden:(BOOL)hide;
 - (void) bringActiveScreenToFront;
 - (SM3DAR_Fixture*) addFixtureWithView:(SM3DAR_PointView*)pointView;
+- (ArrowFixture*) addArrowFixture:(ArrowView*)arrowView;
+- (SM3DAR_Fixture*) addLabelFixture:(NSString*)title subtitle:(NSString*)subtitle coord:(Coord3D)coord;
 - (SM3DAR_PointOfInterest*) addPOI:(NSString*)title subtitle:(NSString*)subtitle latitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon  canReceiveFocus:(BOOL)canReceiveFocus;
 - (void) restoreSpot;
 - (void) updatePointer;
@@ -50,6 +52,7 @@
 - (void) addBackground;
 - (void) addGroundPlane;
 - (void) addArrow;
+- (void) moveArrow;
 
 @end
 
