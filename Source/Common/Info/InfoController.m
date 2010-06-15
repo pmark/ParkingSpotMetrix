@@ -36,7 +36,7 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    [self loadUpgradePage];
+    [self loadAboutPage];
     
     [segmentedControl addTarget:self
                          action:@selector(pageDidChange)
@@ -53,16 +53,21 @@
     [webView loadHTMLString:@"<h2>Upgrade</h2>" baseURL:nil];
 }
 
+- (void) loadHelpPage
+{
+    [webView loadHTMLString:@"<h2>Help</h2>" baseURL:nil];
+}
+
 - (void) pageDidChange
 {
     switch (segmentedControl.selectedSegmentIndex) {
         case 0:
-            // Upgrade
-            [self loadUpgradePage];
-            break;
-        case 1:
             // About
             [self loadAboutPage];
+            break;
+        case 1:
+            // Help
+            [self loadHelpPage];
             break;
         default:
             break;

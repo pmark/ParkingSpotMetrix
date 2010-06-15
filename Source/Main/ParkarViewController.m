@@ -175,14 +175,6 @@ extern float radiansToDegrees(float radians);
     [screen1 addSubview:bg];
     [bg release];
 
-    // button
-//    self.parkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    [parkButton setTitle:BTN_TITLE_SET_SPOT forState:UIControlStateNormal];
-//    [parkButton addTarget:self action:@selector(toggleParkingSpot) forControlEvents:UIControlEventTouchUpInside];
-//    [parkButton sizeToFit];
-//    [screen1 addSubview:parkButton];
-//    parkButton.center = CGPointMake(160, 30);
-
     // dropTarget
     UIImage *img = [UIImage imageNamed:@"3dar_marker_icon1.png"];
     UIImageView *iv = [[UIImageView alloc] initWithImage:img];
