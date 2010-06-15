@@ -29,6 +29,14 @@
 		4D11877E11C7F20000B2C124 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D11877C11C7F20000B2C124 /* compass.png */; };
 		4D11878011C7F23E00B2C124 /* lightbulb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D11877F11C7F23E00B2C124 /* lightbulb.png */; };
 		4D11878211C7F26100B2C124 /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D11878111C7F26100B2C124 /* target.png */; };
+		4D11886411C8257C00B2C124 /* CREDITS in Resources */ = {isa = PBXBuildFile; fileRef = 4D11885611C8257C00B2C124 /* CREDITS */; };
+		4D11886511C8257C00B2C124 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D11885911C8257C00B2C124 /* NSObject+SBJSON.m */; };
+		4D11886611C8257C00B2C124 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D11885B11C8257C00B2C124 /* NSString+SBJSON.m */; };
+		4D11886711C8257C00B2C124 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D11885D11C8257C00B2C124 /* SBJSON.m */; };
+		4D11886811C8257C00B2C124 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D11885F11C8257C00B2C124 /* SBJsonBase.m */; };
+		4D11886911C8257C00B2C124 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D11886111C8257C00B2C124 /* SBJsonParser.m */; };
+		4D11886A11C8257C00B2C124 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D11886311C8257C00B2C124 /* SBJsonWriter.m */; };
+		4D11898A11C8400400B2C124 /* SphereBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D11898911C8400400B2C124 /* SphereBackgroundView.m */; };
 		4D169BDD1194CADF00F499D7 /* 3dar.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D169B441194CADF00F499D7 /* 3dar.plist */; };
 		4D169C111194CADF00F499D7 /* 3dar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD21194CADF00F499D7 /* 3dar_logo.png */; };
 		4D169C121194CADF00F499D7 /* 3dar_marker_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */; };
@@ -112,6 +120,22 @@
 		4D11877C11C7F20000B2C124 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
 		4D11877F11C7F23E00B2C124 /* lightbulb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightbulb.png; sourceTree = "<group>"; };
 		4D11878111C7F26100B2C124 /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = target.png; sourceTree = "<group>"; };
+		4D11885611C8257C00B2C124 /* CREDITS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CREDITS; sourceTree = "<group>"; };
+		4D11885711C8257C00B2C124 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		4D11885811C8257C00B2C124 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		4D11885911C8257C00B2C124 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		4D11885A11C8257C00B2C124 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		4D11885B11C8257C00B2C124 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		4D11885C11C8257C00B2C124 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		4D11885D11C8257C00B2C124 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		4D11885E11C8257C00B2C124 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		4D11885F11C8257C00B2C124 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		4D11886011C8257C00B2C124 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		4D11886111C8257C00B2C124 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		4D11886211C8257C00B2C124 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		4D11886311C8257C00B2C124 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		4D11898811C8400400B2C124 /* SphereBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereBackgroundView.h; sourceTree = "<group>"; };
+		4D11898911C8400400B2C124 /* SphereBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SphereBackgroundView.m; sourceTree = "<group>"; };
 		4D169B441194CADF00F499D7 /* 3dar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 3dar.plist; sourceTree = "<group>"; };
 		4D169BD21194CADF00F499D7 /* 3dar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_logo.png; sourceTree = "<group>"; };
 		4D169BD31194CADF00F499D7 /* 3dar_marker_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3dar_marker_icon1.png; sourceTree = "<group>"; };
@@ -237,6 +261,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4D11885411C8257500B2C124 /* Libraries */,
 				4D11876411C7F1D300B2C124 /* Assets */,
 				4D169B431194CADF00F499D7 /* 3DAR */,
 				4D169A541194CA5700F499D7 /* Source */,
@@ -303,6 +328,35 @@
 				4D11876F11C7F1F300B2C124 /* sphere.obj */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		4D11885411C8257500B2C124 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				4D11885511C8257C00B2C124 /* JSON */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		4D11885511C8257C00B2C124 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				4D11885611C8257C00B2C124 /* CREDITS */,
+				4D11885711C8257C00B2C124 /* JSON.h */,
+				4D11885811C8257C00B2C124 /* NSObject+SBJSON.h */,
+				4D11885911C8257C00B2C124 /* NSObject+SBJSON.m */,
+				4D11885A11C8257C00B2C124 /* NSString+SBJSON.h */,
+				4D11885B11C8257C00B2C124 /* NSString+SBJSON.m */,
+				4D11885C11C8257C00B2C124 /* SBJSON.h */,
+				4D11885D11C8257C00B2C124 /* SBJSON.m */,
+				4D11885E11C8257C00B2C124 /* SBJsonBase.h */,
+				4D11885F11C8257C00B2C124 /* SBJsonBase.m */,
+				4D11886011C8257C00B2C124 /* SBJsonParser.h */,
+				4D11886111C8257C00B2C124 /* SBJsonParser.m */,
+				4D11886211C8257C00B2C124 /* SBJsonWriter.h */,
+				4D11886311C8257C00B2C124 /* SBJsonWriter.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		4D169A541194CA5700F499D7 /* Source */ = {
@@ -464,6 +518,8 @@
 				4DFADE671195D54C00C23B45 /* Protocols.h */,
 				4DFADE601195D53700C23B45 /* RoundedLabelMarkerView.m */,
 				4DFADE611195D53700C23B45 /* RoundedLabelMarkerView.h */,
+				4D11898811C8400400B2C124 /* SphereBackgroundView.h */,
+				4D11898911C8400400B2C124 /* SphereBackgroundView.m */,
 				4DDBE3881198B00700565D41 /* SphereView.h */,
 				4DDBE3891198B00700565D41 /* SphereView.m */,
 				4DFADE681195D54C00C23B45 /* SynthesizeSingleton.h */,
@@ -560,6 +616,7 @@
 				4D11877E11C7F20000B2C124 /* compass.png in Resources */,
 				4D11878011C7F23E00B2C124 /* lightbulb.png in Resources */,
 				4D11878211C7F26100B2C124 /* target.png in Resources */,
+				4D11886411C8257C00B2C124 /* CREDITS in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +650,13 @@
 				4D2146EB11AC217800FD6222 /* ParkarAppDelegate.m in Sources */,
 				4D08ADF211BDA13000643BF5 /* OscillatingFixture.m in Sources */,
 				4D08ADF711BDA23400643BF5 /* ParkingSpotPOI.m in Sources */,
+				4D11886511C8257C00B2C124 /* NSObject+SBJSON.m in Sources */,
+				4D11886611C8257C00B2C124 /* NSString+SBJSON.m in Sources */,
+				4D11886711C8257C00B2C124 /* SBJSON.m in Sources */,
+				4D11886811C8257C00B2C124 /* SBJsonBase.m in Sources */,
+				4D11886911C8257C00B2C124 /* SBJsonParser.m in Sources */,
+				4D11886A11C8257C00B2C124 /* SBJsonWriter.m in Sources */,
+				4D11898A11C8400400B2C124 /* SphereBackgroundView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,3 +27,4 @@
 }
 
 #define APP_DELEGATE ((ParkarAppDelegate*)[[UIApplication sharedApplication] delegate])
+#define REV_GEOCODE_URL_FORMAT @"http://maps.google.com/maps/api/geocode/json?latlng=%f,%f&sensor=true"

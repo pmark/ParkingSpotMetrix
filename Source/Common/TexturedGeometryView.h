@@ -16,6 +16,7 @@
   NSString *textureName;
   NSURL *textureURL;
   AsyncArtworkFetcher *artworkFetcher;
+    CGFloat sizeScalar;
 }
 
 @property (nonatomic) double zrot;
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) NSString *textureName;
 @property (nonatomic, retain) NSURL *textureURL;
 @property (nonatomic, retain) AsyncArtworkFetcher *artworkFetcher;
+@property (nonatomic, assign) CGFloat sizeScalar;
 
 - (id) initWithTextureNamed:(NSString*)name;
 - (id) initWithTextureURL:(NSURL*)url;

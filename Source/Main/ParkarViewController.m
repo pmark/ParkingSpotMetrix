@@ -10,13 +10,14 @@
 #import "Constants.h"
 #import "RoundedLabelMarkerView.h"
 #import "PointOfInterest.h"
-#import "SphereView.h"
+#import "SphereBackgroundView.h"
 #import "GroundPlaneView.h"
 #import "ArrowView.h"
 #import "ParkarAppDelegate.h"
 #import "NSUserDefaults_Database.h"
 #import "ParkingSpot.h"
 #import "ParkingSpotPOI.h"
+#import "NSString+SBJSON.h"
 
 extern float degreesToRadians(float degrees);
 extern float radiansToDegrees(float radians);
@@ -36,10 +37,10 @@ extern float radiansToDegrees(float radians);
 #define INSTRUCTIONS_PADDING_Y 85
 
 #define NEAR_CLIP_METERS 5
-#define FAR_CLIP_METERS 161000
+#define FAR_CLIP_METERS 200000
 
 #define ARROW_ORBIT_DISTANCE 250.0
-#define ARROW_MOVEMENT_TIMER_INTERVAL 0.013
+#define ARROW_MOVEMENT_TIMER_INTERVAL 0.01
 
 @implementation ParkarViewController
 
@@ -53,6 +54,7 @@ extern float radiansToDegrees(float radians);
 @synthesize compass;
 @synthesize instructions;
 @synthesize arrow;
+@synthesize address;
 
 - (void)dealloc 
 {
@@ -66,6 +68,7 @@ extern float radiansToDegrees(float radians);
     RELEASE(compass);
     RELEASE(instructions);
     RELEASE(hudTimer);
+    RELEASE(address);
     [super dealloc];
 }
 
@@ -93,18 +96,15 @@ extern float radiansToDegrees(float radians);
     return fixture;
 }
 
-- (SM3DAR_PointOfInterest*) addPOI:(NSString*)title subtitle:(NSString*)subtitle latitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon  canReceiveFocus:(BOOL)canReceiveFocus 
+- (SM3DAR_PointOfInterest*) addPOI:(NSString*)title subtitle:(NSString*)subtitle latitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon canReceiveFocus:(BOOL)canReceiveFocus 
 {
-    NSDictionary *poiProperties = [NSDictionary dictionaryWithObjectsAndKeys: 
-                                   title, @"title",
-                                   subtitle, @"subtitle",
-                                   @"RoundedLabelMarkerView", @"view_class_name",
-                                   [NSNumber numberWithDouble:lat], @"latitude",
-                                   [NSNumber numberWithDouble:lon], @"longitude",
-                                   0, @"altitude",
-                                   nil];
-    
-    SM3DAR_PointOfInterest *poi = [[sm3dar initPointOfInterest:poiProperties] autorelease];    
+    SM3DAR_PointOfInterest *poi = [[sm3dar initPointOfInterest:lat 
+                                                     longitude:lon 
+                                                      altitude:0 
+                                                         title:title 
+                                                      subtitle:subtitle 
+                                               markerViewClass:[RoundedLabelMarkerView class] 
+                                                    properties:nil] autorelease];    
     poi.canReceiveFocus = canReceiveFocus;
     [sm3dar addPointOfInterest:poi];
     return poi;
@@ -329,28 +329,50 @@ extern float radiansToDegrees(float radians);
     [UIView commitAnimations];
 }
 
+- (void) reverseGeocode
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSLog(@"reverse geocoding...");
+    NSString *reverseGeocoder = [NSString stringWithFormat:
+                                 @"http://maps.google.com/maps/api/geocode/json?latlng=%f,%f&sensor=true",
+                                 self.parkingSpot.coordinate.latitude, 
+                                 self.parkingSpot.coordinate.longitude];
+	NSString *response = [NSString stringWithContentsOfURL:[NSURL URLWithString:reverseGeocoder] 
+                                                  encoding:NSUTF8StringEncoding error:nil];    
+    id data = [response JSONValue];
+    if (!data) return;
+    if ([data isKindOfClass:[NSArray class]]) data = [data objectAtIndex:0];
+    if (![data isKindOfClass:[NSDictionary class]]) return;
+    data = [data objectForKey:@"results"]; if (!data) return;
+    if ([data isKindOfClass:[NSArray class]]) data = [data objectAtIndex:0];
+    if (![data isKindOfClass:[NSDictionary class]]) return;
+    data = [data objectForKey:@"formatted_address"]; if (!data) return;
+    self.address = (NSString*)data;
+    NSLog(@"address: %@", address);
+    [pool release];
+}
+
 - (void) setParkingSpotLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
 {
     if (parkingSpot)
-    {
     	[sm3dar removePointOfInterest:parkingSpot];    
-    }
     
     self.parkingSpot = [ParkingSpotPOI parkingSpotPOIWithLatitude:latitude longitude:longitude];
     
-    NSLog(@"new spot at %.2f, %.2f: %@", latitude, longitude, parkingSpot);
+//    NSLog(@"new spot at %.2f, %.2f: %@", latitude, longitude, parkingSpot);
 
 //    self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:latitude longitude:longitude canReceiveFocus:YES];    
-//    UILabel *parkingSpotLabel = ((RoundedLabelMarkerView*)parkingSpot.view).label;
-//    parkingSpotLabel.backgroundColor = [UIColor darkGrayColor];
-//    parkingSpotLabel.textColor = [UIColor yellowColor];
     
+    [sm3dar addPointOfInterest:parkingSpot];
     [sm3dar.map addAnnotation:parkingSpot];        
     
     parkButton.title = BTN_TITLE_RESET_SPOT;
+    parkButton.style = UIBarButtonItemStyleDone;
     [self setDropTargetHidden:YES];
     
     [self performSelector:@selector(zoomMapIn) withObject:nil afterDelay:0.66];
+    
+    [self performSelectorInBackground:@selector(reverseGeocode) withObject:nil];
 }
 
 - (BOOL) parkingSpotIsValid
@@ -413,8 +435,6 @@ extern float radiansToDegrees(float radians);
         CLLocationDegrees lon = currentLoc.longitude;
         
         [self setParkingSpotLatitude:lat longitude:lon];
-        
-        parkButton.style = UIBarButtonItemStyleDone;
     }
 
 	[self updatePointer];
@@ -540,7 +560,7 @@ extern float radiansToDegrees(float radians);
 
 - (void) addBackground
 {
-    SphereView *sphereView = [[SphereView alloc] initWithTextureNamed:@"sky2.png"];
+    SphereBackgroundView *sphereView = [[SphereBackgroundView alloc] initWithTextureNamed:@"sky2.png"];
     [self addFixtureWithView:sphereView];
     [sphereView release];
 }
@@ -556,7 +576,6 @@ extern float radiansToDegrees(float radians);
 {
     // Create the arrow view
     ArrowView *arrowView = [[[ArrowView alloc] initWithTextureNamed:@""] autorelease];
-    //SphereView *arrowView = [[[SphereView alloc] initWithTextureNamed:@""] autorelease];
     arrowView.color = [UIColor yellowColor];
 
     // Create a fixture for the arrow
@@ -566,7 +585,7 @@ extern float radiansToDegrees(float radians);
     [NSTimer scheduledTimerWithTimeInterval:ARROW_MOVEMENT_TIMER_INTERVAL target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
 
     Coord3D wp = sm3dar.currentPosition;
-    wp.x -= ARROW_ORBIT_DISTANCE;
+    wp.y -= ARROW_ORBIT_DISTANCE;
     self.arrow.worldPoint = wp;
 }
 
@@ -610,6 +629,20 @@ extern float radiansToDegrees(float radians);
 - (IBAction) zoom
 {
 	[self zoomMapIn];    
+
+    Coord3D wp = [SM3DAR_Controller worldCoordinateFor:sm3dar.currentLocation];
+    NSLog(@"current user location: (%.0f, %.0f, %.0f)\n", 
+          wp.x, wp.y, wp.z);
+    wp = arrow.worldPoint;
+    NSLog(@"arrow location: (%.0f, %.0f, %.0f)\n\n", 
+          wp.x, wp.y, wp.z);
+    
+//    wp.x += 100;
+//    arrow.worldPoint = wp;
+//    NSLog(@"Setting arrow worldPoint to current location: (%.0f, %.0f, %.0f)\n", 
+//          wp.x, wp.y, wp.z);
+    
+    
 }
 
 @end

@@ -8,9 +8,6 @@
 
 @interface ArrowView : TexturedGeometryView 
 {
-    CGFloat scalar;
 }
-
-@property (nonatomic, assign) CGFloat scalar;
 
 @end

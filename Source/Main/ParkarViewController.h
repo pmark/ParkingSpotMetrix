@@ -25,6 +25,7 @@
     SM3DAR_Controller *sm3dar;
     IBOutlet UIView *sm3darView;
     IBOutlet UIToolbar *toolbar;
+    NSString *address;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *screen1;
@@ -37,6 +38,7 @@
 @property (nonatomic, retain) PointerView *compass;
 @property (nonatomic, retain) PointerView *instructions;
 @property (nonatomic, retain) ArrowFixture *arrow;
+@property (nonatomic, retain) NSString *address;
 
 - (CGPoint) centerPoint;
 - (IBAction) toggleParkingSpot;

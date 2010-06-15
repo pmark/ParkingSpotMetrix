@@ -9,7 +9,14 @@
 
 @implementation TexturedGeometryView
 
-@synthesize zrot, color, geometry, texture, textureName, textureURL, artworkFetcher;
+@synthesize zrot, color, geometry, texture, textureName, textureURL, artworkFetcher, sizeScalar;
+
+- (id) initWithPointOfInterest:(SM3DAR_PointOfInterest*)poi {
+    if (self = [self initWithTextureNamed:nil]) {    
+        self.point = poi;
+    }
+    return self;
+}
 
 - (id) initWithTextureNamed:(NSString*)name {
   self.textureName = name;
