@@ -16,17 +16,18 @@ extern float radiansToDegrees(float radians);
 
 + (id) parkingSpotPOIWithLatitude:(CLLocationDegrees)lat longitude:(CLLocationDegrees)lon
 {
-    NSDictionary *poiProperties = [NSDictionary dictionaryWithObjectsAndKeys: 
-                                   nil, @"title",
-                                   nil, @"subtitle",
-                                   @"SphereView", @"view_class_name",
-                                   [NSNumber numberWithDouble:lat], @"latitude",
-                                   [NSNumber numberWithDouble:lon], @"longitude",
-                                   0, @"altitude",
-                                   nil];
+//    NSDictionary *poiProperties = [NSDictionary dictionaryWithObjectsAndKeys: 
+//                                   nil, @"title",
+//                                   nil, @"subtitle",
+//                                   @"SphereView", @"view_class_name",
+//                                   [NSNumber numberWithDouble:lat], @"latitude",
+//                                   [NSNumber numberWithDouble:lon], @"longitude",
+//                                   0, @"altitude",
+//                                   nil];
     
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
-    ParkingSpotPOI *poi = [[sm3dar initPointOfInterest:poiProperties] autorelease];
+    //ParkingSpotPOI *poi = [[sm3dar initPointOfInterest:poiProperties] autorelease];
+    ParkingSpotPOI *poi = [[sm3dar initPointOfInterest:lat longitude:lon altitude:0 title:@"" subtitle:@"" markerViewClass:[SphereView class] properties:nil] autorelease];
     poi.canReceiveFocus = NO;
     return poi;
 }

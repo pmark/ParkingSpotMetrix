@@ -25,6 +25,7 @@
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {    
     [application setStatusBarHidden:NO];
+    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 	

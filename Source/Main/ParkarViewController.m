@@ -21,16 +21,16 @@
 extern float degreesToRadians(float degrees);
 extern float radiansToDegrees(float radians);
 
-#define BTN_TITLE_SET_SPOT @"Drop Pin"
-#define BTN_TITLE_RESET_SPOT @"Reset"
+#define BTN_TITLE_SET_SPOT @"Park Here"
+#define BTN_TITLE_RESET_SPOT @"Reset Parking Spot"
 
-#define POINTER_UPDATE_SEC 0.75
-#define HEADING_DELTA_THRESHOLD 5
+#define POINTER_UPDATE_SEC 0.5
+#define HEADING_DELTA_THRESHOLD 2
 
 #define COMPASS_PADDING_X_SHRUNK 10
-#define COMPASS_PADDING_Y_SHRUNK 10
+#define COMPASS_PADDING_Y_SHRUNK 290
 #define COMPASS_PADDING_X_ENLARGED 10
-#define COMPASS_PADDING_Y_ENLARGED 85
+#define COMPASS_PADDING_Y_ENLARGED 63
 
 #define INSTRUCTIONS_PADDING_X 0
 #define INSTRUCTIONS_PADDING_Y 85
@@ -120,8 +120,8 @@ extern float radiansToDegrees(float radians);
     {
         MKCoordinateRegion region = {{0.0f, 0.0f}, {0.0f, 0.0f}};
         region.center = sm3dar.currentLocation.coordinate;
-        region.span.longitudeDelta = 0.0001f;
-        region.span.latitudeDelta = 0.0001f;
+        region.span.longitudeDelta = 0.002f;
+        region.span.latitudeDelta = 0.002f;
         [sm3dar.map setRegion:region animated:YES];
     }
 }
@@ -150,7 +150,7 @@ extern float radiansToDegrees(float radians);
     //    [self addBackground];
     //	[self addGroundPlane];
 	[self addArrow];
-    [self addDirectionBillboards];        
+    //[self addDirectionBillboards];        
     [self restoreSpot];
 	[self updatePointer];
 
@@ -176,12 +176,12 @@ extern float radiansToDegrees(float radians);
     [bg release];
 
     // button
-    self.parkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [parkButton setTitle:BTN_TITLE_SET_SPOT forState:UIControlStateNormal];
-    [parkButton addTarget:self action:@selector(toggleParkingSpot) forControlEvents:UIControlEventTouchUpInside];
-    [parkButton sizeToFit];
-    [screen1 addSubview:parkButton];
-    parkButton.center = CGPointMake(160, 30);
+//    self.parkButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [parkButton setTitle:BTN_TITLE_SET_SPOT forState:UIControlStateNormal];
+//    [parkButton addTarget:self action:@selector(toggleParkingSpot) forControlEvents:UIControlEventTouchUpInside];
+//    [parkButton sizeToFit];
+//    [screen1 addSubview:parkButton];
+//    parkButton.center = CGPointMake(160, 30);
 
     // dropTarget
     UIImage *img = [UIImage imageNamed:@"3dar_marker_icon1.png"];
@@ -222,11 +222,8 @@ extern float radiansToDegrees(float radians);
     hudTimer = [NSTimer scheduledTimerWithTimeInterval:POINTER_UPDATE_SEC target:self selector:@selector(updateHUD) userInfo:nil repeats:YES];
 }
 
-- (void) viewDidLoad 
+- (void) init3dar
 {
-    NSLog(@"\n\nWCVC: viewDidLoad\n\n");
-    [super viewDidLoad];
-    
     sm3dar = [SM3DAR_Controller sharedController];
     sm3dar.delegate = self;
     sm3dar.nearClipMeters = NEAR_CLIP_METERS;
@@ -234,15 +231,43 @@ extern float radiansToDegrees(float radians);
     sm3dar.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     sm3dar.view.backgroundColor = [UIColor blackColor];
 	[self.view addSubview:sm3dar.view];
-    
-    //[self buildScreen1];        
+}
+
+- (void) viewDidLoad 
+{
+    NSLog(@"\n\nPVC: viewDidLoad\n\n");
+    [super viewDidLoad];
+
+    [self init3dar];
+    [self buildScreen1];        
     [self buildHUD];
     [self bringActiveScreenToFront];
+
     [self.view bringSubviewToFront:toolbar];
 }
 
-- (void)didReceiveMemoryWarning 
+- (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    NSLog(@"Resuming 3DAR");
+	[sm3dar resume];        
+
+    CGRect f = toolbar.frame;
+    f.origin.y = 0;
+    toolbar.frame = f;    
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSLog(@"Suspending 3DAR");
+	[sm3dar suspend];
+}
+
+- (void) didReceiveMemoryWarning 
+{
+    NSLog(@"\n\nPVC: didReceiveMemoryWarning\n\n");
+    
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
@@ -251,7 +276,7 @@ extern float radiansToDegrees(float radians);
 
 - (void)viewDidUnload 
 {
-    NSLog(@"\n\nWCVC: viewDidUnload\n\n");
+    NSLog(@"\n\nPVC: viewDidUnload\n\n");
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
@@ -261,14 +286,16 @@ extern float radiansToDegrees(float radians);
     if (sm3dar.mapIsVisible)
     {
         screen1.hidden = NO;
-        dropTarget.hidden = NO;
         instructions.hidden = YES;
+        toolbar.hidden = NO;
+        dropTarget.hidden = NO;
     }
     else 
     {
         screen1.hidden = YES;
-        dropTarget.hidden = YES;        
-        //instructions.hidden = (parkingSpot != nil);
+        toolbar.hidden = YES;
+        instructions.hidden = (parkingSpot != nil);
+        dropTarget.hidden = YES;
     }
 
     [self.view bringSubviewToFront:screen1];
@@ -315,6 +342,8 @@ extern float radiansToDegrees(float radians);
     
     self.parkingSpot = [ParkingSpotPOI parkingSpotPOIWithLatitude:latitude longitude:longitude];
     
+    NSLog(@"new spot at %.2f, %.2f: %@", latitude, longitude, parkingSpot);
+
 //    self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:latitude longitude:longitude canReceiveFocus:YES];    
 //    UILabel *parkingSpotLabel = ((RoundedLabelMarkerView*)parkingSpot.view).label;
 //    parkingSpotLabel.backgroundColor = [UIColor darkGrayColor];
@@ -322,25 +351,28 @@ extern float radiansToDegrees(float radians);
     
     [sm3dar.map addAnnotation:parkingSpot];        
     
-    [parkButton setTitle:BTN_TITLE_RESET_SPOT forState:UIControlStateNormal];
+    parkButton.title = BTN_TITLE_RESET_SPOT;
     [self setDropTargetHidden:YES];
     
     [self performSelector:@selector(zoomMapIn) withObject:nil afterDelay:0.66];
 }
 
+- (BOOL) parkingSpotIsValid
+{
+    return (parkingSpot && parkingSpot.coordinate.latitude != 0.0 && parkingSpot.coordinate.longitude != 0.0);
+}
+
 - (void) saveSpot
 {
+    if (![self parkingSpotIsValid])
+        return;
+
     PointOfInterest *poi = nil;
 
-    if (parkingSpot)
-    {
-        NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSNumber numberWithDouble:parkingSpot.coordinate.latitude], @"latitude",
-                                    [NSNumber numberWithDouble:parkingSpot.coordinate.longitude], @"longitude",
-                                    nil];
-        
-        poi = [[PointOfInterest alloc] initWithDictionary:properties];    
-    }
+    poi = [[PointOfInterest alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [NSNumber numberWithDouble:parkingSpot.coordinate.latitude], @"latitude",
+                                                       [NSNumber numberWithDouble:parkingSpot.coordinate.longitude], @"longitude",
+                                                       nil]];
     
     PREF_SAVE_OBJECT(PREF_KEY_LAST_POI, poi.dictionary);
     [poi release];
@@ -355,18 +387,26 @@ extern float radiansToDegrees(float radians);
     
     CLLocationDegrees latitude = [(NSNumber*)[properties objectForKey:@"latitude"] doubleValue];
     CLLocationDegrees longitude = [(NSNumber*)[properties objectForKey:@"longitude"] doubleValue];
+    
+    if (latitude == 0.0 || longitude == 0.0)
+        return;
+    
     [self setParkingSpotLatitude:latitude longitude:longitude];
 }
 
-- (void) toggleParkingSpot
+- (IBAction) toggleParkingSpot
 {
     if (parkingSpot)
     {
         // remove it
         [sm3dar removePointOfInterest:parkingSpot];
         self.parkingSpot = nil;
+        [parkingSpot release];
+        PREF_SAVE_OBJECT(PREF_KEY_LAST_POI, nil);        
+        
         [self setDropTargetHidden:NO];
-        [parkButton setTitle:BTN_TITLE_SET_SPOT forState:UIControlStateNormal];
+        parkButton.title = BTN_TITLE_SET_SPOT;
+        parkButton.style = UIBarButtonItemStyleBordered;
     }
     else
     {
@@ -377,6 +417,8 @@ extern float radiansToDegrees(float radians);
         CLLocationDegrees lon = currentLoc.longitude;
         
         [self setParkingSpotLatitude:lat longitude:lon];
+        
+        parkButton.style = UIBarButtonItemStyleDone;
     }
 
 	[self updatePointer];
@@ -426,7 +468,7 @@ extern float radiansToDegrees(float radians);
 {
     if (!parkingSpot)
     {
-        //        arrow.view.hidden = YES;
+        arrow.view.hidden = YES;
         pointer.hidden = YES;
         return;
     }
@@ -567,6 +609,11 @@ extern float radiansToDegrees(float radians);
     };
     self.arrow.worldPoint = wp;
     NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n", wp.x, wp.y, wp.z);
+}
+
+- (IBAction) zoom
+{
+	[self zoomMapIn];    
 }
 
 @end

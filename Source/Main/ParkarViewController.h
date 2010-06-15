@@ -14,7 +14,7 @@
 @interface ParkarViewController : UIViewController <SM3DAR_Delegate, CLLocationManagerDelegate, PointerButtonDelegate> {
 	UIView *screen1;
     UIImageView *dropTarget;
-    UIButton *parkButton;
+    IBOutlet UIBarButtonItem *parkButton;
 	SM3DAR_PointOfInterest *parkingSpot;
     ArrowFixture *arrow;
     PointerView *pointer;
@@ -31,7 +31,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *dropTarget;
 @property (nonatomic, retain) IBOutlet UIView *sm3darView;
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
-@property (nonatomic, retain) UIButton *parkButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *parkButton;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *parkingSpot;
 @property (nonatomic, retain) PointerView *pointer;
 @property (nonatomic, retain) PointerView *compass;
@@ -39,7 +39,8 @@
 @property (nonatomic, retain) ArrowFixture *arrow;
 
 - (CGPoint) centerPoint;
-- (void) toggleParkingSpot;
+- (IBAction) toggleParkingSpot;
+- (IBAction) zoom;
 - (void) setDropTargetHidden:(BOOL)hide;
 - (void) bringActiveScreenToFront;
 - (SM3DAR_Fixture*) addFixtureWithView:(SM3DAR_PointView*)pointView;
@@ -53,6 +54,7 @@
 - (void) addGroundPlane;
 - (void) addArrow;
 - (void) moveArrow;
+- (BOOL) parkingSpotIsValid;
 
 @end
 
