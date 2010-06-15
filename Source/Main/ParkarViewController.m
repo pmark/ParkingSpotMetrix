@@ -119,7 +119,7 @@ extern float radiansToDegrees(float radians);
     else
     {
         MKCoordinateRegion region = {{0.0f, 0.0f}, {0.0f, 0.0f}};
-        region.center = sm3dar.currentLocation.coordinate;
+        region.center = sm3dar.map.userLocation.coordinate;
         region.span.longitudeDelta = 0.002f;
         region.span.latitudeDelta = 0.002f;
         [sm3dar.map setRegion:region animated:YES];
@@ -147,8 +147,8 @@ extern float radiansToDegrees(float radians);
 
 - (void) loadPointsOfInterest
 {
-    //    [self addBackground];
-    //	[self addGroundPlane];
+    [self addBackground];
+    [self addGroundPlane];
 	[self addArrow];
     //[self addDirectionBillboards];        
     [self restoreSpot];
@@ -297,9 +297,13 @@ extern float radiansToDegrees(float radians);
     didUpdateToLocation:(CLLocation*)newLocation
            fromLocation:(CLLocation*)oldLocation 
 {
-    [manager stopUpdatingLocation];
+    //[manager stopUpdatingLocation];
     
-    if (!parkingSpot && dropTarget.alpha < 0.1)
+    if (parkingSpot)
+    {
+        [self updatePointer];
+    }
+    else if (dropTarget.alpha < 0.1)
     {
         [self performSelector:@selector(showDropTarget) withObject:nil afterDelay:2.0];
     }
@@ -460,12 +464,12 @@ extern float radiansToDegrees(float radians);
 {
     if (!parkingSpot)
     {
-        arrow.view.hidden = YES;
+        arrow.view.alpha = 0.0;
         pointer.hidden = YES;
         return;
     }
     
-    arrow.view.hidden = NO;
+    arrow.view.alpha = 1.0;
     pointer.hidden = NO;
     
     Coord3D worldPoint = parkingSpot.worldPoint;

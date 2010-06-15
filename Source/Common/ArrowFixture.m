@@ -26,7 +26,7 @@
 - (void) pointAt:(CGFloat)degrees
 {
 	self.heading = degrees;
-    NSLog(@"heading: %.1f", heading);
+    NSLog(@"new arrow heading: %.1f", heading);
 }
 
 - (CGFloat) gearSpeed

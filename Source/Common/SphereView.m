@@ -54,9 +54,9 @@
 
     // draw sphere
 
-    CGFloat scalar = 300.0f;
-    glScalef (-scalar, scalar, scalar);
-    glRotatef (180, 1, 0, 0);
+    CGFloat scalar = 10000.0f;
+    glScalef(-scalar, scalar, scalar);
+    glRotatef(180, 1, 0, 0);
     
     //[self updateTexture];
     
