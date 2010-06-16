@@ -36,10 +36,11 @@ extern float radiansToDegrees(float radians);
 #define INSTRUCTIONS_PADDING_X 0
 #define INSTRUCTIONS_PADDING_Y 85
 
-#define NEAR_CLIP_METERS 5
-#define FAR_CLIP_METERS 200000
+#define NEAR_CLIP_METERS 1
+#define FAR_CLIP_METERS 800000
 
-#define ARROW_ORBIT_DISTANCE 250.0
+#define ARROW_ORBIT_DISTANCE 30.0
+#define ARROW_SIZE_SCALAR 0.09
 #define ARROW_MOVEMENT_TIMER_INTERVAL 0.01
 
 @implementation ParkarViewController
@@ -55,6 +56,8 @@ extern float radiansToDegrees(float radians);
 @synthesize instructions;
 @synthesize arrow;
 @synthesize address;
+@synthesize sphereBackground;
+@synthesize groundplane;
 
 - (void)dealloc 
 {
@@ -69,6 +72,8 @@ extern float radiansToDegrees(float radians);
     RELEASE(instructions);
     RELEASE(hudTimer);
     RELEASE(address);
+    RELEASE(sphereBackground);
+    RELEASE(groundplane);
     [super dealloc];
 }
 
@@ -222,7 +227,10 @@ extern float radiansToDegrees(float radians);
     sm3dar.farClipMeters = FAR_CLIP_METERS;
     sm3dar.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     sm3dar.view.backgroundColor = [UIColor blackColor];
+    sm3dar.wantsFullScreenLayout = NO;
+    
 	[self.view addSubview:sm3dar.view];
+    self.wantsFullScreenLayout = NO;
 }
 
 - (void) viewDidLoad 
@@ -340,10 +348,10 @@ extern float radiansToDegrees(float radians);
 	NSString *response = [NSString stringWithContentsOfURL:[NSURL URLWithString:reverseGeocoder] 
                                                   encoding:NSUTF8StringEncoding error:nil];    
     id data = [response JSONValue];
-    if (!data) return;
+    if (!data || [data count] == 0) return;
     if ([data isKindOfClass:[NSArray class]]) data = [data objectAtIndex:0];
     if (![data isKindOfClass:[NSDictionary class]]) return;
-    data = [data objectForKey:@"results"]; if (!data) return;
+    data = [data objectForKey:@"results"]; if (!data || [data count] == 0) return;
     if ([data isKindOfClass:[NSArray class]]) data = [data objectAtIndex:0];
     if (![data isKindOfClass:[NSDictionary class]]) return;
     data = [data objectForKey:@"formatted_address"]; if (!data) return;
@@ -357,11 +365,8 @@ extern float radiansToDegrees(float radians);
     if (parkingSpot)
     	[sm3dar removePointOfInterest:parkingSpot];    
     
-    self.parkingSpot = [ParkingSpotPOI parkingSpotPOIWithLatitude:latitude longitude:longitude];
-    
+    self.parkingSpot = [ParkingSpotPOI parkingSpotPOIWithLatitude:latitude longitude:longitude];    
 //    NSLog(@"new spot at %.2f, %.2f: %@", latitude, longitude, parkingSpot);
-
-//    self.parkingSpot = [self addPOI:@"P" subtitle:@"distance" latitude:latitude longitude:longitude canReceiveFocus:YES];    
     
     [sm3dar addPointOfInterest:parkingSpot];
     [sm3dar.map addAnnotation:parkingSpot];        
@@ -489,7 +494,47 @@ extern float radiansToDegrees(float radians);
         return;
     }
     
-    arrow.view.alpha = 1.0;
+    CGFloat range = [parkingSpot distanceInMetersFromCurrentLocation];
+    NSLog(@"parking spot is %.1f meters away", range);
+    if (range > ARROW_ORBIT_DISTANCE * 2.0)
+    {
+        arrow.view.alpha = 1.0;
+        sphereBackground.view.alpha = 1.0;
+        //groundplane.view.alpha = 1.0;
+
+        if (sm3dar.camera)
+        {
+        	[sm3dar stopCamera];
+            CGRect f = sm3dar.view.frame;
+            f.size.height = f.size.height - 20;
+            [sm3dar setFrame:f];
+        }
+        
+        if (range > ARROW_ORBIT_DISTANCE * 10.0)
+        {
+            [((ArrowView*)parkingSpot.view) setDistantStyle];
+        }
+        else
+        {
+            [((ArrowView*)parkingSpot.view) setMidrangeStyle];
+        }
+    }
+    else
+    {
+        [((ArrowView*)parkingSpot.view) setNearbyStyle];
+        arrow.view.alpha = 0.0;
+        sphereBackground.view.alpha = 0.0;
+        //groundplane.view.alpha = 0.0;
+        
+        if (!sm3dar.camera)
+        {
+            [sm3dar startCamera];
+            CGRect f = sm3dar.view.frame;
+            f.size.height = f.size.height + 20;
+            [sm3dar setFrame:f];
+        }
+    }
+
     pointer.hidden = NO;
     
     Coord3D worldPoint = parkingSpot.worldPoint;
@@ -561,14 +606,14 @@ extern float radiansToDegrees(float radians);
 - (void) addBackground
 {
     SphereBackgroundView *sphereView = [[SphereBackgroundView alloc] initWithTextureNamed:@"sky2.png"];
-    [self addFixtureWithView:sphereView];
+    self.sphereBackground = [self addFixtureWithView:sphereView];
     [sphereView release];
 }
 
 - (void) addGroundPlane
 {
     GroundPlaneView *gpView = [[GroundPlaneView alloc] initWithTextureNamed:@"ground1_1024.jpg"];
-    [self addFixtureWithView:gpView];
+    self.groundplane = [self addFixtureWithView:gpView];
     [gpView release];
 }
 
@@ -577,6 +622,7 @@ extern float radiansToDegrees(float radians);
     // Create the arrow view
     ArrowView *arrowView = [[[ArrowView alloc] initWithTextureNamed:@""] autorelease];
     arrowView.color = [UIColor yellowColor];
+    arrowView.sizeScalar = ARROW_SIZE_SCALAR;
 
     // Create a fixture for the arrow
     self.arrow = [[[ArrowFixture alloc] initWithView:arrowView] autorelease];    
@@ -598,7 +644,8 @@ extern float radiansToDegrees(float radians);
     c.z *= distance;// * 0.95;
     //NSLog(@"ray (%.0f, %.0f, %.0f)", c.x, c.y, c.z);
 
-    Coord3D wp = sm3dar.currentPosition;
+    Coord3D wp = [SM3DAR_Controller worldCoordinateFor:sm3dar.currentLocation];
+    //Coord3D wp = sm3dar.currentPosition;
     wp.x += c.x;
     wp.y += c.y;
     wp.z += c.z;

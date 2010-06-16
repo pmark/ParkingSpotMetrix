@@ -10,7 +10,7 @@
 @implementation ArrowView
 
 - (void) buildView {
-    self.color = [UIColor whiteColor];
+    self.color = [UIColor purpleColor];
     self.hidden = NO;
     self.zrot = 0.0;
 	self.frame = CGRectZero;
@@ -36,33 +36,51 @@
         [textureImage release];
     }
     
+    if (sizeScalar != 1.0)
+        glScalef(sizeScalar, sizeScalar, sizeScalar);
+    
     if ([self.point isKindOfClass:[ArrowFixture class]])
     {
         ArrowFixture *fixture = (ArrowFixture*)self.point;
 
+        if (fixture.rotationDegreesZ != 0.0)
+    	    glRotatef(fixture.rotationDegreesZ, 0.0, 0.0, 1.0);
         if (fixture.rotationDegreesX != 0.0)
             glRotatef(fixture.rotationDegreesX, 1.0, 0.0, 0.0);
         if (fixture.rotationDegreesY != 0.0)
 	        glRotatef(fixture.rotationDegreesY, 0.0, 1.0, 0.0);
-        if (fixture.rotationDegreesZ != 0.0)
-    	    glRotatef(fixture.rotationDegreesZ, 0.0, 0.0, 1.0);
     }
     else
     {
         // point arrow down
-        glRotatef(-45, 1.0, 0.0, 0.0);
+        glRotatef(-75, 1.0, 0.0, 0.0);
 
         // face the camera
-        glRotatef(90, 0.0, 1.0, 0.0);
+        glRotatef(45, 0.0, 1.0, 0.0);        
     }
-
-    if (sizeScalar != 1.0)
-        glScalef(sizeScalar, sizeScalar, sizeScalar);
 
     if (texture)
         [Geometry displaySphereWithTexture:self.texture];
 	else
         [self.geometry displayShaded:self.color];
+}
+
+- (void) setDistantStyle
+{
+    self.sizeScalar = 6;
+    self.color = [UIColor blackColor];
+}
+
+- (void) setMidrangeStyle
+{
+    self.sizeScalar = 0.4;
+    self.color = [UIColor purpleColor];
+}
+
+- (void) setNearbyStyle
+{
+    self.sizeScalar = 0.07;
+    self.color = [UIColor yellowColor];
 }
 
 @end

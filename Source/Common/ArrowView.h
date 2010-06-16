@@ -10,4 +10,8 @@
 {
 }
 
+- (void) setDistantStyle;
+- (void) setMidrangeStyle;
+- (void) setNearbyStyle;
+
 @end

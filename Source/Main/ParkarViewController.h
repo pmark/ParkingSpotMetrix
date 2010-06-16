@@ -17,6 +17,8 @@
     IBOutlet UIBarButtonItem *parkButton;
 	SM3DAR_PointOfInterest *parkingSpot;
     ArrowFixture *arrow;
+    SM3DAR_Fixture *sphereBackground;
+    SM3DAR_Fixture *groundplane;
     PointerView *pointer;
     PointerView *compass;
     PointerView *instructions;
@@ -39,6 +41,8 @@
 @property (nonatomic, retain) PointerView *instructions;
 @property (nonatomic, retain) ArrowFixture *arrow;
 @property (nonatomic, retain) NSString *address;
+@property (nonatomic, retain) SM3DAR_Fixture *sphereBackground;
+@property (nonatomic, retain) SM3DAR_Fixture *groundplane;
 
 - (CGPoint) centerPoint;
 - (IBAction) toggleParkingSpot;
