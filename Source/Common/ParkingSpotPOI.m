@@ -23,9 +23,15 @@ extern float radiansToDegrees(float radians);
                                               altitude:0 
                                                  title:@"" 
                                               subtitle:@"" 
-                                       markerViewClass:[SphereView class] 
+                                       markerViewClass:[ArrowView class] 
                                             properties:nil] autorelease];
+    
     poi.canReceiveFocus = NO;
+
+    ArrowView *v = ((ArrowView*)poi.view);
+    v.sizeScalar = 0.5;
+    v.color = [UIColor blueColor];
+    
     return poi;
 }
 

@@ -12,14 +12,16 @@
 #import "TexturedGeometryView.h"
 
 @interface ArrowFixture : SM3DAR_Fixture {
-	CGFloat rotationDegrees;
-	CGFloat heading;
+	CGFloat rotationDegreesX;
+	CGFloat rotationDegreesY;
+	CGFloat rotationDegreesZ;
 }
 
 - (id) initWithView:(TexturedGeometryView*)arrowView;
 - (void) pointAt:(CGFloat)degrees;
 
-@property (nonatomic, assign) CGFloat rotationDegrees;
-@property (nonatomic, assign) CGFloat heading;
+@property (nonatomic, assign) CGFloat rotationDegreesX;
+@property (nonatomic, assign) CGFloat rotationDegreesY;
+@property (nonatomic, assign) CGFloat rotationDegreesZ;
 
 @end

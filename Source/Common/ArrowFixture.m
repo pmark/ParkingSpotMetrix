@@ -10,8 +10,9 @@
 
 @implementation ArrowFixture
 
-@synthesize rotationDegrees;
-@synthesize heading;
+@synthesize rotationDegreesX;
+@synthesize rotationDegreesY;
+@synthesize rotationDegreesZ;
 
 - (id) initWithView:(TexturedGeometryView*)arrowView 
 {
@@ -25,8 +26,8 @@
 
 - (void) pointAt:(CGFloat)degrees
 {
-	self.heading = degrees;
-    //NSLog(@"new arrow heading: %.1f", heading);
+	self.rotationDegreesZ = -degrees;
+    //NSLog(@"new arrow heading: %.1f", degrees);
 }
 
 - (CGFloat) gearSpeed
@@ -41,8 +42,7 @@
 
 - (void) gearHasTurned
 {
-    // rotate on x
-    self.rotationDegrees = self.gearPosition;
+    self.rotationDegreesY = self.gearPosition;
 }
 
 @end

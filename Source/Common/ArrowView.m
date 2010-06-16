@@ -17,7 +17,7 @@
     NSString* path = [[NSBundle mainBundle] pathForResource:@"arrow" ofType:@"obj"];
     self.geometry = [[Geometry newOBJFromResource:path] autorelease];
     self.geometry.cullFace = YES;
-    sizeScalar = 0;
+    sizeScalar = 1.0;
 }
 
 - (void) displayGeometry 
@@ -39,10 +39,26 @@
     if ([self.point isKindOfClass:[ArrowFixture class]])
     {
         ArrowFixture *fixture = (ArrowFixture*)self.point;
-        glRotatef(-fixture.heading, 0.0, 0.0, 1.0);
-        glRotatef(fixture.rotationDegrees, 0.0, 1.0, 0.0);
+
+        if (fixture.rotationDegreesX != 0.0)
+            glRotatef(fixture.rotationDegreesX, 1.0, 0.0, 0.0);
+        if (fixture.rotationDegreesY != 0.0)
+	        glRotatef(fixture.rotationDegreesY, 0.0, 1.0, 0.0);
+        if (fixture.rotationDegreesZ != 0.0)
+    	    glRotatef(fixture.rotationDegreesZ, 0.0, 0.0, 1.0);
     }
-    
+    else
+    {
+        // point arrow down
+        glRotatef(-45, 1.0, 0.0, 0.0);
+
+        // face the camera
+        glRotatef(90, 0.0, 1.0, 0.0);
+    }
+
+    if (sizeScalar != 1.0)
+        glScalef(sizeScalar, sizeScalar, sizeScalar);
+
     if (texture)
         [Geometry displaySphereWithTexture:self.texture];
 	else
