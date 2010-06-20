@@ -28,6 +28,8 @@
     IBOutlet UIView *sm3darView;
     IBOutlet UIToolbar *toolbar;
     NSString *address;
+    NSInteger poiCount;
+    IBOutlet UILabel *statusLabel;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *screen1;
@@ -35,6 +37,7 @@
 @property (nonatomic, retain) IBOutlet UIView *sm3darView;
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *parkButton;
+@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
 @property (nonatomic, retain) SM3DAR_PointOfInterest *parkingSpot;
 @property (nonatomic, retain) PointerView *pointer;
 @property (nonatomic, retain) PointerView *compass;
@@ -61,6 +64,7 @@
 - (void) addArrow;
 - (void) moveArrow;
 - (BOOL) parkingSpotIsValid;
+- (void) updateStatusLabel;
 
 @end
 

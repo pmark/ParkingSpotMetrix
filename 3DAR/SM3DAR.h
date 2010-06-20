@@ -109,6 +109,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 @property (nonatomic, assign) CGFloat currentYaw;
 @property (nonatomic, assign) CGFloat currentPitch;
 @property (nonatomic, assign) CGFloat currentRoll;
+@property (nonatomic, assign) CGFloat mapZoomPadding;
 
 + (SM3DAR_Controller*)sharedController;
 + (SM3DAR_Controller*)reinit;
@@ -133,7 +134,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 - (SM3DAR_PointOfInterest*)initPointOfInterest:(NSDictionary*)properties;
 - (SM3DAR_PointOfInterest*)initPointOfInterest:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude altitude:(CGFloat)altitude title:(NSString*)poiTitle subtitle:(NSString*)poiSubtitle markerViewClass:(Class)poiMarkerViewClass properties:(NSDictionary*)properties;
 - (void)addPointOfInterestWithLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude altitude:(CGFloat)altitude title:(NSString*)poiTitle subtitle:(NSString*)poiSubtitle markerViewClass:(Class)poiMarkerViewClass properties:(NSDictionary*)properties;
-- (void)changeCurrentLocation:(CLLocation*)newLocation;
+- (BOOL)changeCurrentLocation:(CLLocation*)newLocation;
 - (BOOL)displayPoint:(SM3DAR_Point*)poi;
 - (void)startCamera;
 - (void)stopCamera;

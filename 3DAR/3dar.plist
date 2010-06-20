@@ -9,7 +9,7 @@
 	<key>3darLookMode</key>
 	<string>free</string>
 	<key>3darLocationUpdateIntervalSec</key>
-	<integer>10</integer>
+	<integer>0</integer>
 	<key>3darEnableMap</key>
 	<true/>
 	<key>3darHeadless</key>

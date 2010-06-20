@@ -43,6 +43,9 @@ extern float radiansToDegrees(float radians);
 #define ARROW_SIZE_SCALAR 0.09
 #define ARROW_MOVEMENT_TIMER_INTERVAL 0.01
 
+#define STATUS_LABEL_TEXT_NO_SPOT @"Move the map and\ntap \"Park Here\"\nto drop a pin."
+#define STATUS_LABEL_TEXT_WITH_SPOT @"Parking spot is %@ away\n(%@ as the crow flies)."
+
 @implementation ParkarViewController
 
 @synthesize screen1;
@@ -58,6 +61,7 @@ extern float radiansToDegrees(float radians);
 @synthesize address;
 @synthesize sphereBackground;
 @synthesize groundplane;
+@synthesize statusLabel;
 
 - (void)dealloc 
 {
@@ -74,6 +78,7 @@ extern float radiansToDegrees(float radians);
     RELEASE(address);
     RELEASE(sphereBackground);
     RELEASE(groundplane);
+    RELEASE(statusLabel);
     [super dealloc];
 }
 
@@ -82,6 +87,7 @@ extern float radiansToDegrees(float radians);
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) 
     {
         lastHeading = 0.0;
+        self.address = nil;
     }
     return self;
 }
@@ -112,6 +118,7 @@ extern float radiansToDegrees(float radians);
                                                     properties:nil] autorelease];    
     poi.canReceiveFocus = canReceiveFocus;
     [sm3dar addPointOfInterest:poi];
+    [sm3dar.map addAnnotation:poi];
     return poi;
 }
 
@@ -155,9 +162,9 @@ extern float radiansToDegrees(float radians);
     [self addBackground];
     [self addGroundPlane];
 	[self addArrow];
-    //[self addDirectionBillboards];        
     [self restoreSpot];
 	[self updatePointer];
+    [self updateStatusLabel];
 
     [self performSelector:@selector(zoomMapIn) withObject:nil afterDelay:2.0];
 
@@ -228,6 +235,7 @@ extern float radiansToDegrees(float radians);
     sm3dar.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     sm3dar.view.backgroundColor = [UIColor blackColor];
     sm3dar.wantsFullScreenLayout = NO;
+    sm3dar.mapZoomPadding = 1.9;
     
 	[self.view addSubview:sm3dar.view];
     self.wantsFullScreenLayout = NO;
@@ -244,6 +252,8 @@ extern float radiansToDegrees(float radians);
     [self bringActiveScreenToFront];
 
     [self.view bringSubviewToFront:toolbar];
+    [self.view bringSubviewToFront:statusLabel];
+    statusLabel.hidden = NO;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -254,7 +264,10 @@ extern float radiansToDegrees(float radians);
 
     CGRect f = toolbar.frame;
     f.origin.y = 0;
-    toolbar.frame = f;    
+    toolbar.frame = f;   
+    
+    [self.screen1 bringSubviewToFront:statusLabel];
+
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -301,11 +314,74 @@ extern float radiansToDegrees(float radians);
     [self.view bringSubviewToFront:screen1];
 }
 
+- (NSString*) buildStatusLabel
+{
+    NSString *text; 
+    
+    if (parkingSpot)
+    {
+        CGFloat rangeMeters = [parkingSpot distanceInMetersFromCurrentLocation];
+        NSInteger rangeBlocks = round(rangeMeters / 80.0);
+        CGFloat rangeFeet = rangeMeters * 3.2808399;
+        
+        NSString *away;
+        if (rangeBlocks < 1.0)
+        {
+            away = @"less than a block";
+        }
+        else
+        {
+            away = [NSString stringWithFormat:@"about %i block%@",
+                    rangeBlocks, 
+                    ((rangeBlocks == 1) ? @"" : @"s")];
+        }
+        
+        NSString *prettyRange;
+        if (rangeMeters < 1609.344)
+        {
+            // less than 1 mile
+            prettyRange = [NSString stringWithFormat:@"%.0fft or %.0fm", 
+                           rangeFeet, rangeMeters];
+        }
+        else 
+        {
+            prettyRange = [NSString stringWithFormat:@"%.1fmi or %.1fkm", 
+                           rangeFeet/5280.0, rangeMeters/1000.0];
+        }
+
+        text = [NSString stringWithFormat:STATUS_LABEL_TEXT_WITH_SPOT, 
+                            away,
+                            prettyRange];
+    }
+    else
+    {
+        text = STATUS_LABEL_TEXT_NO_SPOT;
+    }
+    
+    //Coord3D cam = sm3dar.currentPosition;
+    //text = [NSString stringWithFormat:@"cam: (%.0f, %.0f, %.0f)", cam.x, cam.y, cam.z];
+    return text;
+}
+
+- (void) updateStatusLabel
+{
+    statusLabel.text = [self buildStatusLabel];
+    if (address)
+    {
+        statusLabel.text = [statusLabel.text stringByAppendingFormat:@"\n%@", address];
+    }
+}
+
 - (void) locationManager:(CLLocationManager*)manager
     didUpdateToLocation:(CLLocation*)newLocation
            fromLocation:(CLLocation*)oldLocation 
 {
-    //[manager stopUpdatingLocation];
+//    [self addPOI:[NSString stringWithFormat:@"%i",poiCount++] 
+//        subtitle:@"" 
+//        latitude:newLocation.coordinate.latitude
+//       longitude:newLocation.coordinate.longitude
+// canReceiveFocus:NO];
+    
     
     if (parkingSpot)
     {
@@ -315,6 +391,8 @@ extern float radiansToDegrees(float radians);
     {
         [self performSelector:@selector(showDropTarget) withObject:nil afterDelay:2.0];
     }
+
+    [self updateStatusLabel];
 }
 
 - (CGPoint) centerPoint
@@ -354,9 +432,20 @@ extern float radiansToDegrees(float radians);
     data = [data objectForKey:@"results"]; if (!data || [data count] == 0) return;
     if ([data isKindOfClass:[NSArray class]]) data = [data objectAtIndex:0];
     if (![data isKindOfClass:[NSDictionary class]]) return;
-    data = [data objectForKey:@"formatted_address"]; if (!data) return;
-    self.address = (NSString*)data;
-    NSLog(@"address: %@", address);
+
+    //NSLog(@"%@", data);
+    //data = [data objectForKey:@"formatted_address"]; if (!data) return;
+
+    data = [data objectForKey:@"address_components"]; if (!data) return;
+    // array with hash
+    NSString *streetNumber = [[(NSArray*)data objectAtIndex:0] objectForKey:@"short_name"];
+    NSString *streetName = [[(NSArray*)data objectAtIndex:1] objectForKey:@"short_name"];
+    self.address = [NSString stringWithFormat:@"%@ %@", streetNumber, streetName];
+    
+    //NSLog(@"address: %@", address);
+	[self updateStatusLabel];    
+    self.parkingSpot.title = address;
+    
     [pool release];
 }
 
@@ -376,7 +465,8 @@ extern float radiansToDegrees(float radians);
     [self setDropTargetHidden:YES];
     
     [self performSelector:@selector(zoomMapIn) withObject:nil afterDelay:0.66];
-    
+
+    self.address = nil;
     [self performSelectorInBackground:@selector(reverseGeocode) withObject:nil];
 }
 
@@ -444,6 +534,8 @@ extern float radiansToDegrees(float radians);
 
 	[self updatePointer];
     [self saveSpot];
+    self.address = nil;
+    [self updateStatusLabel];
 }
 
 - (BOOL) compassIsEnlarged
@@ -494,9 +586,11 @@ extern float radiansToDegrees(float radians);
         return;
     }
     
-    CGFloat range = [parkingSpot distanceInMetersFromCurrentLocation];
-    NSLog(@"parking spot is %.1f meters away", range);
-    if (range > ARROW_ORBIT_DISTANCE * 2.0)
+    CGFloat rangeMeters = [parkingSpot distanceInMetersFromCurrentLocation];
+    CGFloat rangeBlocks = rangeMeters / 80.0;
+    CGFloat rangeFeet = rangeMeters * 3.2808399;
+    NSLog(@"parking spot is now %.0f meters, or %.1f blocks, or %.0f' away", rangeMeters, rangeBlocks, rangeFeet);
+    if (rangeMeters > ARROW_ORBIT_DISTANCE * 2.0)
     {
         arrow.view.alpha = 1.0;
         sphereBackground.view.alpha = 1.0;
@@ -510,7 +604,7 @@ extern float radiansToDegrees(float radians);
             [sm3dar setFrame:f];
         }
         
-        if (range > ARROW_ORBIT_DISTANCE * 10.0)
+        if (rangeMeters > ARROW_ORBIT_DISTANCE * 10.0)
         {
             [((ArrowView*)parkingSpot.view) setDistantStyle];
         }
@@ -524,7 +618,7 @@ extern float radiansToDegrees(float radians);
         [((ArrowView*)parkingSpot.view) setNearbyStyle];
         arrow.view.alpha = 0.0;
         sphereBackground.view.alpha = 0.0;
-        //groundplane.view.alpha = 0.0;
+        groundplane.view.alpha = 0.0;
         
         if (!sm3dar.camera)
         {
@@ -628,10 +722,10 @@ extern float radiansToDegrees(float radians);
     self.arrow = [[[ArrowFixture alloc] initWithView:arrowView] autorelease];    
     [[SM3DAR_Controller sharedController] addPointOfInterest:arrow];
     
-    [NSTimer scheduledTimerWithTimeInterval:ARROW_MOVEMENT_TIMER_INTERVAL target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
+    //[NSTimer scheduledTimerWithTimeInterval:ARROW_MOVEMENT_TIMER_INTERVAL target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
 
     Coord3D wp = sm3dar.currentPosition;
-    wp.y -= ARROW_ORBIT_DISTANCE;
+    wp.x += ARROW_ORBIT_DISTANCE;
     self.arrow.worldPoint = wp;
 }
 
@@ -653,25 +747,25 @@ extern float radiansToDegrees(float radians);
     //NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n\n", wp.x, wp.y, wp.z);
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    Coord3D wp = sm3dar.currentPosition;
-    self.arrow.worldPoint = wp;
-    NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n", wp.x, wp.y, wp.z);
-}
-
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-}
-
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    Coord3D wp = {
-        0, 0, 0
-    };
-    self.arrow.worldPoint = wp;
-    NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n", wp.x, wp.y, wp.z);
-}
+//- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    Coord3D wp = sm3dar.currentPosition;
+//    self.arrow.worldPoint = wp;
+//    NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n", wp.x, wp.y, wp.z);
+//}
+//
+//- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//}
+//
+//- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    Coord3D wp = {
+//        0, 0, 0
+//    };
+//    self.arrow.worldPoint = wp;
+//    NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n", wp.x, wp.y, wp.z);
+//}
 
 - (IBAction) zoom
 {
