@@ -79,7 +79,7 @@
 
 - (void) setNearbyStyle
 {
-    self.sizeScalar = 0.09;
+    self.sizeScalar = 0.06;
     self.color = [UIColor purpleColor];
 }
 

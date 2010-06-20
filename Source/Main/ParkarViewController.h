@@ -67,6 +67,7 @@
 - (void) moveArrow;
 - (BOOL) parkingSpotIsValid;
 - (void) updateStatusLabel;
+- (ArrowView*) parkingSpotView;
 
 @end
 

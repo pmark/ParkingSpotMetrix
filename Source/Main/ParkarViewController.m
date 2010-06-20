@@ -26,7 +26,7 @@ extern float radiansToDegrees(float radians);
 #define BTN_TITLE_RESET_SPOT @"Reset Parking Spot"
 
 #define POINTER_UPDATE_SEC 0.5
-#define HEADING_DELTA_THRESHOLD 2
+#define HEADING_DELTA_THRESHOLD 0.001
 
 #define COMPASS_PADDING_X_SHRUNK 10
 #define COMPASS_PADDING_Y_SHRUNK 290
@@ -38,12 +38,12 @@ extern float radiansToDegrees(float radians);
 
 #define NEAR_CLIP_METERS 1
 #define FAR_CLIP_METERS 800000
-
-#define ARROW_ORBIT_DISTANCE 30.0
-#define ARROW_SIZE_SCALAR 0.09
-#define ARROW_MOVEMENT_TIMER_INTERVAL 0.01
-#define HEADER_BORDER_WIDTH 2
 #define FAR_AWAY_METERS 1000
+#define NEARBY_METERS 35
+#define ARROW_ORBIT_DISTANCE 25.0
+#define ARROW_SIZE_SCALAR 0.08
+#define ARROW_MOVEMENT_TIMER_INTERVAL 0.005
+#define HEADER_BORDER_WIDTH 2
 
 #define STATUS_LABEL_TEXT_NO_SPOT @"Move the map and tap \"Park Here\"\nto drop a pin."
 #define STATUS_LABEL_TEXT_WITH_SPOT @"Parking spot is %@ away\n(%@ as the crow flies)."
@@ -594,6 +594,11 @@ extern float radiansToDegrees(float radians);
     //    APP_DELEGATE.tabBarController.view.hidden = YES;
 }
 
+- (ArrowView*) parkingSpotView
+{
+    return ((ArrowView*)parkingSpot.view);
+}
+
 - (void) updatePointer
 {
     if (!parkingSpot)
@@ -605,9 +610,10 @@ extern float radiansToDegrees(float radians);
     
     CGFloat rangeMeters = [parkingSpot distanceInMetersFromCurrentLocation];
 
-    if (rangeMeters > ARROW_ORBIT_DISTANCE * 1.5)
+    if (rangeMeters > NEARBY_METERS)
     {
         arrow.view.alpha = 1.0;
+        [self parkingSpotView].alpha = 1.0;
         sphereBackground.view.alpha = 1.0;
         groundplane.view.alpha = 1.0;
 
@@ -621,18 +627,18 @@ extern float radiansToDegrees(float radians);
         
         if (rangeMeters > FAR_AWAY_METERS)
         {
-            [((ArrowView*)parkingSpot.view) setDistantStyle];
+            [[self parkingSpotView] setDistantStyle];
         }
         else
         {
-            [((ArrowView*)parkingSpot.view) setMidrangeStyle];
+            [[self parkingSpotView] setMidrangeStyle];
         }
     }
     else
     {
-        [((ArrowView*)parkingSpot.view) setNearbyStyle];
-        
-        arrow.view.alpha = 0.0;
+        //[[self parkingSpotView] setNearbyStyle];
+        arrow.view.alpha = 1.0;
+        [self parkingSpotView].alpha = 0.0;
         sphereBackground.view.alpha = 0.0;
         groundplane.view.alpha = 0.0;
         
@@ -763,13 +769,13 @@ extern float radiansToDegrees(float radians);
     //NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n\n", wp.x, wp.y, wp.z);
 }
 
-//- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
 //    Coord3D wp = sm3dar.currentPosition;
 //    self.arrow.worldPoint = wp;
 //    NSLog(@"move arrow to (%.0f, %.0f, %.0f)\n", wp.x, wp.y, wp.z);
-//}
-//
+}
+
 //- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 //{
 //}
