@@ -27,6 +27,8 @@ extern float radiansToDegrees(float radians);
                                             properties:nil] autorelease];
     
     poi.canReceiveFocus = NO;
+    ((ArrowView*)poi.view).sizeScalar = 0.4;
+    ((ArrowView*)poi.view).color = [UIColor purpleColor];
 
     return poi;
 }

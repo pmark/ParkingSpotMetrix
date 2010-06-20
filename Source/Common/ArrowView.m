@@ -67,8 +67,8 @@
 
 - (void) setDistantStyle
 {
-    self.sizeScalar = 6;
-    self.color = [UIColor blackColor];
+    self.sizeScalar = 1.0;
+    self.color = [UIColor redColor];
 }
 
 - (void) setMidrangeStyle
@@ -79,8 +79,8 @@
 
 - (void) setNearbyStyle
 {
-    self.sizeScalar = 0.07;
-    self.color = [UIColor yellowColor];
+    self.sizeScalar = 0.09;
+    self.color = [UIColor purpleColor];
 }
 
 @end

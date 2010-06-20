@@ -43,6 +43,7 @@ extern float radiansToDegrees(float radians);
 #define ARROW_SIZE_SCALAR 0.09
 #define ARROW_MOVEMENT_TIMER_INTERVAL 0.01
 #define HEADER_BORDER_WIDTH 2
+#define FAR_AWAY_METERS 1000
 
 #define STATUS_LABEL_TEXT_NO_SPOT @"Move the map and tap \"Park Here\"\nto drop a pin."
 #define STATUS_LABEL_TEXT_WITH_SPOT @"Parking spot is %@ away\n(%@ as the crow flies)."
@@ -603,14 +604,12 @@ extern float radiansToDegrees(float radians);
     }
     
     CGFloat rangeMeters = [parkingSpot distanceInMetersFromCurrentLocation];
-    CGFloat rangeBlocks = rangeMeters / 80.0;
-    CGFloat rangeFeet = rangeMeters * 3.2808399;
-    NSLog(@"parking spot is now %.0f meters, or %.1f blocks, or %.0f' away", rangeMeters, rangeBlocks, rangeFeet);
-    if (rangeMeters > ARROW_ORBIT_DISTANCE * 2.0)
+
+    if (rangeMeters > ARROW_ORBIT_DISTANCE * 1.5)
     {
         arrow.view.alpha = 1.0;
         sphereBackground.view.alpha = 1.0;
-        //groundplane.view.alpha = 1.0;
+        groundplane.view.alpha = 1.0;
 
         if (sm3dar.camera)
         {
@@ -620,7 +619,7 @@ extern float radiansToDegrees(float radians);
             [sm3dar setFrame:f];
         }
         
-        if (rangeMeters > ARROW_ORBIT_DISTANCE * 10.0)
+        if (rangeMeters > FAR_AWAY_METERS)
         {
             [((ArrowView*)parkingSpot.view) setDistantStyle];
         }
@@ -632,6 +631,7 @@ extern float radiansToDegrees(float radians);
     else
     {
         [((ArrowView*)parkingSpot.view) setNearbyStyle];
+        
         arrow.view.alpha = 0.0;
         sphereBackground.view.alpha = 0.0;
         groundplane.view.alpha = 0.0;
@@ -738,7 +738,7 @@ extern float radiansToDegrees(float radians);
     self.arrow = [[[ArrowFixture alloc] initWithView:arrowView] autorelease];    
     [[SM3DAR_Controller sharedController] addPointOfInterest:arrow];
     
-    //[NSTimer scheduledTimerWithTimeInterval:ARROW_MOVEMENT_TIMER_INTERVAL target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:ARROW_MOVEMENT_TIMER_INTERVAL target:self selector:@selector(moveArrow) userInfo:nil repeats:YES];
 
     Coord3D wp = sm3dar.currentPosition;
     wp.x += ARROW_ORBIT_DISTANCE;
