@@ -31,7 +31,7 @@ extern float radiansToDegrees(float radians);
 #define COMPASS_PADDING_X_SHRUNK 10
 #define COMPASS_PADDING_Y_SHRUNK 290
 #define COMPASS_PADDING_X_ENLARGED 10
-#define COMPASS_PADDING_Y_ENLARGED 63
+#define COMPASS_PADDING_Y_ENLARGED 108 //63
 
 #define INSTRUCTIONS_PADDING_X 0
 #define INSTRUCTIONS_PADDING_Y 85
@@ -42,8 +42,9 @@ extern float radiansToDegrees(float radians);
 #define ARROW_ORBIT_DISTANCE 30.0
 #define ARROW_SIZE_SCALAR 0.09
 #define ARROW_MOVEMENT_TIMER_INTERVAL 0.01
+#define HEADER_BORDER_WIDTH 2
 
-#define STATUS_LABEL_TEXT_NO_SPOT @"Move the map and\ntap \"Park Here\"\nto drop a pin."
+#define STATUS_LABEL_TEXT_NO_SPOT @"Move the map and tap \"Park Here\"\nto drop a pin."
 #define STATUS_LABEL_TEXT_WITH_SPOT @"Parking spot is %@ away\n(%@ as the crow flies)."
 
 @implementation ParkarViewController
@@ -222,6 +223,16 @@ extern float radiansToDegrees(float radians);
     instructions.delegate = nil;
     instructions.hidden = YES;
     [self.view addSubview:instructions];    
+
+    CGRect f = header.frame;
+    f.origin.y = -HEADER_BORDER_WIDTH;
+    header.frame = f;   
+    
+    CALayer *l = [header layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:10.0];
+    [l setBorderWidth:HEADER_BORDER_WIDTH];
+    [l setBorderColor:[[UIColor blackColor] CGColor]];    
     
     hudTimer = [NSTimer scheduledTimerWithTimeInterval:POINTER_UPDATE_SEC target:self selector:@selector(updateHUD) userInfo:nil repeats:YES];
 }
@@ -251,23 +262,14 @@ extern float radiansToDegrees(float radians);
     [self buildHUD];
     [self bringActiveScreenToFront];
 
-    [self.view bringSubviewToFront:toolbar];
-    [self.view bringSubviewToFront:statusLabel];
-    statusLabel.hidden = NO;
+    [self.view bringSubviewToFront:header];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     NSLog(@"Resuming 3DAR");
-	[sm3dar resume];        
-
-    CGRect f = toolbar.frame;
-    f.origin.y = 0;
-    toolbar.frame = f;   
-    
-    [self.screen1 bringSubviewToFront:statusLabel];
-
+	[sm3dar resume];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -294,21 +296,35 @@ extern float radiansToDegrees(float radians);
 	// e.g. self.myOutlet = nil;
 }
 
+- (void) setToolbarHidden:(BOOL)hide
+{
+    if ((hide && headerHidden) || (!hide && !headerHidden))
+        return;
+
+    CGRect f = header.frame;
+    f.origin.y = (hide ? -44 : 0) - HEADER_BORDER_WIDTH;
+    
+    [UIView beginAnimations:nil context:nil];
+    header.frame = f;
+    [UIView commitAnimations];
+    headerHidden = hide;
+}
+
 - (void) bringActiveScreenToFront
 {
     if (sm3dar.mapIsVisible)
     {
         screen1.hidden = NO;
         instructions.hidden = YES;
-        toolbar.hidden = NO;
-        dropTarget.hidden = NO;
+        dropTarget.hidden = NO;        
+        [self setToolbarHidden:NO];
     }
     else 
     {
         screen1.hidden = YES;
-        toolbar.hidden = YES;
         instructions.hidden = (parkingSpot != nil);
         dropTarget.hidden = YES;
+        [self setToolbarHidden:YES];
     }
 
     [self.view bringSubviewToFront:screen1];

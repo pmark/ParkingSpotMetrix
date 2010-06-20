@@ -30,6 +30,8 @@
     NSString *address;
     NSInteger poiCount;
     IBOutlet UILabel *statusLabel;
+    IBOutlet UIView *header;
+    BOOL headerHidden;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *screen1;
