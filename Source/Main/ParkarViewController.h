@@ -23,6 +23,7 @@
     PointerView *compass;
     PointerView *instructions;
     NSTimer *hudTimer;
+    NSTimer *statusTimer;
     CGFloat lastHeading;
     SM3DAR_Controller *sm3dar;
     IBOutlet UIView *sm3darView;
@@ -32,6 +33,8 @@
     IBOutlet UILabel *statusLabel;
     IBOutlet UIView *header;
     BOOL headerHidden;
+    CGRect normal3darRect;
+    NSDate *locationUpdatedAt;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *screen1;
@@ -48,6 +51,7 @@
 @property (nonatomic, retain) NSString *address;
 @property (nonatomic, retain) SM3DAR_Fixture *sphereBackground;
 @property (nonatomic, retain) SM3DAR_Fixture *groundplane;
+@property (nonatomic, retain) NSDate *locationUpdatedAt;
 
 - (CGPoint) centerPoint;
 - (IBAction) toggleParkingSpot;

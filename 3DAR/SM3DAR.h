@@ -141,6 +141,7 @@ typedef NSObject<SM3DAR_PointProtocol> SM3DAR_Point;
 - (void)suspend;
 - (void)resume;
 - (CATransform3D)cameraTransform;
+- (Coord3D)cameraPosition;
 - (void)debug:(NSString*)message;
 - (CGRect)logoFrame;
 - (BOOL)isTiltLookMode;

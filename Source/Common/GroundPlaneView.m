@@ -45,7 +45,7 @@ static unsigned short triangleIndex[6] =
         NSLog(@"loading image at path: %@", imagePath);
         NSData *imageData = [[NSData alloc] initWithContentsOfFile:imagePath]; 
         
-        UIImage * textureImage =  [[UIImage alloc] initWithData:imageData];
+        UIImage *textureImage =  [[UIImage alloc] initWithData:imageData];
 
         CGImageRef cgi = textureImage.CGImage;
         self.texture = [[Texture newTextureFromImage:cgi] autorelease];   
