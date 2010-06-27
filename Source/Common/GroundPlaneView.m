@@ -16,15 +16,15 @@
 	self.frame = CGRectZero;
 }
 
-#define GP_SIZE 853
+#define GROUNDPLANE_SIZE 853
 
 static float triangleVertex[4][5] =
 {
     // x y z u v
-    { -GP_SIZE, -GP_SIZE, GP_ZPOS, 0.0, 0.0 },
-    { +GP_SIZE, -GP_SIZE, GP_ZPOS, 1.0, 0.0 },
-    { +GP_SIZE, +GP_SIZE, GP_ZPOS, 1.0, 1.0 },
-    { -GP_SIZE, +GP_SIZE, GP_ZPOS, 0.0, 1.0 }
+    { -GROUNDPLANE_SIZE, -GROUNDPLANE_SIZE, GROUNDPLANE_ZPOS, 0.0, 0.0 },
+    { +GROUNDPLANE_SIZE, -GROUNDPLANE_SIZE, GROUNDPLANE_ZPOS, 1.0, 0.0 },
+    { +GROUNDPLANE_SIZE, +GROUNDPLANE_SIZE, GROUNDPLANE_ZPOS, 1.0, 1.0 },
+    { -GROUNDPLANE_SIZE, +GROUNDPLANE_SIZE, GROUNDPLANE_ZPOS, 0.0, 1.0 }
 };
 
 static unsigned short triangleIndex[6] = 
@@ -85,7 +85,7 @@ static unsigned short triangleIndex[6] =
         glFogf(GL_FOG_DENSITY, 1.0); 
         
         glFogf(GL_FOG_START, 0.0);            
-        glFogf(GL_FOG_END, GP_SIZE);                      
+        glFogf(GL_FOG_END, GROUNDPLANE_SIZE);                      
         
         glHint(GL_FOG_HINT, GL_NICEST);  
         

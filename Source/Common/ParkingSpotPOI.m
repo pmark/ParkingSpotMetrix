@@ -9,6 +9,7 @@
 #import "ParkingSpotPOI.h"
 #import "SphereView.h"
 #import "ArrowView.h"
+#import "Constants.h"
 
 extern float degreesToRadians(float degrees);
 extern float radiansToDegrees(float radians);
@@ -20,7 +21,7 @@ extern float radiansToDegrees(float radians);
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     ParkingSpotPOI *poi = [[sm3dar initPointOfInterest:lat 
                                              longitude:lon 
-                                              altitude:0 
+                                              altitude:0
                                                  title:@"" 
                                               subtitle:@"" 
                                        markerViewClass:[ArrowView class] 

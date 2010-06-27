@@ -5,7 +5,7 @@
 	<key>3darAutofocusPoi</key>
 	<false/>
 	<key>3darOverridePoiAltitude</key>
-	<true/>
+	<false/>
 	<key>3darLookMode</key>
 	<string>free</string>
 	<key>3darLocationUpdateIntervalSec</key>

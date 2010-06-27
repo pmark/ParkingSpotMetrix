@@ -67,7 +67,7 @@
 
 - (void) setDistantStyle
 {
-    self.sizeScalar = 1.0;
+    self.sizeScalar = 1.2;
     self.color = [UIColor redColor];
 }
 
