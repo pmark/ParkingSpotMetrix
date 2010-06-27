@@ -14,10 +14,11 @@
 #import "GroundPlaneView.h"
 #import "ArrowView.h"
 #import "ParkarAppDelegate.h"
-#import "NSUserDefaults_Database.h"
+#import "NSUserDefaults+Database.h"
 #import "ParkingSpot.h"
 #import "ParkingSpotPOI.h"
 #import "NSString+SBJSON.h"
+#import "NSUserDefaults+Database.h"
 
 extern float degreesToRadians(float degrees);
 extern float radiansToDegrees(float radians);

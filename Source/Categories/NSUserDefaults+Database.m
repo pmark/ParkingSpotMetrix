@@ -1,12 +1,12 @@
 //
-//  NSUserDefaults_Database.m
+//  NSUserDefaults+Database.m
 //  Parkar
 //
 //  Created by P. Mark Anderson on 5/24/10.
 //  Copyright 2010 Spot Metrix, Inc. All rights reserved.
 //
 
-#import "NSUserDefaults_Database.h"
+#import "NSUserDefaults+Database.h"
 
 
 @implementation NSUserDefaults (Database)

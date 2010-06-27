@@ -7,7 +7,10 @@
 //
 
 #import "HistoryController.h"
+#import "NSUserDefaults+Database.h"
 
+#define SECTION_CURRENT_SPOT 	0
+#define SECTION_PAST_SPOTS 		1
 
 @implementation HistoryController
 
@@ -16,15 +19,16 @@
     [super dealloc];
 }
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
+        NSLog(@"hi");
+        
+        // One strategy:
+        // store an array here
     }
     return self;
 }
-*/
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -54,16 +58,23 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     switch (indexPath.section) {
-        case 0:
+        case SECTION_CURRENT_SPOT:
             cell.textLabel.text = @"None";
             break;
-        case 1:
+        case SECTION_PAST_SPOTS:
             cell.textLabel.text = @"None";
             break;
         default:
             cell.textLabel.text = @"";
             break;
     }    
+
+    cell.detailTextLabel.text = @"";
+    
+    // TODO:
+    // address, or something else if don't have address?  lat/lng
+    // timestamp
+    // when selected, show on map...change parking spot but don't add to history?
 
     return cell;
 }
