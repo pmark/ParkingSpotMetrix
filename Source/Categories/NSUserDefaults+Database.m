@@ -45,12 +45,13 @@
         [mutableItems removeLastObject];
     
     data = [NSKeyedArchiver archivedDataWithRootObject:mutableItems];  
-    
+
+    NSLog(@"storing items: %@", mutableItems);
     [self setObject:data forKey:key];
 }
 
 
-- (NSMutableArray*) readArray:(NSString*)key
+- (NSMutableArray*) unarchiveArray:(NSString*)key
 {
     NSData *data = [self objectForKey:key];
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];

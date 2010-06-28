@@ -131,6 +131,9 @@ extern float radiansToDegrees(float radians);
 
 - (void) zoomMapIn
 {
+    
+    // TODO: 3DAR may not be initialized yet, so don't zoom.
+    
     if (parkingSpot)
     {
         [sm3dar zoomMapToFitPointsIncludingUserLocation:YES];
@@ -547,14 +550,21 @@ extern float radiansToDegrees(float radians);
                                                        [NSNumber numberWithDouble:parkingSpot.coordinate.longitude], @"longitude",
                                                        nil]];
     
-    PREF_SAVE_OBJECT(PREF_KEY_LAST_POI, poi.dictionary);
+    PREF_PUSH(poi.dictionary, PREF_KEY_SPOT_HISTORY, HISTORY_CAPACITY);
+    PREF_SAVE_OBJECT(PREF_KEY_INDEX_OF_ACTIVE_SPOT, [NSNumber numberWithInt:0]);
     [poi release];
 }
 
 - (void) restoreSpot
 {
-    NSDictionary *properties = (NSDictionary*)PREF_READ_OBJECT(PREF_KEY_LAST_POI);
-    //NSLog(@"restoring: %@", properties);
+    NSArray *history = PREF_READ_ARRAY(PREF_KEY_SPOT_HISTORY);
+
+    NSNumber *index = (NSNumber*)PREF_READ_OBJECT(PREF_KEY_INDEX_OF_ACTIVE_SPOT);
+    if (!index) 
+        return;
+
+    NSDictionary *properties = (NSDictionary*)[history objectAtIndex:[index intValue]];
+    //NSLog(@"Restoring parking spot: %@", properties);
     if (!properties)
         return;
     
@@ -575,7 +585,7 @@ extern float radiansToDegrees(float radians);
         [sm3dar removePointOfInterest:parkingSpot];
         self.parkingSpot = nil;
         [parkingSpot release];
-        PREF_SAVE_OBJECT(PREF_KEY_LAST_POI, nil);        
+        PREF_SAVE_OBJECT(PREF_KEY_INDEX_OF_ACTIVE_SPOT, nil);        
         
         [self setDropTargetHidden:NO];
         parkButton.title = BTN_TITLE_SET_SPOT;

@@ -7,6 +7,8 @@
 //
 
 #import "HistoryController.h"
+#import "Constants.h"
+#import "HistoryTableViewCell.h"
 #import "NSUserDefaults+Database.h"
 
 #define SECTION_CURRENT_SPOT 	0
@@ -14,28 +16,21 @@
 
 @implementation HistoryController
 
+@synthesize history;
+
 - (void) dealloc 
 {
+    RELEASE(history);
     [super dealloc];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-        NSLog(@"hi");
-        
-        // One strategy:
-        // store an array here
-    }
-    return self;
-}
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.history = PREF_READ_ARRAY(PREF_KEY_SPOT_HISTORY);
+    //NSLog(@"Loaded history: %@", history);
+
 }
-*/
 
 - (IBAction) clear
 {
@@ -47,34 +42,27 @@
 - (UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSString *cid = @"cell";
-    UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cid];
-    
+    HistoryTableViewCell *cell = (HistoryTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cid];
+
     if (!cell) 
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cid] autorelease];
+        cell = [[[HistoryTableViewCell alloc] initWithReuseIdentifier:cid] autorelease];
     }
     
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSInteger historyIndex = 0;
 
-    switch (indexPath.section) {
-        case SECTION_CURRENT_SPOT:
-            cell.textLabel.text = @"None";
-            break;
-        case SECTION_PAST_SPOTS:
-            cell.textLabel.text = @"None";
-            break;
-        default:
-            cell.textLabel.text = @"";
-            break;
-    }    
-
-    cell.detailTextLabel.text = @"";
-    
-    // TODO:
-    // address, or something else if don't have address?  lat/lng
-    // timestamp
-    // when selected, show on map...change parking spot but don't add to history?
+    if (indexPath.section == SECTION_CURRENT_SPOT)
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
+    else
+    {
+        historyIndex = indexPath.row + 1;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+        
+    cell.properties = [history objectAtIndex:historyIndex];
 
     return cell;
 }

@@ -11,8 +11,10 @@
 
 @interface HistoryController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-
+	NSArray *history;
 }
+
+@property (nonatomic, retain) NSArray *history;
 
 - (IBAction) clear;
 
