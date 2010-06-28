@@ -88,7 +88,6 @@
 		4DDBE3D01198BD6A00565D41 /* sky2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3CF1198BD6A00565D41 /* sky2.png */; };
 		4DDBE3DB1198BDE000565D41 /* ground1_1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE3DA1198BDE000565D41 /* ground1_1024.jpg */; };
 		4DFADD771194FE3000C23B45 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD741194FE3000C23B45 /* Default.png */; };
-		4DFADD781194FE3000C23B45 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD751194FE3000C23B45 /* iTunesArtwork */; };
 		4DFADD791194FE3000C23B45 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFADD761194FE3000C23B45 /* Icon.png */; };
 		4DFADE621195D53700C23B45 /* RoundedLabelMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFADE601195D53700C23B45 /* RoundedLabelMarkerView.m */; };
 		4DFADE6A1195D54C00C23B45 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFADE661195D54C00C23B45 /* Model.m */; };
@@ -97,11 +96,11 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* parkAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = parkAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Parking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* Parkar_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parkar_Prefix.pch; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* ParkingSpotMetrix_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpotMetrix_Prefix.pch; sourceTree = "<group>"; };
 		4D08ADD511BD9F7800643BF5 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		4D08ADF011BDA13000643BF5 /* OscillatingFixture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscillatingFixture.h; sourceTree = "<group>"; };
 		4D08ADF111BDA13000643BF5 /* OscillatingFixture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OscillatingFixture.m; sourceTree = "<group>"; };
@@ -223,7 +222,6 @@
 		4DDBE3CF1198BD6A00565D41 /* sky2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky2.png; sourceTree = "<group>"; };
 		4DDBE3DA1198BDE000565D41 /* ground1_1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ground1_1024.jpg; sourceTree = "<group>"; };
 		4DFADD741194FE3000C23B45 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		4DFADD751194FE3000C23B45 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		4DFADD761194FE3000C23B45 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4DFADE5F1195D53700C23B45 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		4DFADE601195D53700C23B45 /* RoundedLabelMarkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedLabelMarkerView.m; sourceTree = "<group>"; };
@@ -234,7 +232,7 @@
 		4DFADE681195D54C00C23B45 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		4DFADE7611970D4200C23B45 /* PointerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointerView.h; sourceTree = "<group>"; };
 		4DFADE7711970D4200C23B45 /* PointerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointerView.m; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Parkar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Parkar-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* ParkingSpotMetrix-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ParkingSpotMetrix-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,7 +257,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* parkAR.app */,
+				1D6058910D05DD3D006BFB54 /* Parking.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,7 +281,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* Parkar_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* ParkingSpotMetrix_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -293,9 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				4DFADD741194FE3000C23B45 /* Default.png */,
-				4DFADD751194FE3000C23B45 /* iTunesArtwork */,
 				4DFADD761194FE3000C23B45 /* Icon.png */,
-				8D1107310486CEB800E47090 /* Parkar-Info.plist */,
+				8D1107310486CEB800E47090 /* ParkingSpotMetrix-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -542,9 +539,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Parkar */ = {
+		1D6058900D05DD3D006BFB54 /* ParkingSpotMetrix */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Parkar" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ParkingSpotMetrix" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -554,9 +551,9 @@
 			);
 			dependencies = (
 			);
-			name = Parkar;
+			name = ParkingSpotMetrix;
 			productName = WharCar;
-			productReference = 1D6058910D05DD3D006BFB54 /* parkAR.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Parking.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -564,14 +561,14 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Parkar" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ParkingSpotMetrix" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Parkar */,
+				1D6058900D05DD3D006BFB54 /* ParkingSpotMetrix */,
 			);
 		};
 /* End PBXProject section */
@@ -591,7 +588,6 @@
 				4D169C171194CADF00F499D7 /* 3dar_marker_icon6.png in Resources */,
 				4D169C1A1194CADF00F499D7 /* SM3DAR_keys.txt in Resources */,
 				4DFADD771194FE3000C23B45 /* Default.png in Resources */,
-				4DFADD781194FE3000C23B45 /* iTunesArtwork in Resources */,
 				4DFADD791194FE3000C23B45 /* Icon.png in Resources */,
 				4DDBE1BB1197BB8F00565D41 /* compass_rose_g_300.png in Resources */,
 				4DDBE2EB1198858700565D41 /* arrow_up.png in Resources */,
@@ -683,9 +679,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Parkar_Prefix.pch;
+				GCC_PREFIX_HEADER = ParkingSpotMetrix_Prefix.pch;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				INFOPLIST_FILE = "Parkar-Info.plist";
+				INFOPLIST_FILE = "ParkingSpotMetrix-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/3DAR\"",
@@ -695,7 +691,7 @@
 					"-lxml2",
 					"-lstdc++",
 				);
-				PRODUCT_NAME = parkAR;
+				PRODUCT_NAME = Parking;
 			};
 			name = Debug;
 		};
@@ -705,9 +701,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Parkar_Prefix.pch;
+				GCC_PREFIX_HEADER = ParkingSpotMetrix_Prefix.pch;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				INFOPLIST_FILE = "Parkar-Info.plist";
+				INFOPLIST_FILE = "ParkingSpotMetrix-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SM3DAR_Common/Lib/HTTPRiot/httpriot-0.6.6/Vendor/gh-unit-iphone\"",
@@ -719,7 +715,7 @@
 					"-lxml2",
 					"-lstdc++",
 				);
-				PRODUCT_NAME = parkAR;
+				PRODUCT_NAME = Parking;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -755,7 +751,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Parkar" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "ParkingSpotMetrix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
@@ -764,7 +760,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Parkar" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ParkingSpotMetrix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
