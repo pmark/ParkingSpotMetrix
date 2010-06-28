@@ -1,6 +1,6 @@
 //
 //  main.m
-//  Parkar
+//  ParkingSpotMetrix
 //
 //  Created by P. Mark Anderson on 5/7/10.
 //  Copyright Spot Metrix, Inc 2010. All rights reserved.

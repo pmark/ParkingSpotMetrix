@@ -1,6 +1,6 @@
 //
 //  ArrowFixture.h
-//  Parkar
+//  ParkingSpotMetrix
 //
 //  Created by P. Mark Anderson on 5/23/10.
 //  Copyright 2010 Spot Metrix, Inc. All rights reserved.

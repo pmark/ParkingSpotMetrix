@@ -65,10 +65,10 @@
 		4D21461911AB6B5C00FD6222 /* InfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D21461711AB6B5C00FD6222 /* InfoController.xib */; };
 		4D21464411ABA2F000FD6222 /* NSUserDefaults+Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D21464311ABA2F000FD6222 /* NSUserDefaults+Database.m */; };
 		4D21464F11ABA45B00FD6222 /* ParkingSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D21464E11ABA45B00FD6222 /* ParkingSpot.m */; };
-		4D2146E811AC217800FD6222 /* ParkarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2146E211AC217800FD6222 /* ParkarViewController.m */; };
+		4D2146E811AC217800FD6222 /* ParkingSpotMetrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2146E211AC217800FD6222 /* ParkingSpotMetrixViewController.m */; };
 		4D2146E911AC217800FD6222 /* WharCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2146E311AC217800FD6222 /* WharCarViewController.xib */; };
 		4D2146EA11AC217800FD6222 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2146E511AC217800FD6222 /* MainWindow.xib */; };
-		4D2146EB11AC217800FD6222 /* ParkarAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2146E711AC217800FD6222 /* ParkarAppDelegate.m */; };
+		4D2146EB11AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2146E711AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m */; };
 		4D84B05A11D7A19700369E37 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B05911D7A19700369E37 /* NSDate+Utilities.m */; };
 		4D84B0D111D8231000369E37 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B0D011D8231000369E37 /* HistoryTableViewCell.m */; };
 		4DAD362611D82DC10066402C /* lib3DAR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAD362511D82DC10066402C /* lib3DAR.a */; };
@@ -179,12 +179,12 @@
 		4D21464311ABA2F000FD6222 /* NSUserDefaults+Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Database.m"; sourceTree = "<group>"; };
 		4D21464D11ABA45B00FD6222 /* ParkingSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpot.h; sourceTree = "<group>"; };
 		4D21464E11ABA45B00FD6222 /* ParkingSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpot.m; sourceTree = "<group>"; };
-		4D2146E111AC217800FD6222 /* ParkarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkarViewController.h; sourceTree = "<group>"; };
-		4D2146E211AC217800FD6222 /* ParkarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkarViewController.m; sourceTree = "<group>"; };
+		4D2146E111AC217800FD6222 /* ParkingSpotMetrixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpotMetrixViewController.h; sourceTree = "<group>"; };
+		4D2146E211AC217800FD6222 /* ParkingSpotMetrixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotMetrixViewController.m; sourceTree = "<group>"; };
 		4D2146E311AC217800FD6222 /* WharCarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WharCarViewController.xib; sourceTree = "<group>"; };
 		4D2146E511AC217800FD6222 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		4D2146E611AC217800FD6222 /* ParkarAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkarAppDelegate.h; sourceTree = "<group>"; };
-		4D2146E711AC217800FD6222 /* ParkarAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkarAppDelegate.m; sourceTree = "<group>"; };
+		4D2146E611AC217800FD6222 /* ParkingSpotMetrixAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpotMetrixAppDelegate.h; sourceTree = "<group>"; };
+		4D2146E711AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotMetrixAppDelegate.m; sourceTree = "<group>"; };
 		4D2841C811973AF900DC90A7 /* compass_rose_b_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_b_300.png; sourceTree = "<group>"; };
 		4D84B05811D7A19700369E37 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		4D84B05911D7A19700369E37 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
@@ -479,8 +479,8 @@
 		4D2146E011AC217800FD6222 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4D2146E111AC217800FD6222 /* ParkarViewController.h */,
-				4D2146E211AC217800FD6222 /* ParkarViewController.m */,
+				4D2146E111AC217800FD6222 /* ParkingSpotMetrixViewController.h */,
+				4D2146E211AC217800FD6222 /* ParkingSpotMetrixViewController.m */,
 				4D2146E311AC217800FD6222 /* WharCarViewController.xib */,
 			);
 			path = Main;
@@ -490,8 +490,8 @@
 			isa = PBXGroup;
 			children = (
 				4D2146E511AC217800FD6222 /* MainWindow.xib */,
-				4D2146E611AC217800FD6222 /* ParkarAppDelegate.h */,
-				4D2146E711AC217800FD6222 /* ParkarAppDelegate.m */,
+				4D2146E611AC217800FD6222 /* ParkingSpotMetrixAppDelegate.h */,
+				4D2146E711AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -652,8 +652,8 @@
 				4D21461811AB6B5C00FD6222 /* InfoController.m in Sources */,
 				4D21464411ABA2F000FD6222 /* NSUserDefaults+Database.m in Sources */,
 				4D21464F11ABA45B00FD6222 /* ParkingSpot.m in Sources */,
-				4D2146E811AC217800FD6222 /* ParkarViewController.m in Sources */,
-				4D2146EB11AC217800FD6222 /* ParkarAppDelegate.m in Sources */,
+				4D2146E811AC217800FD6222 /* ParkingSpotMetrixViewController.m in Sources */,
+				4D2146EB11AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m in Sources */,
 				4D08ADF211BDA13000643BF5 /* OscillatingFixture.m in Sources */,
 				4D08ADF711BDA23400643BF5 /* ParkingSpotPOI.m in Sources */,
 				4D11886511C8257C00B2C124 /* NSObject+SBJSON.m in Sources */,
