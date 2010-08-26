@@ -101,14 +101,16 @@ extern float radiansToDegrees(float radians);
 
 - (SM3DAR_Fixture*) addLabelFixture:(NSString*)title subtitle:(NSString*)subtitle coord:(Coord3D)coord
 {
-    //    RoundedLabelMarkerView *v = [[RoundedLabelMarkerView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    ArrowView *v = [[ArrowView alloc] initWithTextureNamed:@""];
-    v.color = [UIColor blueColor];
-//    v.title = title;
-//    v.subtitle = subtitle;
-//SM3DAR_Fixture *fixture = [self addFixtureWithView:v];
-    ArrowFixture *fixture = [self addArrowFixture:v];
-    fixture.worldPoint = coord;
+    RoundedLabelMarkerView *v = [[RoundedLabelMarkerView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    v.title = title;
+    v.subtitle = subtitle;
+    SM3DAR_Fixture *fixture = [self addFixtureWithView:v];
+    
+//    ArrowView *v = [[ArrowView alloc] initWithTextureNamed:@""];
+//    v.color = [UIColor blueColor];
+//    ArrowFixture *fixture = [self addArrowFixture:v];
+//    fixture.worldPoint = coord;
+    
     [v release];
 
     return fixture;
@@ -131,7 +133,6 @@ extern float radiansToDegrees(float radians);
 
 - (void) zoomMapIn
 {
-    
     // TODO: 3DAR may not be initialized yet, so don't zoom.
     
     if (parkingSpot)
@@ -265,7 +266,7 @@ extern float radiansToDegrees(float radians);
 
 - (void) viewDidLoad
 {
-    NSLog(@"\n\nPVC: viewDidLoad\n\n");
+    NSLog(@"\n\nPSMVC: viewDidLoad\n\n");
     [super viewDidLoad];
 
     [self init3dar];
@@ -280,7 +281,13 @@ extern float radiansToDegrees(float radians);
 {
     [super viewDidAppear:animated];
     NSLog(@"Resuming 3DAR");
-	[sm3dar resume];
+
+    if (!sm3dar)
+    {
+        [self init3dar];
+    }
+
+	[sm3dar resume];    
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -292,7 +299,7 @@ extern float radiansToDegrees(float radians);
 
 - (void) didReceiveMemoryWarning 
 {
-    NSLog(@"\n\nPVC: didReceiveMemoryWarning\n\n");
+    NSLog(@"\n\nPSMVC: didReceiveMemoryWarning\n\n");
     
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -302,7 +309,7 @@ extern float radiansToDegrees(float radians);
 
 - (void)viewDidUnload 
 {
-    NSLog(@"\n\nPVC: viewDidUnload\n\n");
+    NSLog(@"\n\nPSMVC: viewDidUnload\n\n");
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
@@ -732,10 +739,10 @@ extern float radiansToDegrees(float radians);
     }
     
     // Update compass
-    if (abs(lastHeading - sm3dar.trueHeading) < HEADING_DELTA_THRESHOLD)
+    if (abs(lastHeading - sm3dar.heading.trueHeading) < HEADING_DELTA_THRESHOLD)
     	return;
 
-    lastHeading = sm3dar.trueHeading;
+    lastHeading = sm3dar.heading.trueHeading;
 
     radians = -degreesToRadians(lastHeading);
     [compass rotate:radians duration:(POINTER_UPDATE_SEC*0.99)];      

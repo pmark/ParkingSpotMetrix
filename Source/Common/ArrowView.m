@@ -73,7 +73,7 @@
 
 - (void) setMidrangeStyle
 {
-    self.sizeScalar = 0.4;
+    self.sizeScalar = 0.23;
     self.color = [UIColor purpleColor];
 }
 

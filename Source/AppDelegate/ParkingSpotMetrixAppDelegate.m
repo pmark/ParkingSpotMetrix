@@ -24,6 +24,7 @@
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {    
+  	application.idleTimerDisabled = YES;
     [application setStatusBarHidden:NO];
     [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     [window addSubview:tabBarController.view];

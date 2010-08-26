@@ -21,7 +21,7 @@ extern float radiansToDegrees(float radians);
     SM3DAR_Controller *sm3dar = [SM3DAR_Controller sharedController];
     ParkingSpotPOI *poi = [[sm3dar initPointOfInterest:lat 
                                              longitude:lon 
-                                              altitude:0
+                                              altitude:10
                                                  title:@"" 
                                               subtitle:@"" 
                                        markerViewClass:[ArrowView class] 

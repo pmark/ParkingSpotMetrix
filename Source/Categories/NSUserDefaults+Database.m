@@ -46,7 +46,7 @@
     
     data = [NSKeyedArchiver archivedDataWithRootObject:mutableItems];  
 
-    NSLog(@"storing items: %@", mutableItems);
+//    NSLog(@"storing items: %@", mutableItems);
     [self setObject:data forKey:key];
 }
 

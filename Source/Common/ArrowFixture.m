@@ -32,7 +32,7 @@
 
 - (CGFloat) gearSpeed
 {
-    return 0.66;
+    return 1.2;
 }
 
 - (NSInteger) numberOfTeethInGear
