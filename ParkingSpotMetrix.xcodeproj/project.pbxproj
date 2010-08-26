@@ -70,7 +70,7 @@
 		4D2146EA11AC217800FD6222 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2146E511AC217800FD6222 /* MainWindow.xib */; };
 		4D2146EB11AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2146E711AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m */; };
 		4D246844120F9A5F00943D02 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D246843120F9A5F00943D02 /* CoreMotion.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		4D5BE7B1122705640043D234 /* lib3DAR_v4_0_5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5BE7B0122705640043D234 /* lib3DAR_v4_0_5.a */; };
+		4D5BE816122719FA0043D234 /* lib3DAR_v4.0.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5BE815122719FA0043D234 /* lib3DAR_v4.0.6.a */; };
 		4D84B05A11D7A19700369E37 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B05911D7A19700369E37 /* NSDate+Utilities.m */; };
 		4D84B0D111D8231000369E37 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B0D011D8231000369E37 /* HistoryTableViewCell.m */; };
 		4DDBE1BB1197BB8F00565D41 /* compass_rose_g_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */; };
@@ -188,7 +188,7 @@
 		4D2146E711AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotMetrixAppDelegate.m; sourceTree = "<group>"; };
 		4D246843120F9A5F00943D02 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		4D2841C811973AF900DC90A7 /* compass_rose_b_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_b_300.png; sourceTree = "<group>"; };
-		4D5BE7B0122705640043D234 /* lib3DAR_v4_0_5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_v4_0_5.a; sourceTree = "<group>"; };
+		4D5BE815122719FA0043D234 /* lib3DAR_v4.0.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_v4.0.6.a; sourceTree = "<group>"; };
 		4D84B05811D7A19700369E37 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		4D84B05911D7A19700369E37 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		4D84B0CF11D8231000369E37 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				4D169C301194CB8900F499D7 /* OpenGLES.framework in Frameworks */,
 				4D169C321194CB8900F499D7 /* QuartzCore.framework in Frameworks */,
 				4D246844120F9A5F00943D02 /* CoreMotion.framework in Frameworks */,
-				4D5BE7B1122705640043D234 /* lib3DAR_v4_0_5.a in Frameworks */,
+				4D5BE816122719FA0043D234 /* lib3DAR_v4.0.6.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +384,7 @@
 		4D169B431194CADF00F499D7 /* 3DAR */ = {
 			isa = PBXGroup;
 			children = (
-				4D5BE7B0122705640043D234 /* lib3DAR_v4_0_5.a */,
+				4D5BE815122719FA0043D234 /* lib3DAR_v4.0.6.a */,
 				4DDBE2EA1198858700565D41 /* arrow_up.png */,
 				4D21440211A7CF1B00FD6222 /* arrow_512x512.png */,
 				4DDBE328119897CA00565D41 /* crosshairs_49x30.png */,
@@ -697,6 +697,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/3DAR\"",
 					"\"$(SRCROOT)/../../../../PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos\"",
+					"\"$(SRCROOT)/../../SM3DARLibrary/SM3DARLibrary/build/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -721,6 +722,7 @@
 					"\"$(SRCROOT)/3DAR/3DAR_Common/Lib/HTTPRiot/httpriot-0.6.6/Vendor/gh-unit-iphone\"",
 					"\"$(SRCROOT)/../../../../../../projects/Spot Metrix/PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/3DAR\"",
+					"\"$(SRCROOT)/../../SM3DARLibrary/SM3DARLibrary/build/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
