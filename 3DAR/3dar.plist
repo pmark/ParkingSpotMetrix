@@ -8,21 +8,15 @@
 	<false/>
 	<key>3darLookMode</key>
 	<string>free</string>
-	<key>3darLocationUpdateIntervalSec</key>
-	<integer>2</integer>
 	<key>3darEnableMap</key>
 	<true/>
 	<key>3darHeadless</key>
 	<false/>
-	<key>3darFrameWidth</key>
-	<integer>320</integer>
-	<key>3darFrameHeight</key>
-	<integer>411</integer>
 	<key>3darShowStatusBar</key>
 	<true/>
 	<key>3darDrawGroundplaneGrid</key>
 	<true/>
 	<key>3darDisableGyro</key>
-	<true/>
+	<false/>
 </dict>
 </plist>

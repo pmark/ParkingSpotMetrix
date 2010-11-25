@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		4D08ADD611BD9F7800643BF5 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D08ADD511BD9F7800643BF5 /* README.txt */; };
 		4D08ADF211BDA13000643BF5 /* OscillatingFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08ADF111BDA13000643BF5 /* OscillatingFixture.m */; };
 		4D08ADF711BDA23400643BF5 /* ParkingSpotPOI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08ADF611BDA23400643BF5 /* ParkingSpotPOI.m */; };
@@ -46,10 +43,6 @@
 		4D169C161194CADF00F499D7 /* 3dar_marker_icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD71194CADF00F499D7 /* 3dar_marker_icon5.png */; };
 		4D169C171194CADF00F499D7 /* 3dar_marker_icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BD81194CADF00F499D7 /* 3dar_marker_icon6.png */; };
 		4D169C1A1194CADF00F499D7 /* SM3DAR_keys.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D169BDC1194CADF00F499D7 /* SM3DAR_keys.txt */; };
-		4D169C2C1194CB8800F499D7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D169C2B1194CB8800F499D7 /* CoreLocation.framework */; };
-		4D169C2E1194CB8900F499D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D169C2D1194CB8900F499D7 /* MapKit.framework */; };
-		4D169C301194CB8900F499D7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D169C2F1194CB8900F499D7 /* OpenGLES.framework */; };
-		4D169C321194CB8900F499D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D169C311194CB8900F499D7 /* QuartzCore.framework */; };
 		4D2142FE11A7AB8F00FD6222 /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2142FD11A7AB8F00FD6222 /* ArrowView.m */; };
 		4D2144A611AA419B00FD6222 /* ArrowFixture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2144A511AA419B00FD6222 /* ArrowFixture.m */; };
 		4D21453211AB20D100FD6222 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D21453011AB20D100FD6222 /* HistoryController.m */; };
@@ -69,8 +62,6 @@
 		4D2146E911AC217800FD6222 /* WharCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2146E311AC217800FD6222 /* WharCarViewController.xib */; };
 		4D2146EA11AC217800FD6222 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D2146E511AC217800FD6222 /* MainWindow.xib */; };
 		4D2146EB11AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2146E711AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m */; };
-		4D246844120F9A5F00943D02 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D246843120F9A5F00943D02 /* CoreMotion.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		4D5BE816122719FA0043D234 /* lib3DAR_v4.0.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5BE815122719FA0043D234 /* lib3DAR_v4.0.6.a */; };
 		4D84B05A11D7A19700369E37 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B05911D7A19700369E37 /* NSDate+Utilities.m */; };
 		4D84B0D111D8231000369E37 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D84B0D011D8231000369E37 /* HistoryTableViewCell.m */; };
 		4DDBE1BB1197BB8F00565D41 /* compass_rose_g_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DDBE1B91197BB8F00565D41 /* compass_rose_g_300.png */; };
@@ -93,13 +84,19 @@
 		4DFADE621195D53700C23B45 /* RoundedLabelMarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFADE601195D53700C23B45 /* RoundedLabelMarkerView.m */; };
 		4DFADE6A1195D54C00C23B45 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFADE661195D54C00C23B45 /* Model.m */; };
 		4DFADE7811970D4200C23B45 /* PointerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFADE7711970D4200C23B45 /* PointerView.m */; };
+		A6EF1024129DEFF800C93FEE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF1023129DEFF800C93FEE /* CoreGraphics.framework */; };
+		A6EF1026129DEFF800C93FEE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF1025129DEFF800C93FEE /* CoreLocation.framework */; };
+		A6EF1028129DEFF800C93FEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF1027129DEFF800C93FEE /* Foundation.framework */; };
+		A6EF102A129DEFF800C93FEE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF1029129DEFF800C93FEE /* MapKit.framework */; };
+		A6EF102C129DEFF800C93FEE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF102B129DEFF800C93FEE /* OpenGLES.framework */; };
+		A6EF102E129DEFF800C93FEE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF102D129DEFF800C93FEE /* QuartzCore.framework */; };
+		A6EF1030129DEFF800C93FEE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF102F129DEFF800C93FEE /* UIKit.framework */; };
+		A6EF1141129DF03200C93FEE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF1140129DF03200C93FEE /* CoreMotion.framework */; };
+		A6EF1151129DF05600C93FEE /* lib3DAR_v4_0_7_b1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6EF1150129DF05600C93FEE /* lib3DAR_v4_0_7_b1.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* Parking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parking.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ParkingSpotMetrix_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpotMetrix_Prefix.pch; sourceTree = "<group>"; };
 		4D08ADD511BD9F7800643BF5 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
@@ -150,10 +147,6 @@
 		4D169BDA1194CADF00F499D7 /* compass_rose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose.png; sourceTree = "<group>"; };
 		4D169BDB1194CADF00F499D7 /* SM3DAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SM3DAR.h; sourceTree = "<group>"; };
 		4D169BDC1194CADF00F499D7 /* SM3DAR_keys.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SM3DAR_keys.txt; sourceTree = "<group>"; };
-		4D169C2B1194CB8800F499D7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		4D169C2D1194CB8900F499D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		4D169C2F1194CB8900F499D7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		4D169C311194CB8900F499D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4D2142FC11A7AB8F00FD6222 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
 		4D2142FD11A7AB8F00FD6222 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrowView.m; sourceTree = "<group>"; };
 		4D21440211A7CF1B00FD6222 /* arrow_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_512x512.png; sourceTree = "<group>"; };
@@ -186,9 +179,7 @@
 		4D2146E511AC217800FD6222 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		4D2146E611AC217800FD6222 /* ParkingSpotMetrixAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpotMetrixAppDelegate.h; sourceTree = "<group>"; };
 		4D2146E711AC217800FD6222 /* ParkingSpotMetrixAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpotMetrixAppDelegate.m; sourceTree = "<group>"; };
-		4D246843120F9A5F00943D02 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		4D2841C811973AF900DC90A7 /* compass_rose_b_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_rose_b_300.png; sourceTree = "<group>"; };
-		4D5BE815122719FA0043D234 /* lib3DAR_v4.0.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_v4.0.6.a; sourceTree = "<group>"; };
 		4D84B05811D7A19700369E37 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		4D84B05911D7A19700369E37 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		4D84B0CF11D8231000369E37 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
@@ -235,6 +226,15 @@
 		4DFADE7611970D4200C23B45 /* PointerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointerView.h; sourceTree = "<group>"; };
 		4DFADE7711970D4200C23B45 /* PointerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointerView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ParkingSpotMetrix-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ParkingSpotMetrix-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A6EF1023129DEFF800C93FEE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A6EF1025129DEFF800C93FEE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A6EF1027129DEFF800C93FEE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A6EF1029129DEFF800C93FEE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A6EF102B129DEFF800C93FEE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A6EF102D129DEFF800C93FEE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A6EF102F129DEFF800C93FEE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A6EF1140129DF03200C93FEE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		A6EF1150129DF05600C93FEE /* lib3DAR_v4_0_7_b1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lib3DAR_v4_0_7_b1.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,15 +242,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				4D169C2C1194CB8800F499D7 /* CoreLocation.framework in Frameworks */,
-				4D169C2E1194CB8900F499D7 /* MapKit.framework in Frameworks */,
-				4D169C301194CB8900F499D7 /* OpenGLES.framework in Frameworks */,
-				4D169C321194CB8900F499D7 /* QuartzCore.framework in Frameworks */,
-				4D246844120F9A5F00943D02 /* CoreMotion.framework in Frameworks */,
-				4D5BE816122719FA0043D234 /* lib3DAR_v4.0.6.a in Frameworks */,
+				A6EF1024129DEFF800C93FEE /* CoreGraphics.framework in Frameworks */,
+				A6EF1026129DEFF800C93FEE /* CoreLocation.framework in Frameworks */,
+				A6EF1028129DEFF800C93FEE /* Foundation.framework in Frameworks */,
+				A6EF102A129DEFF800C93FEE /* MapKit.framework in Frameworks */,
+				A6EF102C129DEFF800C93FEE /* OpenGLES.framework in Frameworks */,
+				A6EF102E129DEFF800C93FEE /* QuartzCore.framework in Frameworks */,
+				A6EF1030129DEFF800C93FEE /* UIKit.framework in Frameworks */,
+				A6EF1141129DF03200C93FEE /* CoreMotion.framework in Frameworks */,
+				A6EF1151129DF05600C93FEE /* lib3DAR_v4_0_7_b1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +277,6 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				4D08ADD511BD9F7800643BF5 /* README.txt */,
-				4D246843120F9A5F00943D02 /* CoreMotion.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -304,13 +303,14 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
-				4D169C2B1194CB8800F499D7 /* CoreLocation.framework */,
-				4D169C2D1194CB8900F499D7 /* MapKit.framework */,
-				4D169C2F1194CB8900F499D7 /* OpenGLES.framework */,
-				4D169C311194CB8900F499D7 /* QuartzCore.framework */,
+				A6EF1140129DF03200C93FEE /* CoreMotion.framework */,
+				A6EF1023129DEFF800C93FEE /* CoreGraphics.framework */,
+				A6EF1025129DEFF800C93FEE /* CoreLocation.framework */,
+				A6EF1027129DEFF800C93FEE /* Foundation.framework */,
+				A6EF1029129DEFF800C93FEE /* MapKit.framework */,
+				A6EF102B129DEFF800C93FEE /* OpenGLES.framework */,
+				A6EF102D129DEFF800C93FEE /* QuartzCore.framework */,
+				A6EF102F129DEFF800C93FEE /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 		4D169B431194CADF00F499D7 /* 3DAR */ = {
 			isa = PBXGroup;
 			children = (
-				4D5BE815122719FA0043D234 /* lib3DAR_v4.0.6.a */,
+				A6EF1150129DF05600C93FEE /* lib3DAR_v4_0_7_b1.a */,
 				4DDBE2EA1198858700565D41 /* arrow_up.png */,
 				4D21440211A7CF1B00FD6222 /* arrow_512x512.png */,
 				4DDBE328119897CA00565D41 /* crosshairs_49x30.png */,
@@ -696,8 +696,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/3DAR\"",
-					"\"$(SRCROOT)/../../../../PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos\"",
-					"\"$(SRCROOT)/../../SM3DARLibrary/SM3DARLibrary/build/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -718,11 +716,7 @@
 				INFOPLIST_FILE = "ParkingSpotMetrix-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/SM3DAR_Common/Lib/HTTPRiot/httpriot-0.6.6/Vendor/gh-unit-iphone\"",
-					"\"$(SRCROOT)/3DAR/3DAR_Common/Lib/HTTPRiot/httpriot-0.6.6/Vendor/gh-unit-iphone\"",
-					"\"$(SRCROOT)/../../../../../../projects/Spot Metrix/PROJECTS/SM3DAR/SM3DARLibrary/SM3DARLibrary/build/Debug-iphoneos\"",
 					"\"$(SRCROOT)/3DAR\"",
-					"\"$(SRCROOT)/../../SM3DARLibrary/SM3DARLibrary/build/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -744,7 +738,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -759,7 +754,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
